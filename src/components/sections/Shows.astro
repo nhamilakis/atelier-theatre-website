@@ -1,0 +1,203 @@
+---
+import { Image } from "astro:assets";
+import YouTubeEmbed from "../YouTubeEmbed.astro";
+import type { SiteContent } from "../../data/types";
+
+interface Props {
+  id: string;
+  shows: SiteContent["shows"];
+}
+
+const { id, shows } = Astro.props;
+---
+
+<section id={id} class="section">
+  <div class="container">
+    <h2 class="section__title">{shows.title}</h2>
+    {shows.intro && shows.intro.map((paragraph) => <p class="shows__intro">{paragraph}</p>)}
+
+    <ol role="list" class="shows__list">
+      {
+        shows.items.map((show) => (
+          <li>
+            <article class="show">
+              <div class="show__poster">
+                {show.poster ? (
+                  <Image
+                    src={show.poster.image}
+                    alt={show.poster.alt}
+                    widths={[240, 480]}
+                    sizes="(min-width: 48rem) 240px, 60vw"
+                    class="show__poster-img"
+                  />
+                ) : (
+                  <div class="show__poster-placeholder" aria-hidden="true">
+                    <span>🎭</span>
+                  </div>
+                )}
+              </div>
+
+              <div class="show__body">
+                <h3 class="show__title">{show.title}</h3>
+
+                {show.details && show.details.length > 0 && (
+                  <dl class="show__details">
+                    {show.details.map((detail) => (
+                      <div class="show__detail">
+                        <dt>{detail.label}</dt>
+                        <dd>{detail.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
+
+                {show.description.map((paragraph) => (
+                  <p class="show__p">{paragraph}</p>
+                ))}
+
+                {show.credits && show.credits.length > 0 && (
+                  <div class="show__credits">
+                    <h4 class="show__credits-title">{shows.creditsLabel ?? "Διανομή"}</h4>
+                    <ul role="list">
+                      {show.credits.map((credit) => (
+                        <li>
+                          <span class="show__credit-role">{credit.role}</span>
+                          <span class="show__credit-name">{credit.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {show.videoId && (
+                  <div class="show__video">
+                    <YouTubeEmbed id={show.videoId} title={show.title} caption={false} />
+                  </div>
+                )}
+              </div>
+            </article>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .shows__intro {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-s);
+    color: var(--color-muted);
+  }
+
+  .shows__list {
+    list-style: none;
+    margin: var(--space-l) 0 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .show {
+    display: grid;
+    gap: var(--space-m);
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .shows__list li:last-child .show {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  /* Side-by-side poster + text from tablet up. */
+  @media (min-width: 48rem) {
+    .show {
+      grid-template-columns: 15rem 1fr;
+      gap: var(--space-l);
+      align-items: start;
+    }
+  }
+
+  .show__poster-img,
+  .show__poster-placeholder {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  .show__poster-img {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .show__poster-placeholder {
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    background-color: var(--color-bg);
+    border: 1px dashed var(--color-border);
+  }
+
+  .show__title {
+    color: var(--color-primary);
+    margin-bottom: var(--space-s);
+  }
+
+  .show__details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.15rem var(--space-s);
+    margin-bottom: var(--space-m);
+    font-size: var(--text-sm);
+  }
+
+  .show__detail {
+    display: contents;
+  }
+
+  .show__details dt {
+    color: var(--color-muted);
+    font-weight: 600;
+  }
+
+  .show__details dd {
+    margin: 0;
+  }
+
+  .show__p + .show__p {
+    margin-top: var(--space-s);
+  }
+
+  .show__credits {
+    margin-top: var(--space-m);
+  }
+
+  .show__credits-title {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-xs);
+  }
+
+  .show__credits ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.2rem;
+    font-size: var(--text-sm);
+  }
+
+  .show__credit-role {
+    color: var(--color-muted);
+  }
+
+  .show__credit-role::after {
+    content: " — ";
+  }
+
+  .show__video {
+    margin-top: var(--space-m);
+    max-width: 40rem;
+  }
+</style>

@@ -1,0 +1,64 @@
+---
+import type { SiteContent } from "../../data/types";
+
+interface Props {
+  id: string;
+  members: SiteContent["members"];
+}
+
+const { id, members } = Astro.props;
+---
+
+<section id={id} class="section">
+  <div class="container">
+    <h2 class="section__title">{members.title}</h2>
+    {members.intro && <p class="members__intro">{members.intro}</p>}
+
+    <ul role="list" class="members__grid">
+      {
+        members.people.map((person) => (
+          <li class="member-card">
+            <h3 class="member-card__name">{person.name}</h3>
+            <p class="member-card__role">{person.role}</p>
+            {person.bio && <p class="member-card__bio">{person.bio}</p>}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .members__intro {
+    max-width: var(--container-narrow);
+    margin-bottom: var(--space-l);
+    color: var(--color-muted);
+  }
+
+  .members__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    gap: var(--space-m);
+  }
+
+  .member-card {
+    padding: var(--space-m);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .member-card__role {
+    margin-top: 0.15rem;
+    color: var(--color-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .member-card__bio {
+    margin-top: var(--space-s);
+    color: var(--color-muted);
+  }
+</style>

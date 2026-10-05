@@ -1,0 +1,51 @@
+/* Base typography. Component-specific type lives in each component's
+   scoped <style> block. */
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-ink);
+  background-color: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--color-primary);
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

@@ -1,0 +1,82 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/logo.jpeg";
+import type { SiteContent } from "../../data/types";
+
+interface Props {
+  hero: SiteContent["hero"];
+}
+
+const { hero } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <Image
+      src={logo}
+      alt=""
+      height={250}
+      densities={[1, 2]}
+      class="hero__logo"
+    />
+    <h1 class="hero__title">{hero.title}</h1>
+    <span class="hero__rule" aria-hidden="true"></span>
+    <p class="hero__tagline">{hero.tagline}</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--space-xl) var(--space-2xl);
+    background:
+      radial-gradient(
+        120% 100% at 50% 0%,
+        color-mix(in srgb, var(--color-primary) 10%, var(--color-bg)) 0%,
+        var(--color-bg) 70%
+      );
+  }
+
+  .hero__inner {
+    /* Wide enough not to cap the title. The title/tagline set their own, tighter
+       max-widths below, so this just removes the parent as the bottleneck. */
+    max-width: var(--container-width);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero__logo {
+    height: clamp(4.5rem, 12vw, 18rem);
+    width: auto;
+    border-radius: var(--radius);
+    margin-bottom: var(--space-m);
+  }
+
+  .hero__title {
+    color: var(--color-primary);
+    /* Smaller than the global h1 so a long title stays readable, not huge. */
+    font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3rem);
+    /* THE WIDTH KNOB: raise this to let the title run wider (fewer line breaks),
+       lower it for a narrower, taller block. The parent (.hero__inner) is now
+       wide enough that this value is what actually controls the width. */
+    max-width: 30ch;
+    text-wrap: balance;
+  }
+
+  .hero__rule {
+    display: block;
+    width: 3rem;
+    height: 3px;
+    margin-block: var(--space-m);
+    background-color: var(--color-accent);
+  }
+
+  .hero__tagline {
+    max-width: 42ch;
+    font-size: var(--text-lg);
+    color: var(--color-muted);
+    font-style: italic;
+    text-wrap: balance;
+  }
+</style>

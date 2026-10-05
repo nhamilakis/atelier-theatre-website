@@ -1,0 +1,27 @@
+---
+// Reusable prose section: a heading followed by one or more paragraphs.
+// Used for the sections that are purely text (company, work).
+import type { SectionText } from "../../data/types";
+
+interface Props {
+  id: string;
+  section: SectionText;
+}
+
+const { id, section } = Astro.props;
+---
+
+<section id={id} class="section">
+  <div class="container">
+    <h2 class="section__title">{section.title}</h2>
+    <div class="prose">
+      {section.body.map((paragraph) => <p class="text-section__p">{paragraph}</p>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-section__p + .text-section__p {
+    margin-top: var(--space-s);
+  }
+</style>

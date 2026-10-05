@@ -1,0 +1,52 @@
+---
+// Responsive, privacy-friendly YouTube embed.
+// - Uses the youtube-nocookie domain so no tracking cookie is set until play.
+// - `loading="lazy"` defers the iframe until it's near the viewport.
+// - A 16:9 box keeps the video responsive without inline styles.
+
+interface Props {
+  id: string;
+  title: string;
+  // Show the title as a caption under the video. Turn off when the title is
+  // already displayed nearby (e.g. a show's own heading).
+  caption?: boolean;
+}
+
+const { id, title, caption = true } = Astro.props;
+const src = `https://www.youtube-nocookie.com/embed/${id}`;
+---
+
+<figure class="youtube">
+  <iframe
+    class="youtube__frame"
+    src={src}
+    title={title}
+    loading="lazy"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+  {caption && <figcaption class="youtube__caption">{title}</figcaption>}
+</figure>
+
+<style>
+  .youtube {
+    margin: 0;
+  }
+
+  .youtube__frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 0;
+    border-radius: var(--radius-lg);
+    background-color: #000;
+    box-shadow: var(--shadow);
+  }
+
+  .youtube__caption {
+    margin-top: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+</style>

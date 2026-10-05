@@ -1,0 +1,78 @@
+---
+import type { SiteContent } from "../data/types";
+
+interface Props {
+  content: SiteContent;
+}
+
+const { content } = Astro.props;
+const { hero, contact } = content;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p class="site-footer__brand">{hero.header_title}</p>
+
+    {
+      contact.socials && contact.socials.length > 0 && (
+        <ul role="list" class="site-footer__socials">
+          {contact.socials.map((social) => (
+            <li>
+              <a href={social.href} rel="noopener noreferrer" target="_blank">
+                {social.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+    <p class="site-footer__copy">© {year} {hero.header_title}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    padding-block: var(--space-l);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-m);
+  }
+
+  .site-footer__brand {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    margin-right: auto;
+  }
+
+  .site-footer__socials {
+    display: flex;
+    gap: var(--space-m);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-footer a {
+    color: var(--color-bg);
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .site-footer__copy {
+    width: 100%;
+    font-size: var(--text-sm);
+    opacity: 0.85;
+  }
+</style>

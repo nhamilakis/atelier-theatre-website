@@ -1,0 +1,75 @@
+/* Global stylesheet: pulls in tokens, reset and base typography, then adds a
+   few shared layout helpers. Component styling stays inside each component. */
+
+@import "./variables.css";
+@import "./reset.css";
+@import "./typography.css";
+
+/* Centred content column, reused by the header, sections and footer. */
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--space-m);
+}
+
+/* A readable, line-length-limited text column. Left-aligned inside a full-width
+   .container so that section headings all share the same left edge. */
+.prose {
+  max-width: var(--container-narrow);
+}
+
+/* Vertical rhythm between the stacked page sections. */
+.section {
+  padding-block: var(--space-2xl);
+  /* Offset anchor targets so the sticky header doesn't cover headings. */
+  scroll-margin-top: var(--header-height);
+}
+
+.section:nth-of-type(even) {
+  background-color: var(--color-surface);
+  border-block: 1px solid var(--color-border);
+}
+
+/* Small eyebrow / accent rule used under section titles. */
+.section__title {
+  margin-bottom: var(--space-m);
+}
+
+.section__title::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin-top: var(--space-xs);
+  background-color: var(--color-accent);
+}
+
+/* Visually hidden but available to screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-s);
+  top: -3rem;
+  z-index: 100;
+  padding: var(--space-xs) var(--space-s);
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius);
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: var(--space-s);
+}

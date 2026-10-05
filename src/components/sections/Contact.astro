@@ -1,0 +1,62 @@
+---
+import type { SiteContent } from "../../data/types";
+
+interface Props {
+  id: string;
+  contact: SiteContent["contact"];
+}
+
+const { id, contact } = Astro.props;
+---
+
+<section id={id} class="section">
+  <div class="container">
+    <h2 class="section__title">{contact.title}</h2>
+    <div class="prose">
+      {contact.body.map((paragraph) => <p class="contact__p">{paragraph}</p>)}
+
+      {
+        contact.email && (
+          <p class="contact__email">
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </p>
+        )
+      }
+
+      {
+        contact.socials && contact.socials.length > 0 && (
+          <ul role="list" class="contact__socials">
+            {contact.socials.map((social) => (
+              <li>
+                <a href={social.href} rel="noopener noreferrer" target="_blank">
+                  {social.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact__p + .contact__p {
+    margin-top: var(--space-s);
+  }
+
+  .contact__email {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+  }
+
+  .contact__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    list-style: none;
+    margin-top: var(--space-m);
+    padding: 0;
+  }
+</style>

@@ -1,0 +1,171 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.jpeg";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import type { Locale } from "../i18n/config";
+import type { SiteContent } from "../data/types";
+
+interface Props {
+  lang: Locale;
+  content: SiteContent;
+}
+
+const { lang, content } = Astro.props;
+const { nav, hero } = content;
+
+// Order of the in-page navigation. Each `id` matches a <section id="…">.
+const navItems = [
+  { id: "company", label: nav.company },
+  { id: "shows", label: nav.shows },
+  { id: "director", label: nav.director },
+  { id: "members", label: nav.members },
+  { id: "community", label: nav.community },
+  { id: "contact", label: nav.contact },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="#main">
+      <Image
+        src={logo}
+        alt=""
+        height={40}
+        densities={[1, 2]}
+        class="site-header__logo"
+      />
+      <span class="site-header__brand-text">{hero.header_title}</span>
+    </a>
+
+    {/* <details> gives a keyboard-accessible mobile menu with no JavaScript. */}
+    <details class="site-nav">
+      <summary class="site-nav__toggle" aria-label="Menu">
+        <span aria-hidden="true">☰</span>
+      </summary>
+      <nav class="site-nav__panel" aria-label="Principale / Κύριο μενού">
+        <ul role="list" class="site-nav__list">
+          {
+            navItems.map((item) => (
+              <li>
+                <a class="site-nav__link" href={`#${item.id}`}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </details>
+
+    <LanguageSwitcher lang={lang} />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    min-height: var(--header-height);
+    background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-m);
+    min-height: var(--header-height);
+  }
+
+  .site-header__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-lg);
+    text-decoration: none;
+    color: var(--color-ink);
+    margin-right: auto;
+  }
+
+  .site-header__logo {
+    height: 2.5rem;
+    width: auto;
+    border-radius: var(--radius);
+  }
+
+  /* On narrow phones, keep the logo but drop the long text name. */
+  @media (max-width: 26rem) {
+    .site-header__brand-text {
+      display: none;
+    }
+  }
+
+  .site-nav__toggle {
+    cursor: pointer;
+    list-style: none;
+    padding: var(--space-xs);
+    font-size: var(--text-lg);
+    line-height: 1;
+  }
+
+  /* Hide the default disclosure triangle. */
+  .site-nav__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .site-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    display: block;
+    padding: var(--space-xs) var(--space-s);
+    text-decoration: none;
+    color: var(--color-ink);
+    font-size: var(--text-sm);
+  }
+
+  .site-nav__link:hover {
+    color: var(--color-primary);
+  }
+
+  /* --- Mobile: nav is a dropdown panel under the toggle --- */
+  @media (max-width: 48rem) {
+    .site-nav__panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: var(--header-height);
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: var(--shadow);
+    }
+
+    .site-nav__list {
+      padding: var(--space-s) var(--space-m);
+    }
+  }
+
+  /* --- Desktop: show the links inline, hide the toggle --- */
+  @media (min-width: 48.0625rem) {
+    .site-nav__toggle {
+      display: none;
+    }
+
+    .site-nav__panel {
+      display: block !important;
+    }
+
+    .site-nav__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+    }
+  }
+</style>

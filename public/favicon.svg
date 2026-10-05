@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#7a2e2e" />
+  <!-- Simple pair of theatre masks, stylised -->
+  <path
+    d="M9 9c3 0 5 1 5 5s-2 7-5 7-5-3-5-7 2-5 5-5z"
+    fill="#faf7f2"
+  />
+  <path
+    d="M23 11c3 0 5 1 5 5s-2 7-5 7-5-3-5-7 2-5 5-5z"
+    fill="#b8893b"
+  />
+</svg>

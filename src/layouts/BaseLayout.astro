@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { LOCALES } from "../i18n/config";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Locale } from "../i18n/config";
+import type { SiteContent } from "../data/types";
+
+interface Props {
+  lang: Locale;
+  content: SiteContent;
+}
+
+const { lang, content } = Astro.props;
+const { meta } = content;
+const faviconHref = `${import.meta.env.BASE_URL}favicon.svg`;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
+
+    {/* Tell search engines about the alternate-language versions. */}
+    {
+      LOCALES.map((loc) => (
+        <link rel="alternate" hreflang={loc} href={getRelativeLocaleUrl(loc)} />
+      ))
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu / Μετάβαση στο περιεχόμενο</a>
+    <SiteHeader lang={lang} content={content} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter content={content} />
+  </body>
+</html>
