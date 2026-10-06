@@ -56,9 +56,11 @@ const { id, shows } = Astro.props;
                 ))}
 
                 {show.credits && show.credits.length > 0 && (
-                  <div class="show__credits">
-                    <h4 class="show__credits-title">{shows.creditsLabel ?? "Διανομή"}</h4>
-                    <ul role="list">
+                  <details class="show__credits">
+                    <summary class="show__credits-summary">
+                      {shows.creditsLabel ?? "Διανομή"}
+                    </summary>
+                    <ul role="list" class="show__credits-list">
                       {show.credits.map((credit) => (
                         <li>
                           <span class="show__credit-role">{credit.role}</span>
@@ -66,7 +68,7 @@ const { id, shows } = Astro.props;
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </details>
                 )}
 
                 {show.videoId && (
@@ -172,16 +174,38 @@ const { id, shows } = Astro.props;
 
   .show__credits {
     margin-top: var(--space-m);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-s);
   }
 
-  .show__credits-title {
-    font-size: var(--text-base);
-    margin-bottom: var(--space-xs);
-  }
-
-  .show__credits ul {
+  .show__credits-summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--color-primary);
+    /* Replace the default triangle with our own marker (below). */
     list-style: none;
-    margin: 0;
+  }
+
+  .show__credits-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* A rotating caret that points down when the panel is open. */
+  .show__credits-summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: var(--space-xs);
+    color: var(--color-accent);
+    transition: transform 0.15s ease;
+  }
+
+  .show__credits[open] .show__credits-summary::before {
+    transform: rotate(90deg);
+  }
+
+  .show__credits-list {
+    list-style: none;
+    margin: var(--space-s) 0 0;
     padding: 0;
     display: grid;
     gap: 0.2rem;
