@@ -1,0 +1,26 @@
+---
+// Root entry point: redirect the bare base path to the default locale.
+//
+// We do this in a page (not via config `redirects`) because Astro's config
+// redirects do NOT prepend `base`. getRelativeLocaleUrl() includes `base`, so
+// this works for every deploy target — "/" locally, "/<deploy-key>/fr/" in a
+// preview build, etc.
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { DEFAULT_LOCALE } from "../i18n/config";
+
+const target = getRelativeLocaleUrl(DEFAULT_LOCALE);
+---
+
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>Θεατρικό Εργαστήρι</title>
+  </head>
+  <body>
+    <p><a href={target}>Συνέχεια / Continuer →</a></p>
+  </body>
+</html>

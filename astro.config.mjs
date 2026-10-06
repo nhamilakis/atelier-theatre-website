@@ -30,7 +30,6 @@ const TARGETS = {
   },
 
   // 3. Private preview served from a sub-folder guarded by a long deploy key.
-  //    TODO: replace both the preview host and the deploy key.
   preview: {
     site: "https://perso.cognitive-ml.fr",
     base: "/nhamilakis/99H71aha7hn48UPiFYp6KF22A83PCKP62mH1893Gwp93xXg1667T19QAr9AV93f5",
@@ -52,17 +51,13 @@ export default defineConfig({
   base: target.base,
 
   // Both languages are first-class: URLs are /fr/ and /el/ (under `base`).
-  // The bare base path is redirected to the default locale below.
+  // The bare base path is redirected to the default locale by src/pages/index.astro.
+  // (Config-level `redirects` are NOT base-aware, so we do it in a page instead.)
   i18n: {
     locales: ["fr", "el"],
-    defaultLocale: "fr",
+    defaultLocale: "el",
     routing: {
       prefixDefaultLocale: true,
     },
-  },
-
-  // `base` is applied automatically to the redirect source and target.
-  redirects: {
-    "/": "/fr/",
   },
 });
