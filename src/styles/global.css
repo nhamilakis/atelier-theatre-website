@@ -1,7 +1,9 @@
-/* Global stylesheet: pulls in tokens, reset and base typography, then adds a
-   few shared layout helpers. Component styling stays inside each component. */
+/* Global stylesheet: reset and base typography, plus a few shared layout
+   helpers. Design tokens live in src/data/theme.ts (injected as :root custom
+   properties by BaseLayout). Component styling stays inside each component. */
 
-@import "./variables.css";
+/* Design tokens (the :root custom properties) are generated from
+   src/data/theme.ts and injected by BaseLayout. */
 @import "./reset.css";
 @import "./typography.css";
 

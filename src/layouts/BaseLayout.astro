@@ -4,6 +4,7 @@ import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import { LOCALES } from "../i18n/config";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { themeToCssVariables } from "../data/theme";
 import type { Locale } from "../i18n/config";
 import type { SiteContent } from "../data/types";
 
@@ -15,6 +16,9 @@ interface Props {
 const { lang, content } = Astro.props;
 const { meta } = content;
 const faviconHref = `${import.meta.env.BASE_URL}favicon.svg`;
+
+// Design tokens from src/data/theme.ts, emitted as :root custom properties.
+const themeCss = `:root {\n${themeToCssVariables()}\n}`;
 ---
 
 <!doctype html>
@@ -22,6 +26,11 @@ const faviconHref = `${import.meta.env.BASE_URL}favicon.svg`;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {/* Theme tokens from src/data/theme.ts. `is:inline` keeps this exact tag in
+        the <head>; `set:html` injects the generated :root declarations. */}
+    <style is:inline set:html={themeCss}></style>
+
     <link rel="icon" type="image/svg+xml" href={faviconHref} />
     <title>{meta.title}</title>
     <meta name="description" content={meta.description} />

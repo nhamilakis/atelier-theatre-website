@@ -1,6 +1,7 @@
 # build output
 dist/
 claude-info/
+.claude/
 
 # generated types
 .astro/
