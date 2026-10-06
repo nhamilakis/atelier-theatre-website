@@ -23,17 +23,31 @@ URL : https://perso.cognitive-ml.fr/nhamilakis/99H71aha7hn48UPiFYp6KF22A83PCKP62
 ## Editing the text
 
 Open `src/data/fr.ts` or `src/data/el.ts`. Each section is a plain object.
-Long text is written as a list of paragraphs — one string per paragraph:
+`body` is a **list of paragraphs** — one entry per paragraph. For long text,
+write each paragraph as a multi-line **template literal** (backticks `` ` ``):
 
 ```ts
 company: {
   title: "La compagnie",
   body: [
-    "Premier paragraphe…",
-    "Deuxième paragraphe…",
+    `Premier paragraphe qui peut être écrit
+    sur plusieurs lignes sans guillemets ni « + » :
+    les retours à la ligne deviennent des espaces à l'affichage.`,
+
+    `Deuxième paragraphe — une nouvelle entrée dans la liste
+    crée un nouveau <p>.`,
   ],
 },
 ```
+
+Rules of thumb:
+
+- **Line breaks inside a backtick string collapse to a single space** when
+  shown (standard HTML), so you can wrap and indent freely for readability.
+- **A blank line does _not_ start a new paragraph.** To split paragraphs, add a
+  new entry to the `body` array (each entry becomes its own `<p>`).
+- Keep short, single-line fields (`title`, `meta.description`, image `alt`) as
+  normal `"double-quoted"` strings — there the exact whitespace is kept.
 
 Placeholder text is marked `[À REMPLACER]` (French) and
 `[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ]` (Greek). Search for those to find everything left to do.
