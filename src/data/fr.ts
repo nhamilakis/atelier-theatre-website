@@ -32,12 +32,11 @@ export const fr: SiteContent = {
 
   company: {
     title: "La compagnie",
-    body: [
-      "[À REMPLACER] Présentez ici la compagnie : quand et comment elle est née, " +
-        "ce qui vous rassemble, la démarche artistique qui vous anime.",
-      "[À REMPLACER] Un deuxième paragraphe pour préciser votre approche, vos " +
-        "influences ou les thèmes que vous aimez explorer sur scène.",
-    ],
+    body: `[À REMPLACER] Présentez ici la compagnie : quand et comment elle est née,
+      ce qui vous rassemble, la démarche artistique qui vous anime.
+
+      [À REMPLACER] Un deuxième paragraphe pour préciser votre approche, vos
+      influences ou les thèmes que vous aimez explorer sur scène.`,
   },
 
   // ---------------------------------------------------------------------------
@@ -59,9 +58,8 @@ export const fr: SiteContent = {
     leafletLabel: "Dépliant",
     galleryLabel: "Galerie",
     creditsLabel: "Distribution",
-    intro: [
+    intro:
       "[À REMPLACER] Une courte introduction aux spectacles de la compagnie.",
-    ],
     items: [
       {
         title: "Λυσιστράτη ή Μένουμε Ακρόπολη",
@@ -70,7 +68,7 @@ export const fr: SiteContent = {
           { label: "D'après", value: "Aristophane" },
           { label: "Forme", value: "Représentation en ligne" },
         ],
-        description: ["[À REMPLACER] Courte description du spectacle."],
+        description: "[À REMPLACER] Courte description du spectacle.",
         videoId: "F0eUPQy_FyY",
         // Exemple de distribution — décommentez et complétez :
         // credits: [
@@ -84,7 +82,7 @@ export const fr: SiteContent = {
           { label: "D'après", value: "Samuel Beckett" },
           { label: "Forme", value: "Représentation en ligne" },
         ],
-        description: ["[À REMPLACER] Courte description du spectacle."],
+        description: "[À REMPLACER] Courte description du spectacle.",
         videoId: "5FIIp7Lln_4",
       },
       {
@@ -94,12 +92,12 @@ export const fr: SiteContent = {
           { label: "Autrice", value: "Vili Sotiropoulou" },
           { label: "Note", value: "Première création sur scène" },
         ],
-        description: ["[À REMPLACER] Courte description du spectacle."],
+        description: "[À REMPLACER] Courte description du spectacle.",
       },
       {
         title: "Σιγά τα αίματα!",
         details: [{ label: "Auteur", value: "Akis Dimou" }],
-        description: ["[À REMPLACER] Courte description du spectacle."],
+        description: "[À REMPLACER] Courte description du spectacle.",
         videoId: "VOJpWu76xN0",
       },
       {
@@ -111,13 +109,13 @@ export const fr: SiteContent = {
           },
           { label: "Traduction", value: "Les élèves de l'atelier" },
         ],
-        description: ["[À REMPLACER] Courte description du spectacle."],
+        description: "[À REMPLACER] Courte description du spectacle.",
         videoId: "6G60HXuyqvg",
       },
       {
         title: "Speed date",
         details: [{ label: "Auteur", value: "Giorgos Iliopoulos" }],
-        description: ["[À REMPLACER] Courte description du spectacle."],
+        description: "[À REMPLACER] Courte description du spectacle.",
       },
     ],
   },
@@ -148,20 +146,17 @@ export const fr: SiteContent = {
   director: {
     title: "Mise en scène",
     name: "[À REMPLACER] Prénom Nom",
-    body: [
-      "[À REMPLACER] Une courte biographie de la metteuse ou du metteur en scène : " +
-        "parcours, formation, démarche.",
-      "[À REMPLACER] Un second paragraphe sur sa vision du théâtre et son rôle au " +
-        "sein de la compagnie.",
-    ],
+    body: `[À REMPLACER] Une courte biographie de la metteuse ou du metteur en scène :
+      parcours, formation, démarche.
+
+      [À REMPLACER] Un second paragraphe sur sa vision du théâtre et son rôle au
+      sein de la compagnie.`,
   },
 
   community: {
     title: "Le lieu qui nous accueille",
-    body: [
-      "[À REMPLACER] Présentez la structure, le théâtre ou la communauté qui vous " +
-        "héberge et soutient votre travail.",
-    ],
+    body: `[À REMPLACER] Présentez la structure, le théâtre ou la communauté qui vous
+      héberge et soutient votre travail.`,
     link: {
       label: "[À REMPLACER] Site du lieu",
       href: "https://example.org",
@@ -170,10 +165,8 @@ export const fr: SiteContent = {
 
   contact: {
     title: "Contact",
-    body: [
-      "[À REMPLACER] Comment nous joindre pour une programmation, une collaboration " +
-        "ou toute autre demande.",
-    ],
+    body: `[À REMPLACER] Comment nous joindre pour une programmation, une collaboration
+      ou toute autre demande.`,
     email: "contact@example.org",
     socials: [
       { label: "Instagram", href: "https://instagram.com/" },

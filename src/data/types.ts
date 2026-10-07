@@ -4,13 +4,21 @@
 // section is missing or mistyped in one language the build will fail loudly
 // instead of silently shipping an empty page.
 //
-// Long text is stored as an array of strings: one entry per paragraph.
+// Prose fields (body, intro, show descriptions) are **Markdown** strings:
+// a single multi-line string. Use a blank line for a new paragraph, plus
+// **bold**, *italics*, > blockquotes, lists and [links](…). Short labels
+// (title, nav, meta.description) stay plain strings.
 
 import type { ImageMetadata } from "astro";
 
+// A string that is interpreted as Markdown (rendered via src/lib/markdown.ts).
+// This is a documentation alias: structurally it is still `string`, so it marks
+// intent in signatures and editor tooltips without requiring casts in the data.
+export type Markdown = string;
+
 export interface SectionText {
   title: string;
-  body: string[];
+  body: Markdown;
 }
 
 export interface Member {
@@ -47,8 +55,10 @@ export interface Figure {
 
 export interface Show {
   title: string;
-  // Small description, one string per paragraph.
-  description: string[];
+  // Blank line = new paragraph; **bold**, *italics*, > blockquote, lists and
+  // [links](…) all work. Leading indentation of each line is stripped before
+  // rendering, so you can indent the template literal freely in the data file.
+  description: Markdown;
   // Optional poster (an imported asset — see the data file for how to import).
   poster?: Figure;
   // Optional general info (year, author, venue…), shown as a definition list.
@@ -87,8 +97,8 @@ export interface SiteContent {
   company: SectionText;
   shows: {
     title: string;
-    // Lead-in paragraphs shown above the list of productions.
-    intro?: string[];
+    // Lead-in text shown above the list of productions.
+    intro?: Markdown;
     // Labels for the per-show actions (localized). Fallbacks exist in the
     // component, but set these so both languages read naturally.
     leafletLabel?: string; // e.g. "Φυλλάδιο" / "Dépliant"
@@ -99,11 +109,11 @@ export interface SiteContent {
   director: {
     title: string;
     name: string;
-    body: string[];
+    body: Markdown;
   };
   members: {
     title: string;
-    intro?: string;
+    intro?: Markdown;
     people: Member[];
   };
   community: SectionText & {
@@ -111,7 +121,7 @@ export interface SiteContent {
   };
   contact: {
     title: string;
-    body: string[];
+    body: Markdown;
     email?: string;
     socials?: Link[];
   };

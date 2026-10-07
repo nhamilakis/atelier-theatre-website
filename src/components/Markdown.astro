@@ -1,0 +1,59 @@
+---
+// Renders an author-trusted Markdown string to styled HTML. Used for every
+// prose field (company body, director bio, show descriptions, …) so Markdown
+// behaves and looks the same everywhere.
+import { renderMarkdown } from "../lib/markdown";
+import type { Markdown } from "../data/types";
+
+interface Props {
+  text: Markdown;
+  // Optional extra class on the wrapper (e.g. for section-specific spacing).
+  class?: string;
+}
+
+const { text, class: className } = Astro.props;
+const html = await renderMarkdown(text);
+---
+
+<div class:list={["markdown", className]} set:html={html} />
+
+<style>
+  /* Markdown output is injected via set:html, so its elements aren't scoped —
+     target them with :global(). */
+  .markdown :global(p),
+  .markdown :global(ul),
+  .markdown :global(ol) {
+    margin: 0;
+  }
+
+  .markdown :global(p + p),
+  .markdown :global(p + ul),
+  .markdown :global(p + ol),
+  .markdown :global(blockquote),
+  .markdown :global(ul),
+  .markdown :global(ol) {
+    margin-top: var(--space-s);
+  }
+
+  .markdown :global(ul),
+  .markdown :global(ol) {
+    padding-left: 1.25em;
+  }
+
+  .markdown :global(li + li) {
+    margin-top: 0.25rem;
+  }
+
+  .markdown :global(a) {
+    color: var(--color-primary);
+    text-underline-offset: 0.15em;
+  }
+
+  .markdown :global(blockquote) {
+    margin-inline: 0;
+    padding-left: var(--space-s);
+    border-left: 3px solid var(--color-accent);
+    color: var(--color-muted);
+    font-style: italic;
+  }
+</style>

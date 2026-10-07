@@ -1,4 +1,5 @@
 ---
+import Markdown from "../Markdown.astro";
 import type { SiteContent } from "../../data/types";
 
 interface Props {
@@ -13,7 +14,7 @@ const { id, community } = Astro.props;
   <div class="container">
     <h2 class="section__title">{community.title}</h2>
     <div class="prose">
-      {community.body.map((paragraph) => <p class="community__p">{paragraph}</p>)}
+      <Markdown text={community.body} />
 
       {
         community.link && (
@@ -29,10 +30,6 @@ const { id, community } = Astro.props;
 </section>
 
 <style>
-  .community__p + .community__p {
-    margin-top: var(--space-s);
-  }
-
   .community__link {
     margin-top: var(--space-m);
     font-weight: 600;

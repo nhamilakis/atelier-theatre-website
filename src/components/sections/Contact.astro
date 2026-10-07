@@ -1,4 +1,5 @@
 ---
+import Markdown from "../Markdown.astro";
 import type { SiteContent } from "../../data/types";
 
 interface Props {
@@ -13,7 +14,7 @@ const { id, contact } = Astro.props;
   <div class="container">
     <h2 class="section__title">{contact.title}</h2>
     <div class="prose">
-      {contact.body.map((paragraph) => <p class="contact__p">{paragraph}</p>)}
+      <Markdown text={contact.body} />
 
       {
         contact.email && (
@@ -41,10 +42,6 @@ const { id, contact } = Astro.props;
 </section>
 
 <style>
-  .contact__p + .contact__p {
-    margin-top: var(--space-s);
-  }
-
   .contact__email {
     margin-top: var(--space-m);
     font-family: var(--font-display);

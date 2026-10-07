@@ -1,5 +1,6 @@
 ---
 import { Image, getImage } from "astro:assets";
+import Markdown from "../Markdown.astro";
 import YouTubeEmbed from "../YouTubeEmbed.astro";
 import type { SiteContent } from "../../data/types";
 
@@ -30,7 +31,7 @@ const galleryFullSrc = await Promise.all(
 <section id={id} class="section">
   <div class="container">
     <h2 class="section__title">{shows.title}</h2>
-    {shows.intro && shows.intro.map((paragraph) => <p class="shows__intro">{paragraph}</p>)}
+    {shows.intro && <Markdown text={shows.intro} class="shows__intro" />}
 
     <ol role="list" class="shows__list">
       {
@@ -67,9 +68,7 @@ const galleryFullSrc = await Promise.all(
                   </dl>
                 )}
 
-                {show.description.map((paragraph) => (
-                  <p class="show__p">{paragraph}</p>
-                ))}
+                <Markdown text={show.description} />
 
                 {show.videoId && (
                   <div class="show__video">
@@ -264,10 +263,6 @@ const galleryFullSrc = await Promise.all(
 
   .show__details dd {
     margin: 0;
-  }
-
-  .show__p + .show__p {
-    margin-top: var(--space-s);
   }
 
   .show__video {

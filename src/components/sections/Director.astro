@@ -1,4 +1,5 @@
 ---
+import Markdown from "../Markdown.astro";
 import type { SiteContent } from "../../data/types";
 
 interface Props {
@@ -14,7 +15,7 @@ const { id, director } = Astro.props;
     <h2 class="section__title">{director.title}</h2>
     <div class="prose">
       <p class="director__name">{director.name}</p>
-      {director.body.map((paragraph) => <p class="director__p">{paragraph}</p>)}
+      <Markdown text={director.body} />
     </div>
   </div>
 </section>
@@ -25,9 +26,5 @@ const { id, director } = Astro.props;
     font-size: var(--text-xl);
     color: var(--color-primary);
     margin-bottom: var(--space-s);
-  }
-
-  .director__p + .director__p {
-    margin-top: var(--space-s);
   }
 </style>

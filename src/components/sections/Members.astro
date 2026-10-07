@@ -1,4 +1,5 @@
 ---
+import Markdown from "../Markdown.astro";
 import type { SiteContent } from "../../data/types";
 
 interface Props {
@@ -12,7 +13,7 @@ const { id, members } = Astro.props;
 <section id={id} class="section">
   <div class="container">
     <h2 class="section__title">{members.title}</h2>
-    {members.intro && <p class="members__intro">{members.intro}</p>}
+    {members.intro && <Markdown text={members.intro} class="members__intro" />}
 
     <ul role="list" class="members__grid">
       {
