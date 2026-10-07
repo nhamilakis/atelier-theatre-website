@@ -42,9 +42,14 @@ export interface ShowDetail {
 
 // One entry in the optional cast/crew list, e.g. a character and the actor,
 // or a function ("Σκηνοθεσία") and the person.
-export interface ShowCredit {
+export interface ShowCreditItem {
   role: string;
   name: string;
+}
+
+export interface ShowCredits {
+  label: string;
+  roles: ShowCreditItem[];
 }
 
 // An image used in a gallery or as a poster: an imported asset + alt text.
@@ -73,7 +78,7 @@ export interface Show {
   // pop-up (lightbox).
   gallery?: Figure[];
   // Optional cast / crew, shown in a collapsible list.
-  credits?: ShowCredit[];
+  credits?: ShowCredits[];
 }
 
 export interface SiteContent {
