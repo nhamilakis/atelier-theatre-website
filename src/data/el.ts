@@ -82,6 +82,7 @@ export const el: SiteContent = {
         details: [
           { label: "Έτος", value: "2025–2026" },
           { label: "Συγγραφέας", value: "Ιάκωβος Καμπανέλλης" },
+          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
         ],
         poster: { image: ParamithiPoster, alt: "Αφίσα της παράστασης" },
         description: [
@@ -125,6 +126,7 @@ export const el: SiteContent = {
         details: [
           { label: "Έτος", value: "2024–2025" },
           { label: "Συγγραφέας", value: "Γιώργος Ηλιόπουλος" },
+          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
         ],
         poster: { image: SpeedDatePoster, alt: "Αφίσα της παράστασης" },
         description: ["[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Σύντομη περιγραφή της παράστασης."],
@@ -137,6 +139,7 @@ export const el: SiteContent = {
             label: "Βασισμένο σε",
             value: "«Souvenirs Assassins» του Serge Valetti",
           },
+          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
           { label: "Μετάφραση", value: "Μαθητές του εργαστηρίου" },
         ],
         poster: { image: SouvenirsAssasinPoster, alt: "Αφίσα της παράστασης" },
@@ -148,6 +151,7 @@ export const el: SiteContent = {
         details: [
           { label: "Έτος", value: "2022–2023" },
           { label: "Συγγραφέας", value: "Άκης Δήμου" },
+          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
         ],
         poster: { image: SigaTaAimataPoster, alt: "Αφίσα της παράστασης" },
         description: ["[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Σύντομη περιγραφή της παράστασης."],
@@ -158,6 +162,7 @@ export const el: SiteContent = {
         details: [
           { label: "Έτος", value: "2021–2022" },
           { label: "Συγγραφέας", value: "Βίλη Σωτηροπούλου" },
+          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
           { label: "Σημείωση", value: "Πρώτη παράσταση επί σκηνής" },
         ],
         poster: { image: GynaikaLooserPoster, alt: "Αφίσα της παράστασης" },
@@ -168,6 +173,7 @@ export const el: SiteContent = {
         details: [
           { label: "Έτος", value: "2020–2021" },
           { label: "Βασισμένο σε", value: "Samuel Beckett" },
+          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
           { label: "Μορφή", value: "Διαδικτυακή παρουσίαση" },
         ],
         poster: { image: GODOTPoster, alt: "Αφίσα της παράστασης" },
@@ -181,7 +187,8 @@ export const el: SiteContent = {
             label: "Έτος",
             value: "2019–2020",
           },
-          { label: "Βασισμένο σε", value: "Αριστοφάνη" },
+          { label: "Βασισμένο σε", value: "Λυσιστράτη του Αριστοφάνη" },
+          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
           { label: "Μορφή", value: "Διαδικτυακή παρουσίαση" },
         ],
         poster: { image: AkropoliPoster, alt: "Αφίσα της παράστασης" },

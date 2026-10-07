@@ -29,6 +29,9 @@ preview:
     npm run build
     npm run preview
 
+clean:
+    rm -rf dist/
+
 # Internal: rsync helper with exclusions
 _rsync-to source_path target_path:
     #!/usr/bin/env bash

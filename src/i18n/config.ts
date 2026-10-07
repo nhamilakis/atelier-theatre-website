@@ -5,7 +5,7 @@ export const LOCALES = ["fr", "el"] as const;
 
 export type Locale = (typeof LOCALES)[number];
 
-export const DEFAULT_LOCALE: Locale = "fr";
+export const DEFAULT_LOCALE: Locale = "el";
 
 // Shown in the language switcher — each language names itself in its own script.
 export const LOCALE_NAMES: Record<Locale, string> = {
