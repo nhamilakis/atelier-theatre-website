@@ -2,12 +2,23 @@ import type { SiteContent } from "./types";
 
 // --- Images & content
 
-import GODOTPoster from "../assets/shows/2021_GODOT/AFISA GODOT-wide.jpg";
 import GynaikaLooserPoster from "../assets/shows/2022_GYNAIKA LOSER/AFFICHE WINNER-logos.jpg";
+import GynaikaLooserLeaflet from "../assets/shows/2022_GYNAIKA LOSER/PROGRAMMA WINNER.pdf";
+
 import SigaTaAimataPoster from "../assets/shows/2023_SIGA TA AIMATA/SIGA-TA-AIMATA_2023.jpg";
+import SigaTaAimataLeaflet from "../assets/shows/2023_SIGA TA AIMATA/PROGRAMMA SIGA TA AIMATA.pdf";
+
 import SouvenirsAssasinPoster from "../assets/shows/2024_SOUVENIRS ASSASSINS/AFISA_DOLOFONOS.jpg";
+import SouvenirAssasinLeaflet from "../assets/shows/2024_SOUVENIRS ASSASSINS/PROGRAMMA ADULTES 2024.pdf";
+
 import SpeedDatePoster from "../assets/shows/2025_SPEED DATE/AFISA_ADULTES_2025_final.jpg";
+import SpeedDateLeaflet from "../assets/shows/2025_SPEED DATE/BROCHURE ADULTES 2025.pdf";
+
 import ParamithiPoster from "../assets/shows/2026_PARAMYTHI/AFISA_ADULTES_2026_final_2.jpg";
+import ParamithiLeaflet from "../assets/shows/2026_PARAMYTHI/BROCHURE ADULTES 2026.pdf";
+
+import GODOTPoster from "../assets/shows/2021_GODOT/AFISA GODOT-wide.jpg";
+
 import AkropoliPoster from "../assets/shows/akropoli.jpg";
 
 // -----------------------------------------------------------------------------
@@ -60,18 +71,28 @@ export const el: SiteContent = {
 
   // ---------------------------------------------------------------------------
   // ΟΙ ΠΑΡΑΣΤΑΣΕΙΣ / SHOWS
-  // Κάθε παράσταση έχει τίτλο και περιγραφή. Προαιρετικά: γενικές πληροφορίες
-  // (details), διανομή (credits), βίντεο (videoId) και αφίσα (poster).
+  // Σειρά εμφάνισης: details → description → βίντεο → φυλλάδιο → φωτογραφίες →
+  // διανομή. Όλα εκτός από title/description είναι προαιρετικά.
   //
-  // Πώς να προσθέσετε αφίσα:
-  //   1. Βάλτε το αρχείο στο src/assets/shows/ (π.χ. godot.jpg)
-  //   2. Κάντε import στην κορυφή αυτού του αρχείου:
-  //        import godotPoster from "../assets/shows/godot.jpg";
-  //   3. Προσθέστε στην παράσταση:
-  //        poster: { image: godotPoster, alt: "Αφίσα της παράστασης" },
+  // Εικόνες & αρχεία: κάντε import στην κορυφή αυτού του αρχείου και μετά
+  // αναφερθείτε σε αυτά στην παράσταση:
+  //
+  //   import godotPoster from "../assets/shows/godot.jpg";
+  //   import godotLeaflet from "../assets/shows/godot-programma.pdf";
+  //   import godot1 from "../assets/shows/godot/01.jpg";
+  //   import godot2 from "../assets/shows/godot/02.jpg";
+  //   ...
+  //   poster:  { image: godotPoster, alt: "Αφίσα της παράστασης" },
+  //   leaflet: godotLeaflet,                       // σύνδεσμος προς PDF
+  //   gallery: [                                    // μικρογραφίες -> pop-up
+  //     { image: godot1, alt: "Σκηνή 1" },
+  //     { image: godot2, alt: "Σκηνή 2" },
+  //   ],
   // ---------------------------------------------------------------------------
   shows: {
     title: "Οι παραστάσεις μας",
+    leafletLabel: "Φυλλάδιο",
+    galleryLabel: "Φωτογραφίες",
     creditsLabel: "Διανομή",
     intro: [
       "[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Μια σύντομη εισαγωγή στις παραστάσεις της ομάδας.",
@@ -99,6 +120,7 @@ export const el: SiteContent = {
             φορά, όχι; Το κιβώτιο που έστειλε ο θείος περιέχει όντως χρήματα ή κάτι άλλο;
             `,
         ],
+        leaflet: ParamithiLeaflet,
         credits: [
           { role: "Βασιλιάς", name: "Νίκος Χαμηλάκης" },
           { role: "Βασίλισσα", name: "Ευγενία Στράτη" },
@@ -130,6 +152,7 @@ export const el: SiteContent = {
         ],
         poster: { image: SpeedDatePoster, alt: "Αφίσα της παράστασης" },
         description: ["[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Σύντομη περιγραφή της παράστασης."],
+        leaflet: SpeedDateLeaflet,
       },
       {
         title: "Δολοφονικές αναμνήσεις",
@@ -144,7 +167,29 @@ export const el: SiteContent = {
         ],
         poster: { image: SouvenirsAssasinPoster, alt: "Αφίσα της παράστασης" },
         description: ["[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Σύντομη περιγραφή της παράστασης."],
+        leaflet: SouvenirAssasinLeaflet,
         videoId: "6G60HXuyqvg",
+        credits: [
+          { role: "Βασιλιάς", name: "Νίκος Χαμηλάκης" },
+          { role: "Βασίλισσα", name: "Ευγενία Στράτη" },
+          { role: "Πρίγκιπας", name: "Τάσος Ξενάκης" },
+          { role: "Πολύκαρπος", name: "Domingo Aguilera Sánchez" },
+          { role: "Μαρία", name: "Ιφιγένεια Νικολακοπούλου" },
+          { role: "Δικαστής/Γυναίκα", name: "Αναστασία Βρανά" },
+          { role: "Φτωχομάνα", name: "Έλενα Μυλωνά" },
+          { role: "Ταβερνιάρης", name: "Μαρία Κωστοπούλου" },
+          { role: "Σπύρος", name: "Μαρίνα Νικολιδάκη" },
+          { role: "Σιδεράς", name: "Νίκη Παπαηλιάκη" },
+          { role: "Πρωτομάστορας/Μουγκός", name: "Κλειώ Παρίση" },
+          { role: "Γιάννης", name: "Χριστίνα Παππά" },
+          { role: "Μιχάλης", name: "Ειρήνη Γιαννοπούλου" },
+          { role: "Φίλιππος", name: "Αιμιλία Πατέρα" },
+          { role: "Θεόδωρος", name: "Σοφία Σλαφτσάκη" },
+          { role: "Κουτσός", name: "Νίκος Φερτάκης" },
+          { role: "Ναύαρχος", name: "Δημήτρης Καλογήρου-Βαλτής" },
+          { role: "Δάσκαλος", name: "Πασχάλης Πελιτάρης" },
+          { role: "Guest εμφάνιση", name: "Κωνσταντίνος Delaunay Αξιώτης" },
+        ],
       },
       {
         title: "Σιγά τα αίματα!",
@@ -155,6 +200,7 @@ export const el: SiteContent = {
         ],
         poster: { image: SigaTaAimataPoster, alt: "Αφίσα της παράστασης" },
         description: ["[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Σύντομη περιγραφή της παράστασης."],
+        leaflet: SigaTaAimataLeaflet,
         videoId: "VOJpWu76xN0",
       },
       {
@@ -167,6 +213,7 @@ export const el: SiteContent = {
         ],
         poster: { image: GynaikaLooserPoster, alt: "Αφίσα της παράστασης" },
         description: ["[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Σύντομη περιγραφή της παράστασης."],
+        leaflet: GynaikaLooserLeaflet,
       },
       {
         title: "Περιμένοντας τον δικό μας Γκοντό",

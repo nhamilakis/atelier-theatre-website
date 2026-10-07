@@ -56,6 +56,8 @@ export const fr: SiteContent = {
   // ---------------------------------------------------------------------------
   shows: {
     title: "Nos spectacles",
+    leafletLabel: "Dépliant",
+    galleryLabel: "Galerie",
     creditsLabel: "Distribution",
     intro: [
       "[À REMPLACER] Une courte introduction aux spectacles de la compagnie.",

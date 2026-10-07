@@ -39,22 +39,31 @@ export interface ShowCredit {
   name: string;
 }
 
+// An image used in a gallery or as a poster: an imported asset + alt text.
+export interface Figure {
+  image: ImageMetadata;
+  alt: string;
+}
+
 export interface Show {
   title: string;
   // Small description, one string per paragraph.
   description: string[];
-  // Optional poster. `image` is an imported asset (see the data file for how to
-  // import one); `alt` describes it for screen readers.
-  poster?: {
-    image: ImageMetadata;
-    alt: string;
-  };
+  // Optional poster (an imported asset — see the data file for how to import).
+  poster?: Figure;
   // Optional general info (year, author, venue…), shown as a definition list.
   details?: ShowDetail[];
-  // Optional cast / crew.
-  credits?: ShowCredit[];
   // Optional YouTube video id (the part after `v=`), shown as an embed.
   videoId?: string;
+  // Optional leaflet / programme: a URL to a PDF. Import it at the top of the
+  // data file (`import x from "../assets/.../leaflet.pdf"`) so the path is
+  // correct for every deploy target, then set `leaflet: x`.
+  leaflet?: string;
+  // Optional photo gallery: imported images shown as thumbnails that open in a
+  // pop-up (lightbox).
+  gallery?: Figure[];
+  // Optional cast / crew, shown in a collapsible list.
+  credits?: ShowCredit[];
 }
 
 export interface SiteContent {
@@ -80,8 +89,11 @@ export interface SiteContent {
     title: string;
     // Lead-in paragraphs shown above the list of productions.
     intro?: string[];
-    // Heading above a show's cast/crew list, e.g. "Διανομή" / "Distribution".
-    creditsLabel?: string;
+    // Labels for the per-show actions (localized). Fallbacks exist in the
+    // component, but set these so both languages read naturally.
+    leafletLabel?: string; // e.g. "Φυλλάδιο" / "Dépliant"
+    galleryLabel?: string; // e.g. "Φωτογραφίες" / "Galerie"
+    creditsLabel?: string; // e.g. "Διανομή" / "Distribution"
     items: Show[];
   };
   director: {
