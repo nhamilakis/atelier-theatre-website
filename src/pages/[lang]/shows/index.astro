@@ -1,0 +1,56 @@
+---
+// OUR SHOWS — a gallery of every production. Each card (ShowCard) is a link to
+// that show's own page at /[lang]/shows/<slug> (built in the next step).
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Markdown from "../../../components/Markdown.astro";
+import ShowCard from "../../../components/ShowCard.astro";
+import { content } from "../../../data";
+import { LOCALES } from "../../../i18n/config";
+import type { Locale } from "../../../i18n/config";
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const data = content[lang];
+const { shows } = data;
+const pageTitle = `${shows.title} — ${data.meta.title}`;
+---
+
+<BaseLayout lang={lang} content={data} title={pageTitle}>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__title">{shows.title}</h1>
+      {shows.intro && <Markdown text={shows.intro} class="shows-gallery__intro" />}
+
+      <ul role="list" class="shows-gallery">
+        {
+          shows.items.map((show) => (
+            <li>
+              <ShowCard show={show} lang={lang} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .shows-gallery__intro {
+    max-width: var(--container-narrow);
+    color: var(--color-muted);
+  }
+
+  .shows-gallery {
+    list-style: none;
+    /* Gap between the intro text (or title) and the grid. Set here, on a
+       page-owned element, so Astro's scoped style reliably applies it. */
+    margin: var(--space-xl) 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--space-l);
+  }
+</style>

@@ -1,13 +1,5 @@
 import type { SiteContent } from "./types";
 
-// -----------------------------------------------------------------------------
-// FRENCH CONTENT
-// -----------------------------------------------------------------------------
-// This is where the French text lives. Edit the strings below — no HTML needed.
-// Each long block is an array of paragraphs: one string per paragraph.
-// The placeholder text is marked [À REMPLACER] and should be replaced.
-// -----------------------------------------------------------------------------
-
 export const fr: SiteContent = {
   meta: {
     title: "Nom de la Compagnie — Théâtre",
@@ -16,18 +8,17 @@ export const fr: SiteContent = {
   },
 
   nav: {
-    company: "La compagnie",
     shows: "Nos spectacles",
-    director: "Mise en scène",
-    members: "L'équipe",
-    community: "Le lieu",
+    team: "L'équipe",
+    community: "La communauté",
     contact: "Contact",
   },
 
   hero: {
-    header_title: "Atelier de theatre",
+    header_title: "",
     title: "Nom de la Compagnie",
     tagline: "[À REMPLACER] Une phrase qui résume l'esprit de la troupe.",
+    footer_title: "[À REMPLACER] Nom",
   },
 
   company: {
@@ -37,6 +28,31 @@ export const fr: SiteContent = {
 
       [À REMPLACER] Un deuxième paragraphe pour préciser votre approche, vos
       influences ou les thèmes que vous aimez explorer sur scène.`,
+  },
+
+  home: {
+    aboutTitle: "Qui sommes-nous",
+    newsTitle: "Actualités",
+    latestShowTitle: "Notre dernier spectacle",
+    articles: {
+      title: "Articles & mentions",
+      intro:
+        "[À REMPLACER] Publications et mentions de la compagnie dans la presse.",
+      items: [
+        {
+          label: "[À REMPLACER] Titre de l'article",
+          href: "https://example.org",
+          source: "[À REMPLACER] Média / année",
+        },
+      ],
+    },
+    contactTitle: "Contact",
+    // Crowdfunding : à ajouter quand la campagne sera publique (masqué pour l'instant).
+    // crowdfunding: {
+    //   title: "Soutenez-nous",
+    //   body: "[À REMPLACER] Texte de la campagne.",
+    //   link: { label: "Soutenir le projet", href: "https://example.org" },
+    // },
   },
 
   // ---------------------------------------------------------------------------
@@ -62,20 +78,53 @@ export const fr: SiteContent = {
       "[À REMPLACER] Une courte introduction aux spectacles de la compagnie.",
     items: [
       {
-        title: "Λυσιστράτη ή Μένουμε Ακρόπολη",
+        slug: "paramythi",
+        title: "Παραμύθι χωρίς όνομα",
         details: [
-          { label: "Année", value: "2020–2021" },
-          { label: "D'après", value: "Aristophane" },
-          { label: "Forme", value: "Représentation en ligne" },
+          { label: "Année", value: "2025–2026" },
+          { label: "Auteur", value: "Iakovos Kambanellis" },
+          { label: "Mise en scène", value: "Athina Axiotou" },
         ],
         description: "[À REMPLACER] Courte description du spectacle.",
-        videoId: "F0eUPQy_FyY",
-        // Exemple de distribution — décommentez et complétez :
-        // credits: [
-        //   { role: "Mise en scène", name: "Athina Axiotou" },
-        // ],
       },
       {
+        slug: "speed-date",
+        title: "Speed date",
+        details: [{ label: "Auteur", value: "Giorgos Iliopoulos" }],
+        description: "[À REMPLACER] Courte description du spectacle.",
+      },
+      {
+        slug: "souvenirs-assassins",
+        title: "Δολοφονικές αναμνήσεις",
+        details: [
+          {
+            label: "D'après",
+            value: "« Souvenirs Assassins » de Serge Valetti",
+          },
+          { label: "Traduction", value: "Les élèves de l'atelier" },
+        ],
+        description: "[À REMPLACER] Courte description du spectacle.",
+        videos: [{ videoId: "6G60HXuyqvg" }],
+      },
+      {
+        slug: "siga-ta-aimata",
+        title: "Σιγά τα αίματα!",
+        details: [{ label: "Auteur", value: "Akis Dimou" }],
+        description: "[À REMPLACER] Courte description du spectacle.",
+        videos: [{ videoId: "VOJpWu76xN0" }],
+      },
+      {
+        slug: "gynaika-loser",
+        title: "Γυναίκα Loser",
+        details: [
+          { label: "Année", value: "2022" },
+          { label: "Autrice", value: "Vili Sotiropoulou" },
+          { label: "Note", value: "Première création sur scène" },
+        ],
+        description: "[À REMPLACER] Courte description du spectacle.",
+      },
+      {
+        slug: "godot",
         title: "Περιμένοντας τον δικό μας Γκοντό",
         details: [
           { label: "Année", value: "2020–2021" },
@@ -95,74 +144,55 @@ export const fr: SiteContent = {
 
         La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sotre de reméde contre la rupture du lien social que nous avons vécue.
         `,
-        videoId: "5FIIp7Lln_4",
+        videos: [{ videoId: "5FIIp7Lln_4" }],
       },
       {
-        title: "Γυναίκα Loser",
+        slug: "lysistrata",
+        title: "Λυσιστράτη ή Μένουμε Ακρόπολη",
         details: [
-          { label: "Année", value: "2022" },
-          { label: "Autrice", value: "Vili Sotiropoulou" },
-          { label: "Note", value: "Première création sur scène" },
+          { label: "Année", value: "2020–2021" },
+          { label: "D'après", value: "Aristophane" },
+          { label: "Forme", value: "Représentation en ligne" },
         ],
         description: "[À REMPLACER] Courte description du spectacle.",
-      },
-      {
-        title: "Σιγά τα αίματα!",
-        details: [{ label: "Auteur", value: "Akis Dimou" }],
-        description: "[À REMPLACER] Courte description du spectacle.",
-        videoId: "VOJpWu76xN0",
-      },
-      {
-        title: "Δολοφονικές αναμνήσεις",
-        details: [
-          {
-            label: "D'après",
-            value: "« Souvenirs Assassins » de Serge Valetti",
-          },
-          { label: "Traduction", value: "Les élèves de l'atelier" },
-        ],
-        description: "[À REMPLACER] Courte description du spectacle.",
-        videoId: "6G60HXuyqvg",
-      },
-      {
-        title: "Speed date",
-        details: [{ label: "Auteur", value: "Giorgos Iliopoulos" }],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        videos: [{ videoId: "F0eUPQy_FyY" }],
+        // Exemple de distribution — décommentez et complétez :
+        // credits: [
+        //   { role: "Mise en scène", name: "Athina Axiotou" },
+        // ],
       },
     ],
   },
 
-  members: {
+  team: {
     title: "L'équipe",
-    intro:
-      "[À REMPLACER] Une courte introduction à celles et ceux qui font vivre la compagnie.",
-    people: [
-      {
-        name: "[À REMPLACER] Prénom Nom",
-        role: "Comédien·ne",
-        bio: "[À REMPLACER] Une ou deux phrases de présentation.",
-      },
-      {
-        name: "[À REMPLACER] Prénom Nom",
-        role: "Comédien·ne",
-        bio: "[À REMPLACER] Une ou deux phrases de présentation.",
-      },
-      {
-        name: "[À REMPLACER] Prénom Nom",
-        role: "Scénographie",
-        bio: "[À REMPLACER] Une ou deux phrases de présentation.",
-      },
-    ],
-  },
+    // Photo de groupe : placez le fichier dans src/assets/, importez-le en haut
+    // du fichier puis décommentez la ligne suivante :
+    // photo: { image: TeamPhoto, alt: "L'équipe" },
+    director: {
+      title: "Mise en scène & Enseignement",
+      name: "Athina Axiotou",
+      // Portrait : importez l'image en haut du fichier puis décommentez :
+      // photo: { image: DirectorPhoto, alt: "Athina Axiotou" },
+      body: `[À REMPLACER] Une courte biographie de la metteuse en scène :
+        parcours, formation, démarche.
 
-  director: {
-    title: "Mise en scène",
-    name: "[À REMPLACER] Prénom Nom",
-    body: `[À REMPLACER] Une courte biographie de la metteuse ou du metteur en scène :
-      parcours, formation, démarche.
-
-      [À REMPLACER] Un second paragraphe sur sa vision du théâtre et son rôle au
-      sein de la compagnie.`,
+        [À REMPLACER] Un second paragraphe sur sa vision du théâtre et son rôle au
+        sein de la compagnie.`,
+    },
+    members: {
+      title: "Les membres",
+      year: "2025–2026",
+      names: [
+        "[À REMPLACER] Prénom Nom",
+        "[À REMPLACER] Prénom Nom",
+        "[À REMPLACER] Prénom Nom",
+      ],
+    },
+    alumni: {
+      title: "Anciens membres",
+      names: ["[À REMPLACER] Prénom Nom", "[À REMPLACER] Prénom Nom"],
+    },
   },
 
   community: {

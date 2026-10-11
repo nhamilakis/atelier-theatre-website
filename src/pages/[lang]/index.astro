@@ -1,32 +1,27 @@
 ---
+// HOME: hero banner → Who we are → News → Latest show → Articles & mentions →
+// Contact (+ Crowdfunding when present). Assembled in the Home component.
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Hero from "../../components/sections/Hero.astro";
-import TextSection from "../../components/sections/TextSection.astro";
-import Shows from "../../components/sections/Shows.astro";
-import Members from "../../components/sections/Members.astro";
-import Director from "../../components/sections/Director.astro";
-import Community from "../../components/sections/Community.astro";
-import Contact from "../../components/sections/Contact.astro";
-
+import Home from "../../components/Home.astro";
+import { getCollection } from "astro:content";
 import { content } from "../../data";
 import { LOCALES } from "../../i18n/config";
 import type { Locale } from "../../i18n/config";
 
-// One static page is generated per locale: /fr/ and /el/.
+// One static page per locale: /fr/ and /el/.
 export function getStaticPaths() {
   return LOCALES.map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Locale;
 const data = content[lang];
+
+// News posts for this language, newest first.
+const news = (
+  await getCollection("news", ({ data }) => data.lang === lang)
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout lang={lang} content={data}>
-  <Hero hero={data.hero} />
-  <TextSection id="company" section={data.company} />
-  <Shows id="shows" shows={data.shows} />
-  <Director id="director" director={data.director} />
-  <Members id="members" members={data.members} />
-  <Community id="community" community={data.community} />
-  <Contact id="contact" contact={data.contact} />
+  <Home content={data} lang={lang} news={news} />
 </BaseLayout>

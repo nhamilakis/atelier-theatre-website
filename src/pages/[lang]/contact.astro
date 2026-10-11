@@ -1,0 +1,20 @@
+---
+// CONTACT (Επικοινωνία) — placeholder; part of the later batch.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Placeholder from "../../components/Placeholder.astro";
+import { content } from "../../data";
+import { LOCALES } from "../../i18n/config";
+import type { Locale } from "../../i18n/config";
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const data = content[lang];
+const pageTitle = `${data.nav.contact} — ${data.meta.title}`;
+---
+
+<BaseLayout lang={lang} content={data} title={pageTitle}>
+  <Placeholder lang={lang} title={data.nav.contact} />
+</BaseLayout>

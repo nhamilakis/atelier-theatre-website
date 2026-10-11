@@ -1,0 +1,217 @@
+---
+// The team page body (restructure.md "Η ομάδα"):
+//   - whole-team photo banner with the group name over it (plain band if no
+//     photo is set yet)
+//   - Director & Teacher + bio
+//   - current members (with the season year)
+//   - alumni
+import { Image } from "astro:assets";
+import Markdown from "./Markdown.astro";
+import type { SiteContent } from "../data/types";
+import type { Locale } from "../i18n/config";
+
+interface Props {
+  team: SiteContent["team"];
+  lang: Locale;
+}
+
+const { team, lang } = Astro.props;
+const { director, members, alumni } = team;
+
+// Rosters read best alphabetically (credits stay in appearance order, in the
+// data). Locale-aware so Greek sorts correctly; data order is left untouched.
+const byName = (a: string, b: string) => a.localeCompare(b, lang);
+const memberNames = [...members.names].sort(byName);
+const alumniNames = [...alumni.names].sort(byName);
+
+const membersHeading = members.year
+  ? `${members.title} (${members.year})`
+  : members.title;
+---
+
+<article class="team">
+  <header class="team__banner">
+    {
+      team.photo ? (
+        <Image
+          src={team.photo.image}
+          alt={team.photo.alt}
+          widths={[640, 1024, 1600]}
+          sizes="100vw"
+          class="team__photo"
+        />
+      ) : (
+        <div class="team__photo team__photo--placeholder" aria-hidden="true" />
+      )
+    }
+    <h1 class="team__title">{team.title}</h1>
+  </header>
+
+  <div class="container team__body">
+    <section class="team__section">
+      <h2 class="team__section-title">{director.title}</h2>
+      <div class="team__director-grid">
+        <div class="team__director-portrait">
+          {
+            director.photo ? (
+              <Image
+                src={director.photo.image}
+                alt={director.photo.alt}
+                widths={[200, 400]}
+                sizes="(min-width: 40rem) 200px, 50vw"
+                class="team__portrait-img"
+              />
+            ) : (
+              <div class="team__portrait-placeholder" aria-hidden="true">
+                <span>👤</span>
+              </div>
+            )
+          }
+        </div>
+        <div class="team__director-text">
+          <p class="team__director-name">{director.name}</p>
+          <Markdown text={director.body} class="prose" />
+        </div>
+      </div>
+    </section>
+
+    <section class="team__section">
+      <h2 class="team__section-title">{membersHeading}</h2>
+      <ul role="list" class="team__names">
+        {memberNames.map((name) => <li>{name}</li>)}
+      </ul>
+    </section>
+
+    {
+      alumni.names.length > 0 && (
+        <section class="team__section">
+          <h2 class="team__section-title">{alumni.title}</h2>
+          <ul role="list" class="team__names team__names--muted">
+            {alumniNames.map((name) => (
+              <li>{name}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  /* --- Banner: photo (or plain band) with the name overlaid --------------- */
+
+  .team__banner {
+    position: relative;
+    display: grid;
+  }
+
+  .team__photo {
+    width: 100%;
+    height: clamp(14rem, 42vh, 26rem);
+    object-fit: cover;
+    display: block;
+  }
+
+  .team__photo--placeholder {
+    background:
+      radial-gradient(
+        120% 120% at 50% 0%,
+        color-mix(in srgb, var(--title-color) 35%, var(--bg)) 0%,
+        var(--title-color) 100%
+      );
+  }
+
+  .team__title {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    margin: 0;
+    padding: var(--space-xl) var(--space-m) var(--space-m);
+    text-align: center;
+    color: #fff;
+    font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3rem);
+    text-shadow: 0 1px 12px rgba(26, 22, 20, 0.5);
+    background: linear-gradient(
+      to top,
+      rgba(26, 22, 20, 0.55),
+      transparent
+    );
+  }
+
+  /* --- Body --------------------------------------------------------------- */
+
+  .team__body {
+    padding-block: var(--space-xl);
+  }
+
+  .team__section + .team__section {
+    margin-top: var(--space-xl);
+  }
+
+  .team__section-title {
+    color: var(--title-color);
+    margin-bottom: var(--space-s);
+  }
+
+  .team__director-grid {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  @media (min-width: 40rem) {
+    .team__director-grid {
+      grid-template-columns: 12rem 1fr;
+      gap: var(--space-l);
+      align-items: start;
+    }
+  }
+
+  .team__portrait-img,
+  .team__portrait-placeholder {
+    width: 100%;
+    max-width: 12rem;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  .team__portrait-img {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .team__portrait-placeholder {
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    color: var(--color-muted);
+    background-color: var(--bg);
+    border: 1px dashed var(--color-border);
+  }
+
+  .team__director-name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    color: var(--title-color);
+    margin-bottom: var(--space-s);
+  }
+
+  .team__names {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* Many short names pack into balanced columns (as many ~12rem columns as
+       fit) and read top-to-bottom, instead of one tall vertical list. */
+    columns: 12rem;
+    column-gap: var(--space-l);
+  }
+
+  .team__names li {
+    break-inside: avoid;
+    padding-block: 0.15rem;
+  }
+
+  .team__names--muted li {
+    color: var(--color-muted);
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+// One card in the shows gallery: a picture (custom cardImage, else the poster,
+// else a 🎭 placeholder) that links to the show's own page, with its title and
+// year underneath. The whole card is the link.
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Show } from "../data/types";
+import type { Locale } from "../i18n/config";
+
+interface Props {
+  show: Show;
+  lang: Locale;
+}
+
+const { show, lang } = Astro.props;
+
+const href = getRelativeLocaleUrl(lang, `shows/${show.slug}`);
+const image = show.cardImage ?? show.poster;
+// Surface the year under the title when the data has one (el: "Έτος", fr: "Année").
+const year = show.details?.find((d) => d.label === "Έτος" || d.label === "Année");
+---
+
+<a class="show-card" href={href}>
+  <div class="show-card__media">
+    {
+      image ? (
+        <Image
+          src={image.image}
+          alt={image.alt}
+          widths={[240, 480]}
+          sizes="(min-width: 48rem) 320px, 45vw"
+          class="show-card__img"
+        />
+      ) : (
+        <div class="show-card__placeholder" aria-hidden="true">
+          <span>🎭</span>
+        </div>
+      )
+    }
+  </div>
+  <h2 class="show-card__title">{show.title}</h2>
+  {year && <p class="show-card__year">{year.value}</p>}
+</a>
+
+<style>
+  .show-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .show-card__media {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  .show-card__img {
+    display: block;
+    width: 100%;
+    /* Natural aspect ratio: show the whole image (poster, banner, landscape)
+       at the card's width, without cropping the sides. */
+    height: auto;
+    transition: transform 0.2s ease;
+  }
+
+  .show-card:hover .show-card__img,
+  .show-card:focus-visible .show-card__img {
+    transform: scale(1.04);
+  }
+
+  .show-card__placeholder {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    font-size: 3rem;
+    background-color: var(--bg);
+    border: 1px dashed var(--color-border);
+  }
+
+  .show-card__title {
+    margin-top: var(--space-s);
+    font-size: var(--text-lg);
+    color: var(--title-color);
+  }
+
+  .show-card:hover .show-card__title,
+  .show-card:focus-visible .show-card__title {
+    text-decoration: underline;
+  }
+
+  .show-card__year {
+    margin-top: 0.1rem;
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+</style>

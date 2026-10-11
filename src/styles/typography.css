@@ -3,9 +3,9 @@
 
 body {
   font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-ink);
-  background-color: var(--color-bg);
+  font-size: var(--text-size);
+  color: var(--text-color);
+  background-color: var(--bg);
 }
 
 h1,
@@ -15,20 +15,21 @@ h4 {
   font-family: var(--font-display);
   line-height: var(--leading-tight);
   font-weight: 700;
-  color: var(--color-ink);
+  color: var(--title-color);
   text-wrap: balance;
 }
 
+/* One title size knob (--title-size); h1/h2/h3 keep their relative hierarchy. */
 h1 {
-  font-size: var(--text-3xl);
+  font-size: calc(var(--title-size) * 1.45);
 }
 
 h2 {
-  font-size: var(--text-2xl);
+  font-size: var(--title-size);
 }
 
 h3 {
-  font-size: var(--text-xl);
+  font-size: calc(var(--title-size) * 0.78);
 }
 
 p {
@@ -36,12 +37,12 @@ p {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-link);
   text-underline-offset: 0.15em;
 }
 
 a:hover {
-  color: var(--color-primary-dark);
+  color: var(--color-link-hover);
 }
 
 :focus-visible {

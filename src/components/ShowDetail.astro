@@ -1,0 +1,437 @@
+---
+// A single production's own page body. Layout (per restructure.md):
+//
+//   [ poster ]   Title
+//                details (year, author, direction…)
+//
+//   description
+//   video(s)            — each with an optional label
+//   → brochure link
+//   full credits
+//   photo gallery       — thumbnails opening a shared lightbox
+import { Image, getImage } from "astro:assets";
+import Markdown from "./Markdown.astro";
+import YouTubeEmbed from "./YouTubeEmbed.astro";
+import type { Show } from "../data/types";
+import type { Locale } from "../i18n/config";
+
+interface Props {
+  show: Show;
+  lang: Locale;
+  leafletLabel: string;
+  galleryLabel: string;
+  creditsLabel: string;
+  backHref: string;
+  backLabel: string;
+}
+
+const { show, leafletLabel, galleryLabel, creditsLabel, backHref, backLabel } =
+  Astro.props;
+
+// Large version of each gallery photo for the lightbox.
+const galleryFullSrc = await Promise.all(
+  (show.gallery ?? []).map((photo) =>
+    getImage({ src: photo.image, width: 1600 }).then((img) => img.src),
+  ),
+);
+---
+
+<article class="show-detail">
+  <a class="show-detail__back" href={backHref}>← {backLabel}</a>
+
+  <header class="show-detail__header">
+    <div class="show-detail__poster">
+      {
+        show.poster ? (
+          <Image
+            src={show.poster.image}
+            alt={show.poster.alt}
+            widths={[240, 480]}
+            sizes="(min-width: 48rem) 260px, 60vw"
+            class="show-detail__poster-img"
+          />
+        ) : (
+          <div class="show-detail__poster-placeholder" aria-hidden="true">
+            <span>🎭</span>
+          </div>
+        )
+      }
+    </div>
+
+    <div class="show-detail__intro">
+      <h1 class="show-detail__title">{show.title}</h1>
+
+      {
+        show.details && show.details.length > 0 && (
+          <dl class="show-detail__details">
+            {show.details.map((detail) => (
+              <div class="show-detail__detail">
+                <dt>{detail.label}</dt>
+                <dd>{detail.value}</dd>
+              </div>
+            ))}
+          </dl>
+        )
+      }
+    </div>
+  </header>
+
+  <div class="show-detail__body">
+    <Markdown text={show.description} class="show-detail__description" />
+
+    {
+      show.videos && show.videos.length > 0 && (
+        <div class="show-detail__videos">
+          {show.videos.map((video) => (
+            <figure class="show-detail__video">
+              {video.label && (
+                <figcaption class="show-detail__video-label">
+                  {video.label}
+                </figcaption>
+              )}
+              <YouTubeEmbed
+                id={video.videoId}
+                title={video.label ?? show.title}
+                caption={false}
+              />
+            </figure>
+          ))}
+        </div>
+      )
+    }
+
+    {
+      show.leaflet && (
+        <p class="show-detail__leaflet">
+          <a href={show.leaflet} target="_blank" rel="noopener noreferrer">
+            {leafletLabel} →
+          </a>
+        </p>
+      )
+    }
+
+    {
+      show.credits && show.credits.length > 0 && (
+        <section class="show-detail__credits">
+          <h2 class="show-detail__section-title">{creditsLabel}</h2>
+          {show.credits.map((group) => (
+            <div class="show-detail__credit-group">
+              {group.label && <h3>{group.label}</h3>}
+              <ul role="list" class="show-detail__credit-list">
+                {group.roles.map((cred) => (
+                  <li>
+                    <span class="show-detail__credit-role">{cred.role}</span>
+                    <span class="show-detail__credit-name">{cred.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      )
+    }
+
+    {
+      show.gallery && show.gallery.length > 0 && (
+        <section class="show-detail__gallery">
+          <h2 class="show-detail__section-title">{galleryLabel}</h2>
+          <ul role="list" class="gallery__thumbs">
+            {show.gallery.map((photo, photoIndex) => (
+              <li>
+                <button
+                  type="button"
+                  class="gallery__thumb"
+                  data-gallery-thumb
+                  data-src={galleryFullSrc[photoIndex]}
+                  data-alt={photo.alt}
+                  aria-label={`${galleryLabel}: ${photo.alt}`}
+                >
+                  <Image
+                    src={photo.image}
+                    alt=""
+                    widths={[160, 320]}
+                    sizes="160px"
+                    class="gallery__thumb-img"
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+
+  {/* One shared lightbox for every gallery thumbnail on this page. */}
+  <dialog class="lightbox" data-lightbox>
+    <div class="lightbox__inner">
+      <button
+        type="button"
+        class="lightbox__close"
+        data-lightbox-close
+        aria-label="Close"
+      >
+        ×
+      </button>
+      <img class="lightbox__img" data-lightbox-img alt="" />
+    </div>
+  </dialog>
+</article>
+
+<script>
+  // Open the shared <dialog> lightbox when a gallery thumbnail is clicked.
+  const dialog = document.querySelector("[data-lightbox]");
+  const image = document.querySelector("[data-lightbox-img]");
+
+  if (dialog instanceof HTMLDialogElement && image instanceof HTMLImageElement) {
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const thumb = target.closest("[data-gallery-thumb]");
+      if (thumb instanceof HTMLElement) {
+        image.src = thumb.dataset.src ?? "";
+        image.alt = thumb.dataset.alt ?? "";
+        dialog.showModal();
+        return;
+      }
+
+      if (target.closest("[data-lightbox-close]") || target === dialog) {
+        dialog.close();
+      }
+    });
+
+    dialog.addEventListener("close", () => {
+      image.removeAttribute("src");
+    });
+  }
+</script>
+
+<style>
+  .show-detail__back {
+    display: inline-block;
+    margin-bottom: var(--space-l);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+
+  .show-detail__back:hover {
+    color: var(--color-link);
+  }
+
+  /* --- Header: poster beside title + details ------------------------------- */
+
+  .show-detail__header {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  @media (min-width: 48rem) {
+    .show-detail__header {
+      grid-template-columns: 16rem 1fr;
+      gap: var(--space-l);
+      align-items: start;
+    }
+  }
+
+  .show-detail__poster-img,
+  .show-detail__poster-placeholder {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  .show-detail__poster-img {
+    height: auto;
+  }
+
+  .show-detail__poster-placeholder {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 3 / 4;
+    font-size: 3rem;
+    background-color: var(--bg);
+    border: 1px dashed var(--color-border);
+  }
+
+  .show-detail__title {
+    color: var(--title-color);
+    margin-bottom: var(--space-m);
+  }
+
+  .show-detail__details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.15rem var(--space-s);
+    font-size: var(--text-sm);
+  }
+
+  .show-detail__detail {
+    display: contents;
+  }
+
+  .show-detail__details dt {
+    color: var(--color-muted);
+    font-weight: 600;
+  }
+
+  .show-detail__details dd {
+    margin: 0;
+  }
+
+  /* --- Body ----------------------------------------------------------------- */
+
+  .show-detail__body {
+    margin-top: var(--space-l);
+    max-width: var(--container-narrow);
+  }
+
+  .show-detail__videos {
+    margin-top: var(--space-l);
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .show-detail__video-label {
+    margin-bottom: var(--space-xs);
+    font-weight: 600;
+    color: var(--title-color);
+  }
+
+  .show-detail__leaflet {
+    margin-top: var(--space-l);
+    font-weight: 600;
+  }
+
+  .show-detail__leaflet a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  .show-detail__section-title {
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-m);
+    padding-top: var(--space-m);
+    border-top: 1px solid var(--color-border);
+    font-size: var(--text-lg);
+    color: var(--title-color);
+  }
+
+  .show-detail__credit-group {
+    margin-bottom: var(--space-m);
+  }
+
+  .show-detail__credit-group h3 {
+    font-size: var(--text-size);
+    margin-bottom: var(--space-xs);
+  }
+
+  .show-detail__credit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.2rem;
+    font-size: var(--text-sm);
+  }
+
+  .show-detail__credit-role {
+    color: var(--color-muted);
+  }
+
+  .show-detail__credit-role::after {
+    content: " — ";
+  }
+
+  /* --- Gallery thumbnails + lightbox (shared pattern) ---------------------- */
+
+  .gallery__thumbs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    gap: var(--space-xs);
+  }
+
+  .gallery__thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .gallery__thumb-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.15s ease;
+  }
+
+  .gallery__thumb:hover .gallery__thumb-img,
+  .gallery__thumb:focus-visible .gallery__thumb-img {
+    transform: scale(1.05);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .lightbox[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(26, 22, 20, 0.85);
+  }
+
+  .lightbox__inner {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+  }
+
+  .lightbox__img {
+    display: block;
+    max-width: 92vw;
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    border-radius: var(--radius-lg);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-color);
+    background: var(--bg);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+  }
+</style>

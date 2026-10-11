@@ -12,7 +12,7 @@ const year = new Date().getFullYear();
 
 <footer class="site-footer">
   <div class="container site-footer__inner">
-    <p class="site-footer__brand">{hero.header_title}</p>
+    <p class="site-footer__brand">{hero.footer_title}</p>
 
     {
       contact.socials && contact.socials.length > 0 && (
@@ -28,14 +28,15 @@ const year = new Date().getFullYear();
       )
     }
 
-    <p class="site-footer__copy">© {year} {hero.header_title}</p>
+    <p class="site-footer__copy">© {year} {hero.title}</p>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    background-color: var(--color-primary);
-    color: var(--color-bg);
+    background-color: var(--chrome-bg);
+    color: var(--chrome-text);
+    font-size: var(--chrome-text-size);
     padding-block: var(--space-l);
   }
 
@@ -61,7 +62,7 @@ const year = new Date().getFullYear();
   }
 
   .site-footer a {
-    color: var(--color-bg);
+    color: var(--chrome-text);
     text-decoration: none;
   }
 
@@ -72,7 +73,7 @@ const year = new Date().getFullYear();
 
   .site-footer__copy {
     width: 100%;
-    font-size: var(--text-sm);
+    font-size: var(--chrome-text-size);
     opacity: 0.85;
   }
 </style>

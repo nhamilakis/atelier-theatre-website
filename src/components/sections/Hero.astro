@@ -31,8 +31,8 @@ const { hero } = Astro.props;
     background:
       radial-gradient(
         120% 100% at 50% 0%,
-        color-mix(in srgb, var(--color-primary) 10%, var(--color-bg)) 0%,
-        var(--color-bg) 70%
+        color-mix(in srgb, var(--title-color) 10%, var(--bg)) 0%,
+        var(--bg) 70%
       );
   }
 
@@ -54,7 +54,7 @@ const { hero } = Astro.props;
   }
 
   .hero__title {
-    color: var(--color-primary);
+    color: var(--title-color);
     /* Smaller than the global h1 so a long title stays readable, not huge. */
     font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3rem);
     /* THE WIDTH KNOB: raise this to let the title run wider (fewer line breaks),

@@ -1,7 +1,9 @@
 ---
 import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import logo from "../assets/logo.jpeg";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { currentSubpath } from "../lib/i18n-path";
 import type { Locale } from "../i18n/config";
 import type { SiteContent } from "../data/types";
 
@@ -13,20 +15,23 @@ interface Props {
 const { lang, content } = Astro.props;
 const { nav, hero } = content;
 
-// Order of the in-page navigation. Each `id` matches a <section id="…">.
+// Top-level pages. `path` is the (latin) URL segment under /[lang]/; `label` is
+// the localized nav text. The brand (logo + title) links to the home page.
 const navItems = [
-  { id: "company", label: nav.company },
-  { id: "shows", label: nav.shows },
-  { id: "director", label: nav.director },
-  { id: "members", label: nav.members },
-  { id: "community", label: nav.community },
-  { id: "contact", label: nav.contact },
+  { path: "shows", label: nav.shows },
+  { path: "team", label: nav.team },
+  { path: "community", label: nav.community },
+  { path: "contact", label: nav.contact },
 ];
+
+const homeHref = getRelativeLocaleUrl(lang);
+const sub = currentSubpath(Astro.url.pathname, import.meta.env.BASE_URL);
+const isActive = (path: string) => sub === path || sub.startsWith(`${path}/`);
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="site-header__brand" href="#main">
+    <a class="site-header__brand" href={homeHref}>
       <Image
         src={logo}
         alt=""
@@ -37,27 +42,28 @@ const navItems = [
       <span class="site-header__brand-text">{hero.header_title}</span>
     </a>
 
-    {/* <details> gives a keyboard-accessible mobile menu with no JavaScript. */}
-    <details class="site-nav">
-      <summary class="site-nav__toggle" aria-label="Menu">
-        <span aria-hidden="true">☰</span>
-      </summary>
-      <nav class="site-nav__panel" aria-label="Principale / Κύριο μενού">
-        <ul role="list" class="site-nav__list">
-          {
-            navItems.map((item) => (
-              <li>
-                <a class="site-nav__link" href={`#${item.id}`}>
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-    </details>
+    <nav class="site-nav" aria-label="Principale / Κύριο μενού">
+      <ul role="list" class="site-nav__list">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                class="site-nav__link"
+                href={getRelativeLocaleUrl(lang, item.path)}
+                aria-current={isActive(item.path) ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
 
-    <LanguageSwitcher lang={lang} />
+    {/* Pushed to the far right; the brand stays hard left. */}
+    <div class="site-header__lang">
+      <LanguageSwitcher lang={lang} />
+    </div>
   </div>
 </header>
 
@@ -67,16 +73,23 @@ const navItems = [
     top: 0;
     z-index: 50;
     min-height: var(--header-height);
-    background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-border);
+    background-color: var(--chrome-bg);
+    color: var(--chrome-text);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
   }
 
   .site-header__inner {
     display: flex;
     align-items: center;
-    gap: var(--space-m);
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-s);
     min-height: var(--header-height);
+    padding-block: var(--space-xs);
+  }
+
+  /* Language switcher pinned to the right edge of the bar. */
+  .site-header__lang {
+    margin-left: auto;
   }
 
   .site-header__brand {
@@ -87,8 +100,13 @@ const navItems = [
     font-weight: 700;
     font-size: var(--text-lg);
     text-decoration: none;
-    color: var(--color-ink);
-    margin-right: auto;
+    color: var(--chrome-text);
+    /* Keep the brand intact: never shrink, never wrap the troupe name. */
+    flex-shrink: 0;
+  }
+
+  .site-header__brand-text {
+    white-space: nowrap;
   }
 
   .site-header__logo {
@@ -104,20 +122,11 @@ const navItems = [
     }
   }
 
-  .site-nav__toggle {
-    cursor: pointer;
-    list-style: none;
-    padding: var(--space-xs);
-    font-size: var(--text-lg);
-    line-height: 1;
-  }
-
-  /* Hide the default disclosure triangle. */
-  .site-nav__toggle::-webkit-details-marker {
-    display: none;
-  }
-
   .site-nav__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -125,47 +134,19 @@ const navItems = [
 
   .site-nav__link {
     display: block;
-    padding: var(--space-xs) var(--space-s);
+    padding: var(--space-xs);
     text-decoration: none;
-    color: var(--color-ink);
-    font-size: var(--text-sm);
+    color: var(--chrome-text);
+    font-size: var(--chrome-text-size);
+    white-space: nowrap;
   }
 
   .site-nav__link:hover {
-    color: var(--color-primary);
+    color: var(--color-accent);
   }
 
-  /* --- Mobile: nav is a dropdown panel under the toggle --- */
-  @media (max-width: 48rem) {
-    .site-nav__panel {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: var(--header-height);
-      background-color: var(--color-surface);
-      border-bottom: 1px solid var(--color-border);
-      box-shadow: var(--shadow);
-    }
-
-    .site-nav__list {
-      padding: var(--space-s) var(--space-m);
-    }
-  }
-
-  /* --- Desktop: show the links inline, hide the toggle --- */
-  @media (min-width: 48.0625rem) {
-    .site-nav__toggle {
-      display: none;
-    }
-
-    .site-nav__panel {
-      display: block !important;
-    }
-
-    .site-nav__list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-xs);
-    }
+  .site-nav__link[aria-current="page"] {
+    color: var(--color-accent);
+    font-weight: 700;
   }
 </style>

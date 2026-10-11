@@ -1,0 +1,236 @@
+---
+// Home page body (restructure.md): hero banner → Who we are → News →
+// Latest show → Articles & mentions → Contact (+ Crowdfunding when present).
+import { getRelativeLocaleUrl } from "astro:i18n";
+import Hero from "./sections/Hero.astro";
+import Markdown from "./Markdown.astro";
+import ShowCard from "./ShowCard.astro";
+import type { CollectionEntry } from "astro:content";
+import type { SiteContent } from "../data/types";
+import type { Locale } from "../i18n/config";
+
+interface Props {
+  content: SiteContent;
+  lang: Locale;
+  // News posts for this language, already sorted newest-first.
+  news: CollectionEntry<"news">[];
+}
+
+const { content, lang, news } = Astro.props;
+const { hero, company, home, shows, contact } = content;
+
+// The latest production is the first entry (data is newest-first).
+const latestShow = shows.items[0];
+const showsHref = getRelativeLocaleUrl(lang, "shows");
+
+// Locale-aware month + year label, e.g. "Οκτ 2026" / "oct. 2026".
+const dateLabel = new Intl.DateTimeFormat(lang, {
+  month: "short",
+  year: "numeric",
+});
+---
+
+<Hero hero={hero} />
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">{home.aboutTitle}</h2>
+    <Markdown text={company.body} class="prose" />
+  </div>
+</section>
+
+{
+  news.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">{home.newsTitle}</h2>
+        <ul role="list" class="home-news">
+          {news.map((post) => (
+            <li class="home-news__item">
+              <p class="home-news__date">{dateLabel.format(post.data.date)}</p>
+              <h3 class="home-news__title">{post.data.title}</h3>
+              <Markdown text={post.body ?? ""} class="prose" />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+{
+  latestShow && (
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">{home.latestShowTitle}</h2>
+        <div class="home-latest">
+          <ShowCard show={latestShow} lang={lang} />
+        </div>
+        <p class="home-latest__all">
+          <a href={showsHref}>{content.nav.shows} →</a>
+        </p>
+      </div>
+    </section>
+  )
+}
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">{home.articles.title}</h2>
+    {home.articles.intro && (
+      <Markdown text={home.articles.intro} class="prose home-articles__intro" />
+    )}
+    <ul role="list" class="home-articles">
+      {
+        home.articles.items.map((article) => (
+          <li>
+            <a href={article.href} target="_blank" rel="noopener noreferrer">
+              {article.label}
+            </a>
+            {article.source && (
+              <span class="home-articles__source"> — {article.source}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section__title">{home.contactTitle}</h2>
+    <div class="prose">
+      <Markdown text={contact.body} />
+
+      {
+        contact.email && (
+          <p class="home-contact__email">
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </p>
+        )
+      }
+
+      {
+        contact.socials && contact.socials.length > 0 && (
+          <ul role="list" class="home-contact__socials">
+            {contact.socials.map((social) => (
+              <li>
+                <a href={social.href} target="_blank" rel="noopener noreferrer">
+                  {social.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+{
+  /* Crowdfunding shows only once `home.crowdfunding` is filled in the data —
+     hidden until the campaign is public. */
+  home.crowdfunding && (
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">{home.crowdfunding.title}</h2>
+        <div class="prose">
+          <Markdown text={home.crowdfunding.body} />
+          {home.crowdfunding.link && (
+            <p class="home-crowdfunding__link">
+              <a
+                href={home.crowdfunding.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {home.crowdfunding.link.label} →
+              </a>
+            </p>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  /* --- News --------------------------------------------------------------- */
+  .home-news {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-l);
+    max-width: var(--container-narrow);
+  }
+
+  .home-news__date {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .home-news__title {
+    margin-top: 0.1rem;
+    margin-bottom: var(--space-xs);
+    color: var(--title-color);
+    font-size: var(--text-lg);
+  }
+
+  /* --- Latest show -------------------------------------------------------- */
+  .home-latest {
+    max-width: 18rem;
+  }
+
+  .home-latest__all {
+    margin-top: var(--space-m);
+    font-weight: 600;
+  }
+
+  .home-latest__all a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+
+  /* --- Articles & mentions ------------------------------------------------ */
+  .home-articles__intro {
+    margin-bottom: var(--space-m);
+    color: var(--color-muted);
+  }
+
+  .home-articles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-s);
+    max-width: var(--container-narrow);
+  }
+
+  .home-articles a {
+    color: var(--color-link);
+  }
+
+  .home-articles__source {
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+  }
+
+  /* --- Contact ------------------------------------------------------------ */
+  .home-contact__email {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+  }
+
+  .home-contact__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    list-style: none;
+    margin-top: var(--space-m);
+    padding: 0;
+  }
+</style>

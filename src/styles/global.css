@@ -66,8 +66,8 @@
   top: -3rem;
   z-index: 100;
   padding: var(--space-xs) var(--space-s);
-  background: var(--color-primary);
-  color: #fff;
+  background: var(--chrome-bg);
+  color: var(--chrome-text);
   border-radius: var(--radius);
   transition: top 0.15s ease;
 }

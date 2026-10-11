@@ -32,6 +32,17 @@ export interface Link {
   href: string;
 }
 
+// --- Home page ---------------------------------------------------------------
+
+// News posts are a content collection (src/content/news/*.md), not data here.
+
+// One external article / press mention on the home page.
+export interface ArticleLink {
+  label: string;
+  href: string;
+  source?: string;
+}
+
 // --- Shows / productions -----------------------------------------------------
 
 // A single "general info" line, e.g. { label: "Έτος", value: "2022" }.
@@ -58,7 +69,19 @@ export interface Figure {
   alt: string;
 }
 
+// One video for a show: a YouTube id plus an optional caption/label.
+export interface ShowVideo {
+  // Optional label shown above the embed, e.g. "Τρέιλερ" / "Ολόκληρη παράσταση".
+  label?: string;
+  // YouTube video id (the part after `v=`).
+  videoId: string;
+}
+
 export interface Show {
+  // URL slug for this production's own page (/[lang]/shows/<slug>). Use the SAME
+  // slug across el.ts and fr.ts for a given production, so switching language
+  // stays on the same show. Latin, lowercase, hyphenated.
+  slug: string;
   title: string;
   // Blank line = new paragraph; **bold**, *italics*, > blockquote, lists and
   // [links](…) all work. Leading indentation of each line is stripped before
@@ -66,10 +89,14 @@ export interface Show {
   description: Markdown;
   // Optional poster (an imported asset — see the data file for how to import).
   poster?: Figure;
+  // Optional image for this show's card in the shows gallery. Falls back to
+  // `poster` when unset — set it only to show a different picture on the card.
+  cardImage?: Figure;
   // Optional general info (year, author, venue…), shown as a definition list.
   details?: ShowDetail[];
-  // Optional YouTube video id (the part after `v=`), shown as an embed.
-  videoId?: string;
+  // Optional videos (trailer, teaser, full recording…), shown as embeds, each
+  // with an optional label above it.
+  videos?: ShowVideo[];
   // Optional leaflet / programme: a URL to a PDF. Import it at the top of the
   // data file (`import x from "../assets/.../leaflet.pdf"`) so the path is
   // correct for every deploy target, then set `leaflet: x`.
@@ -87,10 +114,8 @@ export interface SiteContent {
     description: string;
   };
   nav: {
-    company: string;
     shows: string;
-    director: string;
-    members: string;
+    team: string;
     community: string;
     contact: string;
   };
@@ -98,8 +123,33 @@ export interface SiteContent {
     header_title: string;
     title: string;
     tagline: string;
+    footer_title: string;
   };
   company: SectionText;
+  home: {
+    // Heading for the "who we are" block (its text reuses `company.body`).
+    aboutTitle: string;
+    // Heading for the News block; the posts come from the `news` content
+    // collection (src/content/news/*.md), filtered by language.
+    newsTitle: string;
+    // Heading for the "latest show" block; the show itself is the first entry
+    // in `shows.items`.
+    latestShowTitle: string;
+    articles: {
+      title: string;
+      intro?: Markdown;
+      items: ArticleLink[];
+    };
+    // Heading for the contact block (reuses the `contact` section's data).
+    contactTitle: string;
+    // Crowdfunding: omit it to keep it hidden; the home page shows it only when
+    // present (not public yet).
+    crowdfunding?: {
+      title: string;
+      body: Markdown;
+      link?: Link;
+    };
+  };
   shows: {
     title: string;
     // Lead-in text shown above the list of productions.
@@ -111,15 +161,32 @@ export interface SiteContent {
     creditsLabel?: string; // e.g. "Διανομή" / "Distribution"
     items: Show[];
   };
-  director: {
+  team: {
+    // Page heading, shown over the whole-team photo.
     title: string;
-    name: string;
-    body: Markdown;
-  };
-  members: {
-    title: string;
-    intro?: Markdown;
-    people: Member[];
+    // Whole-troupe photo (optional). Import it in the data file like a poster
+    // and set { image, alt }; without it the banner falls back to a plain band.
+    photo?: Figure;
+    // Director & teacher: their name, an optional portrait and a short bio.
+    director: {
+      title: string;
+      name: string;
+      // Optional portrait. Import it in the data file and set { image, alt };
+      // without it a placeholder is shown.
+      photo?: Figure;
+      body: Markdown;
+    };
+    // Current members for the season (just names). `year` labels the season.
+    members: {
+      title: string;
+      year?: string;
+      names: string[];
+    };
+    // Former members (just names).
+    alumni: {
+      title: string;
+      names: string[];
+    };
   };
   community: SectionText & {
     link?: Link;

@@ -1,6 +1,7 @@
 ---
 import { LOCALES, LOCALE_NAMES } from "../i18n/config";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { currentSubpath } from "../lib/i18n-path";
 import type { Locale } from "../i18n/config";
 
 interface Props {
@@ -8,6 +9,9 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+
+// Keep the reader on the same page when they switch language.
+const subpath = currentSubpath(Astro.url.pathname, import.meta.env.BASE_URL);
 ---
 
 <nav class="lang-switcher" aria-label="Langue / Γλώσσα">
@@ -16,7 +20,7 @@ const { lang } = Astro.props;
       LOCALES.map((loc) => (
         <li>
           <a
-            href={getRelativeLocaleUrl(loc)}
+            href={getRelativeLocaleUrl(loc, subpath)}
             hreflang={loc}
             lang={loc}
             aria-current={loc === lang ? "page" : undefined}
@@ -43,19 +47,19 @@ const { lang } = Astro.props;
   .lang-switcher__link {
     display: inline-block;
     padding: 0.25rem 0.6rem;
-    font-size: var(--text-sm);
+    font-size: var(--chrome-text-size);
     text-decoration: none;
-    color: var(--color-muted);
+    color: color-mix(in srgb, var(--chrome-text) 70%, transparent);
     border-radius: var(--radius);
   }
 
   .lang-switcher__link:hover {
-    color: var(--color-primary);
-    background-color: var(--color-bg);
+    color: var(--chrome-text);
+    background-color: rgba(255, 255, 255, 0.12);
   }
 
   .lang-switcher__link.is-active {
-    color: var(--color-primary);
+    color: var(--color-accent);
     font-weight: 700;
   }
 </style>
