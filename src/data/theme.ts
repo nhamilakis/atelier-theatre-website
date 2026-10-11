@@ -25,7 +25,6 @@ export const theme = {
     muted: "#6b625b", // secondary text: dates, captions, details
     accent: "#b8893b", // small rules + focus ring
     border: "#e7ded2", // hairlines
-    surface: "#ffffff", // background of alternating sections
     link: "#7a2e2e", // links
     linkHover: "#5c2222", // link hover
   },

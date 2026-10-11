@@ -28,11 +28,6 @@
   scroll-margin-top: var(--header-height);
 }
 
-.section:nth-of-type(even) {
-  background-color: var(--color-surface);
-  border-block: 1px solid var(--color-border);
-}
-
 /* Small eyebrow / accent rule used under section titles. */
 .section__title {
   margin-bottom: var(--space-m);
