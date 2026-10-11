@@ -117,14 +117,21 @@ const galleryFullSrc = await Promise.all(
                 {show.credits && show.credits.length > 0 && (
                   <details class="show__fold">
                     <summary class="show__fold-summary">{creditsLabel}</summary>
-                    <ul role="list" class="show__credits-list">
-                      {show.credits.map((credit) => (
-                        <li>
-                          <span class="show__credit-role">{credit.role}</span>
-                          <span class="show__credit-name">{credit.name}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {show.credits.map((item) => (
+                      <ul role="list" class="show__credits-list">
+                          <li> <h4>{item.label}</h4>
+                              <ul role="list" class="show__credits-list">
+                                  {item.roles.map((cred) => (
+                                  <li>
+                                    <span class="show__credit-role">{cred.role}</span>
+                                    <span class="show__credit-name">{cred.name}</span>
+                                  </li>
+                                  ))}
+                              </ul>
+                          </li>
+                      </ul>
+                    ))}
+
                   </details>
                 )}
               </div>

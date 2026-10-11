@@ -82,7 +82,19 @@ export const fr: SiteContent = {
           { label: "D'après", value: "Samuel Beckett" },
           { label: "Forme", value: "Représentation en ligne" },
         ],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        description: `
+        “Dans une ruelle solitaire, sous un arbre squelettique et à côté d’un bac oublié, deux sans-abris, deux voyous chapardeurs, un couple marié, deux medecins, une influenceuse et sa follower, deux vieilles dames, deux journalistes, deux policiers, deux jeunes éméchés, se succèderont, sans jamais se rencontrer, pris au piège d’une attente perpétuelle”
+
+        Dés la création de l’Atelier Théâtre de la Communauté Hellénique de Paris et environs, en octobre 2019, la metteuse en scène Athina Axiotou a dû innover et élaborer de nouvelles approches du théâtre dans le contexte de restrictions que la pandémie nous a imposées.
+
+        Si l’année dernière, avec la mise en scéne d’un texte revisité de Lysistrata d’Aristophane, elle avait réussi à montrer la nécessité de résister aux nouvelles atterrantes reçues en début de la pandémie, cette année elle a choisi de travailler sur le ressenti du temps suspendu et sur “l’absurde” de l’attente que nous avons endurée ces derniers temps, en s'appuyant sur la piéce de S. Beckett “En attendant Godot”.
+
+        La majorité des répétitions se sont faites en ligne, trés peu de répétitions en présentiel ont pu être realisées, entre la levée des restrictions de déplacement et la représentation finale.
+
+        Les décors ont ét” montés à la maison de la Gréce avec le peu de moyens dont nous disposions et surtout grâce à l’aide de tous les membres de la troupe.
+
+        La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sotre de reméde contre la rupture du lien social que nous avons vécue.
+        `,
         videoId: "5FIIp7Lln_4",
       },
       {
