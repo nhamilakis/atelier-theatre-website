@@ -301,7 +301,20 @@ export const el: SiteContent = {
             label: "Βασισμένο σε",
             value: "«Souvenirs Assassins» του Serge Valetti",
           },
-          { label: "Σκηνοθεσία", value: "Αθηνά Αξιώτου" },
+          {
+            label: "Σκηνοθεσία - Καλλιτεχνική Επιμέλεια",
+            value: "Αθηνά Αξιώτου",
+          },
+          { label: "Βοηθός - Γραμματειακή υποστήριξη", value: "Κλειώ Παρίση" },
+          { label: "Επιμέλεια αφίσας", value: "Έλενα Μυλωνά" },
+          {
+            label: "Επιμέλεια προγράμματος",
+            value: "Κλειώ Παρίση, Έλενα Μυλωνά",
+          },
+          {
+            label: "Εξωτερικός συνεργάτης - Τεχνική υποστήριξη",
+            value: "Stéphane Delaunay",
+          },
           { label: "Μετάφραση", value: "Μαθητές του εργαστηρίου" },
         ],
         poster: { image: SouvenirsAssasinPoster, alt: "Αφίσα της παράστασης" },
@@ -330,7 +343,25 @@ export const el: SiteContent = {
         credits: [
           {
             label: "Διανομή (με σειρά εμφάνισης)",
-            roles: [{ role: "Protagonist", name: "Person 1" }],
+            roles: [
+              { role: "", name: "Γιάννης Μπαρούμας" },
+              { role: "", name: "Καλλιόπη Φραγκιουδάκη" },
+              { role: "", name: "Νίκη Παπαηλιάκη" },
+              { role: "", name: "Νίκος Χαμηλάκης" },
+              { role: "", name: "Κλειώ Παρίση" },
+              { role: "", name: "Ντομίνγκο Αγκιλέρα Σάντσεθ" },
+              { role: "", name: "Σοφία Σλαφτσάκη" },
+              { role: "", name: "Παναγιώτης Ζαχαριάδης" },
+              { role: "", name: "Γωγώ Κανελλάκη" },
+              { role: "", name: "Ευγενία Στράτη" },
+              { role: "", name: "Έλενα Μυλωνά" },
+              { role: "", name: "Βασιλική Μίσσιου" },
+              { role: "", name: "Αναστασία Βρανά" },
+              { role: "", name: "Ιπποκράτης Σταμπούλογλου" },
+              { role: "", name: "Κωνσταντίνα Παρτασίδου" },
+              { role: "", name: "Μελίνα Σκουρλά" },
+              { role: "", name: "Σωτήρης Κωνσταντής" },
+            ],
           },
         ],
         gallery: galleryFor(

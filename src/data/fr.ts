@@ -268,13 +268,26 @@ export const fr: SiteContent = {
         slug: "souvenirs-assassins",
         title: "Δολοφονικές αναμνήσεις",
         details: [
-          { label: "Année", value: "2023–2024" },
+          { label: "Έτος", value: "2023–2024" },
           {
-            label: "D'après",
-            value: "« Souvenirs Assassins » de Serge Valetti",
+            label: "Βασισμένο σε",
+            value: "«Souvenirs Assassins» του Serge Valetti",
           },
-          { label: "Mise en scène", value: "Athina Axiotou" },
-          { label: "Traduction", value: "Les élèves de l'atelier" },
+          {
+            label: "Σκηνοθεσία - Καλλιτεχνική Επιμέλεια",
+            value: "Αθηνά Αξιώτου",
+          },
+          { label: "Βοηθός - Γραμματειακή υποστήριξη", value: "Κλειώ Παρίση" },
+          { label: "Επιμέλεια αφίσας", value: "Έλενα Μυλωνά" },
+          {
+            label: "Επιμέλεια προγράμματος",
+            value: "Κλειώ Παρίση, Έλενα Μυλωνά",
+          },
+          {
+            label: "Εξωτερικός συνεργάτης - Τεχνική υποστήριξη",
+            value: "Stéphane Delaunay",
+          },
+          { label: "Μετάφραση", value: "Μαθητές του εργαστηρίου" },
         ],
         poster: { image: SouvenirsAssasinPoster, alt: "Affiche du spectacle" },
         description: `
@@ -301,7 +314,25 @@ export const fr: SiteContent = {
         credits: [
           {
             label: "Distribution (par ordre d'apparition)",
-            roles: [{ role: "Protagoniste", name: "Personne 1" }],
+            roles: [
+              { role: "", name: "Γιάννης Μπαρούμας" },
+              { role: "", name: "Καλλιόπη Φραγκιουδάκη" },
+              { role: "", name: "Νίκη Παπαηλιάκη" },
+              { role: "", name: "Νίκος Χαμηλάκης" },
+              { role: "", name: "Κλειώ Παρίση" },
+              { role: "", name: "Ντομίνγκο Αγκιλέρα Σάντσεθ" },
+              { role: "", name: "Σοφία Σλαφτσάκη" },
+              { role: "", name: "Παναγιώτης Ζαχαριάδης" },
+              { role: "", name: "Γωγώ Κανελλάκη" },
+              { role: "", name: "Ευγενία Στράτη" },
+              { role: "", name: "Έλενα Μυλωνά" },
+              { role: "", name: "Βασιλική Μίσσιου" },
+              { role: "", name: "Αναστασία Βρανά" },
+              { role: "", name: "Ιπποκράτης Σταμπούλογλου" },
+              { role: "", name: "Κωνσταντίνα Παρτασίδου" },
+              { role: "", name: "Μελίνα Σκουρλά" },
+              { role: "", name: "Σωτήρης Κωνσταντής" },
+            ],
           },
         ],
         gallery: galleryFor(
@@ -443,7 +474,10 @@ export const fr: SiteContent = {
                 role: "Collègues / Mamans",
                 name: "Irini Giannopoulou, Kleio Parisi, Christiana Sachini",
               },
-              { role: "La chasseuse d'hommes (narratrice)", name: "Kleio Parisi" },
+              {
+                role: "La chasseuse d'hommes (narratrice)",
+                name: "Kleio Parisi",
+              },
               {
                 role: "La chasseuse d'hommes",
                 name: "Evgenia Strati, Anastasia Vrana, Sofia Slaftsaki, Christiana Sachini, Irini Giannopoulou",
@@ -479,9 +513,18 @@ export const fr: SiteContent = {
             label: "Mise en scène & direction artistique",
             value: "Athina Axiotou",
           },
-          { label: "Support technique — couteau suisse", value: "Nikos Hamilakis" },
-          { label: "Secrétariat & assistante à tout faire", value: "Kleio Parisi" },
-          { label: "Photographe & assistante à tout faire", value: "Elena Mylona" },
+          {
+            label: "Support technique — couteau suisse",
+            value: "Nikos Hamilakis",
+          },
+          {
+            label: "Secrétariat & assistante à tout faire",
+            value: "Kleio Parisi",
+          },
+          {
+            label: "Photographe & assistante à tout faire",
+            value: "Elena Mylona",
+          },
           { label: "Collaborateur externe", value: "Stéphane Delaunay" },
           { label: "Décor", value: "Pathoulas Xavier" },
           { label: "Transports & déménagements", value: "« O kyr-Mitsos »" },
