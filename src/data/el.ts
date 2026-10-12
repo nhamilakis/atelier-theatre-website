@@ -2,24 +2,44 @@ import type { SiteContent } from "./types";
 
 // --- Images & content
 
+import homePageBanner from "../assets/home-page-banner.jpg";
+import TeamBanner from "../assets/team-banner.jpg";
+import AthinaImage from "../assets/athina.jpg";
+
+// ---------------- Show Images ----------------
+// --- Gynaika Looser
 import GynaikaLooserPoster from "../assets/shows/2022_GYNAIKA LOSER/AFFICHE WINNER-logos.jpg";
 import GynaikaLooserLeaflet from "../assets/shows/2022_GYNAIKA LOSER/PROGRAMMA WINNER.pdf";
+
+// --- Siga ta aimata
 
 import SigaTaAimataPoster from "../assets/shows/2023_SIGA TA AIMATA/SIGA-TA-AIMATA_2023.jpg";
 import SigaTaAimataLeaflet from "../assets/shows/2023_SIGA TA AIMATA/PROGRAMMA SIGA TA AIMATA.pdf";
 
+// --- Souvenir Assasin
+
 import SouvenirsAssasinPoster from "../assets/shows/2024_SOUVENIRS ASSASSINS/AFISA_DOLOFONOS.jpg";
 import SouvenirAssasinLeaflet from "../assets/shows/2024_SOUVENIRS ASSASSINS/PROGRAMMA ADULTES 2024.pdf";
+
+// --- Speed Date
 
 import SpeedDatePoster from "../assets/shows/2025_SPEED DATE/AFISA_ADULTES_2025_final.jpg";
 import SpeedDateLeaflet from "../assets/shows/2025_SPEED DATE/BROCHURE ADULTES 2025.pdf";
 
+// --- Paramithi
+
 import ParamithiPoster from "../assets/shows/2026_PARAMYTHI/AFISA_ADULTES_2026_final_2.jpg";
 import ParamithiLeaflet from "../assets/shows/2026_PARAMYTHI/BROCHURE ADULTES 2026.pdf";
 
+// --- Godot
+
 import GODOTPoster from "../assets/shows/2021_GODOT/AFISA GODOT-wide.jpg";
 
+// --- Akropoli
+
 import AkropoliPoster from "../assets/shows/akropoli.jpg";
+
+// Test images
 
 import TestImg1 from "../assets/test_img/test-1.jpg";
 import TestImg2 from "../assets/test_img/test-2.jpg";
@@ -77,7 +97,8 @@ export const el: SiteContent = {
   home: {
     aboutTitle: "Ποιοι είμαστε",
     newsTitle: "Νέα",
-    latestShowTitle: "Η τελευταία μας παράσταση",
+    latestShowTitle: "Η πιο πρόσφατη παράσταση μας",
+    banner: homePageBanner,
     articles: {
       title: "Άρθρα & αναφορές",
       intro:
@@ -90,7 +111,6 @@ export const el: SiteContent = {
         },
       ],
     },
-    contactTitle: "Επικοινωνία",
     // Crowdfunding: προστέθηκε όταν γίνει δημόσιο (προς το παρόν κρυφό).
     // crowdfunding: {
     //   title: "Στηρίξτε μας",
@@ -821,14 +841,11 @@ export const el: SiteContent = {
 
   team: {
     title: "Η ομάδα",
-    // Ομαδική φωτογραφία: βάλτε το αρχείο στο src/assets/, κάντε το import στην
-    // κορυφή του αρχείου και ξεσχολιάστε την επόμενη γραμμή:
-    // photo: { image: TeamPhoto, alt: "Η ομάδα" },
+    photo: { image: TeamBanner, alt: "Η ομάδα" },
     director: {
       title: "Σκηνοθεσία & Διδασκαλία",
       name: "Αθηνά Αξιώτου",
-      // Πορτρέτο: κάντε import στην κορυφή του αρχείου και ξεσχολιάστε:
-      // photo: { image: DirectorPhoto, alt: "Αθηνά Αξιώτου" },
+      photo: { image: AthinaImage, alt: "Αθηνά Αξιώτου" },
       body: `Η Αθηνά Αξιώτου είναι ηθοποιός, σκηνοθέτης και ιδρύτρια της Θεατρικής ομάδας Opos Opos
         στο Παρίσι. Στην πολύχρονη πορεία της στον χώρο, έχει συμμετάσχει σε πολλές θεατρικές
         παραστάσεις και έχει διδάξει σε πολλά θεατρικά εργαστήρια σε διάφορα δημοτικά διαμερίσματα και

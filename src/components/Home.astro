@@ -1,6 +1,7 @@
 ---
 // Home page body (restructure.md): hero banner → Who we are → News →
-// Latest show → Articles & mentions → Contact (+ Crowdfunding when present).
+// Latest show → Articles & mentions (+ Crowdfunding when present). Contact has
+// its own page, so it isn't repeated here.
 import { getRelativeLocaleUrl } from "astro:i18n";
 import Hero from "./sections/Hero.astro";
 import Markdown from "./Markdown.astro";
@@ -17,7 +18,7 @@ interface Props {
 }
 
 const { content, lang, news } = Astro.props;
-const { hero, company, home, shows, contact } = content;
+const { hero, company, home, shows } = content;
 
 // The latest production is the first entry (data is newest-first).
 const latestShow = shows.items[0];
@@ -30,7 +31,7 @@ const dateLabel = new Intl.DateTimeFormat(lang, {
 });
 ---
 
-<Hero hero={hero} />
+<Hero hero={hero} banner={home.banner} />
 
 <section class="section">
   <div class="container">
@@ -94,37 +95,6 @@ const dateLabel = new Intl.DateTimeFormat(lang, {
         ))
       }
     </ul>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2 class="section__title">{home.contactTitle}</h2>
-    <div class="prose">
-      <Markdown text={contact.body} />
-
-      {
-        contact.email && (
-          <p class="home-contact__email">
-            <a href={`mailto:${contact.email}`}>{contact.email}</a>
-          </p>
-        )
-      }
-
-      {
-        contact.socials && contact.socials.length > 0 && (
-          <ul role="list" class="home-contact__socials">
-            {contact.socials.map((social) => (
-              <li>
-                <a href={social.href} target="_blank" rel="noopener noreferrer">
-                  {social.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        )
-      }
-    </div>
   </div>
 </section>
 
@@ -216,21 +186,5 @@ const dateLabel = new Intl.DateTimeFormat(lang, {
   .home-articles__source {
     color: var(--color-muted);
     font-size: var(--text-sm);
-  }
-
-  /* --- Contact ------------------------------------------------------------ */
-  .home-contact__email {
-    margin-top: var(--space-m);
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-  }
-
-  .home-contact__socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-m);
-    list-style: none;
-    margin-top: var(--space-m);
-    padding: 0;
   }
 </style>

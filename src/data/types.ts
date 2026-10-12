@@ -135,13 +135,14 @@ export interface SiteContent {
     // Heading for the "latest show" block; the show itself is the first entry
     // in `shows.items`.
     latestShowTitle: string;
+    // Background image behind the group name on the home hero. Import it at the
+    // top of the data file and assign the import here.
+    banner: ImageMetadata;
     articles: {
       title: string;
       intro?: Markdown;
       items: ArticleLink[];
     };
-    // Heading for the contact block (reuses the `contact` section's data).
-    contactTitle: string;
     // Crowdfunding: omit it to keep it hidden; the home page shows it only when
     // present (not public yet).
     crowdfunding?: {

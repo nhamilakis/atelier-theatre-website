@@ -1,5 +1,9 @@
 import type { SiteContent } from "./types";
 
+// --- Images & content
+
+import homePageBanner from "../assets/home-page-banner.jpg";
+
 export const fr: SiteContent = {
   meta: {
     title: "Nom de la Compagnie — Théâtre",
@@ -34,6 +38,7 @@ export const fr: SiteContent = {
     aboutTitle: "Qui sommes-nous",
     newsTitle: "Actualités",
     latestShowTitle: "Notre dernier spectacle",
+    banner: homePageBanner,
     articles: {
       title: "Articles & mentions",
       intro:
@@ -46,7 +51,6 @@ export const fr: SiteContent = {
         },
       ],
     },
-    contactTitle: "Contact",
     // Crowdfunding : à ajouter quand la campagne sera publique (masqué pour l'instant).
     // crowdfunding: {
     //   title: "Soutenez-nous",
