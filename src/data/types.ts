@@ -108,6 +108,13 @@ export interface Show {
   credits?: ShowCredits[];
 }
 
+// One current member: a name plus an optional round portrait (placeholder shown
+// when absent).
+export interface TeamMember {
+  name: string;
+  photo?: Figure;
+}
+
 export interface SiteContent {
   meta: {
     title: string;
@@ -177,13 +184,14 @@ export interface SiteContent {
       photo?: Figure;
       body: Markdown;
     };
-    // Current members for the season (just names). `year` labels the season.
+    // Current members for the season. Each has a name and an optional portrait;
+    // `year` labels the season.
     members: {
       title: string;
       year?: string;
-      names: string[];
+      names: TeamMember[];
     };
-    // Former members (just names).
+    // Former members (just names — no portraits).
     alumni: {
       title: string;
       names: string[];

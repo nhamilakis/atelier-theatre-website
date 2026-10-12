@@ -20,9 +20,11 @@ const { director, members, alumni } = team;
 
 // Rosters read best alphabetically (credits stay in appearance order, in the
 // data). Locale-aware so Greek sorts correctly; data order is left untouched.
-const byName = (a: string, b: string) => a.localeCompare(b, lang);
-const memberNames = [...members.names].sort(byName);
-const alumniNames = [...alumni.names].sort(byName);
+// Members are objects ({ name, photo? }); alumni are plain name strings.
+const sortedMembers = [...members.names].sort((a, b) =>
+  a.name.localeCompare(b.name, lang),
+);
+const alumniNames = [...alumni.names].sort((a, b) => a.localeCompare(b, lang));
 
 const membersHeading = members.year
   ? `${members.title} (${members.year})`
@@ -77,8 +79,27 @@ const membersHeading = members.year
 
     <section class="team__section">
       <h2 class="team__section-title">{membersHeading}</h2>
-      <ul role="list" class="team__names">
-        {memberNames.map((name) => <li>{name}</li>)}
+      <ul role="list" class="team__people">
+        {
+          sortedMembers.map((member) => (
+            <li class="team__person">
+              <span class="team__avatar">
+                {member.photo ? (
+                  <Image
+                    src={member.photo.image}
+                    alt={member.photo.alt}
+                    width={96}
+                    height={96}
+                    class="team__avatar-img"
+                  />
+                ) : (
+                  <span aria-hidden="true">👤</span>
+                )}
+              </span>
+              <span class="team__person-name">{member.name}</span>
+            </li>
+          ))
+        }
       </ul>
     </section>
 
@@ -196,6 +217,43 @@ const membersHeading = members.year
     margin-bottom: var(--space-s);
   }
 
+  /* Current members: a round avatar beside each name. */
+  .team__people {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: var(--space-s) var(--space-m);
+  }
+
+  .team__person {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+  }
+
+  .team__avatar {
+    flex: 0 0 auto;
+    width: 4.75rem;
+    height: 4.75rem;
+    border-radius: 50%;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    font-size: 1.3rem;
+    color: var(--color-muted);
+    background-color: var(--bg);
+    border: 1px solid var(--color-border);
+  }
+
+  .team__avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Alumni: plain names, packed into balanced columns. */
   .team__names {
     list-style: none;
     margin: 0;

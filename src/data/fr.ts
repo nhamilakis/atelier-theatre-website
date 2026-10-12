@@ -188,9 +188,9 @@ export const fr: SiteContent = {
       title: "Les membres",
       year: "2025–2026",
       names: [
-        "[À REMPLACER] Prénom Nom",
-        "[À REMPLACER] Prénom Nom",
-        "[À REMPLACER] Prénom Nom",
+        { name: "[À REMPLACER] Prénom Nom" },
+        { name: "[À REMPLACER] Prénom Nom" },
+        { name: "[À REMPLACER] Prénom Nom" },
       ],
     },
     alumni: {
