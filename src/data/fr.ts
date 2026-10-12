@@ -4,17 +4,46 @@ import { galleryFor } from "./showPhotos";
 // --- Images & content
 
 import homePageBanner from "../assets/home-page-banner.jpg";
+import TeamBanner from "../assets/team-banner.jpg";
+import AthinaImage from "../assets/athina.jpg";
 
 // Community page photos
 import CommunityHouse from "../assets/misc/Maison de la Grèce.jpg";
 import CommunityProva from "../assets/misc/prova.jpg";
 import CommunityBackstage from "../assets/misc/backstage-godot.jpg";
 
+// ---------------- Show Images ----------------
+import GynaikaLooserPoster from "../assets/shows/2022_GYNAIKA LOSER/AFFICHE WINNER-logos.jpg";
+import GynaikaLooserLeaflet from "../assets/shows/2022_GYNAIKA LOSER/PROGRAMMA WINNER.pdf";
+
+import SigaTaAimataPoster from "../assets/shows/2023_SIGA TA AIMATA/SIGA-TA-AIMATA_2023.jpg";
+import SigaTaAimataLeaflet from "../assets/shows/2023_SIGA TA AIMATA/PROGRAMMA SIGA TA AIMATA.pdf";
+
+import SouvenirsAssasinPoster from "../assets/shows/2024_SOUVENIRS ASSASSINS/AFISA_DOLOFONOS.jpg";
+import SouvenirAssasinLeaflet from "../assets/shows/2024_SOUVENIRS ASSASSINS/PROGRAMMA ADULTES 2024.pdf";
+
+import SpeedDatePoster from "../assets/shows/2025_SPEED DATE/AFISA_ADULTES_2025_final.jpg";
+import SpeedDateLeaflet from "../assets/shows/2025_SPEED DATE/BROCHURE ADULTES 2025.pdf";
+
+import ParamithiPoster from "../assets/shows/2026_PARAMYTHI/AFISA_ADULTES_2026_final_2.jpg";
+import ParamithiLeaflet from "../assets/shows/2026_PARAMYTHI/BROCHURE ADULTES 2026.pdf";
+
+import GODOTPoster from "../assets/shows/2021_GODOT/AFISA GODOT-wide.jpg";
+
+import AkropoliPoster from "../assets/shows/akropoli.jpg";
+
+// -----------------------------------------------------------------------------
+// FRENCH CONTENT / CONTENU FRANÇAIS
+// -----------------------------------------------------------------------------
+// Traduit depuis el.ts. Les noms sont translittérés en caractères latins ; les
+// titres des spectacles restent en grec. [À REMPLACER] = texte provisoire.
+// -----------------------------------------------------------------------------
+
 export const fr: SiteContent = {
   meta: {
-    title: "Nom de la Compagnie — Théâtre",
+    title: "Atelier de théâtre pour adultes",
     description:
-      "[À REMPLACER] Compagnie théâtrale — présentation, créations et contact.",
+      "[À REMPLACER] Troupe de théâtre — présentation, créations et contact.",
   },
 
   nav: {
@@ -26,24 +55,32 @@ export const fr: SiteContent = {
 
   hero: {
     header_title: "",
-    title: "Nom de la Compagnie",
+    title:
+      "L'Atelier de théâtre pour adultes de la Communauté Hellénique de Paris et des environs",
     tagline: "[À REMPLACER] Une phrase qui résume l'esprit de la troupe.",
-    footer_title: "[À REMPLACER] Nom",
+    footer_title:
+      "Atelier de théâtre pour adultes de la Communauté Hellénique de Paris et des environs",
   },
 
   company: {
-    title: "La compagnie",
-    body: `[À REMPLACER] Présentez ici la compagnie : quand et comment elle est née,
-      ce qui vous rassemble, la démarche artistique qui vous anime.
-
-      [À REMPLACER] Un deuxième paragraphe pour préciser votre approche, vos
-      influences ou les thèmes que vous aimez explorer sur scène.`,
+    title:
+      "L'Atelier de théâtre pour adultes de la Communauté Hellénique de Paris et des environs",
+    body: `Né en 2019 comme troupe de théâtre de Grecs de la diaspora, à l'initiative
+      de la Communauté Hellénique de Paris et des environs et d'Athina Axiotou. En 2020
+      et 2021, l'atelier a adapté son activité théâtrale aux restrictions imposées par la
+      pandémie et a présenté en ligne « Lysistrata ou Nous restons à l'Acropole », d'après
+      l'œuvre d'Aristophane, et « En attendant notre Godot », d'après l'œuvre de Samuel
+      Beckett. En 2022, la première représentation sur scène a été accueillie avec succès,
+      « Γυναίκα Loser » de Vili Sotiropoulou ; les saisons suivantes ont suivi, dans
+      l'ordre, les spectacles « Σιγά τα αίματα » d'Akis Dimou, « Souvenirs assassins » —
+      d'après l'œuvre de Serge Valetti, traduite par les élèves de l'atelier — et
+      « Speed date » de Giorgos Iliopoulos.`,
   },
 
   home: {
     aboutTitle: "Qui sommes-nous",
     newsTitle: "Actualités",
-    latestShowTitle: "Notre dernier spectacle",
+    latestShowTitle: "Notre spectacle le plus récent",
     banner: homePageBanner,
     articles: {
       title: "Articles & mentions",
@@ -65,20 +102,6 @@ export const fr: SiteContent = {
     // },
   },
 
-  // ---------------------------------------------------------------------------
-  // LES SPECTACLES / SHOWS
-  // Chaque spectacle a un titre et une description. Facultatif : informations
-  // générales (details), distribution (credits), vidéo (videoId), affiche
-  // (poster). Les titres ci-dessous sont en grec — à traduire ou translittérer
-  // selon votre choix.
-  //
-  // Pour ajouter une affiche :
-  //   1. Placez le fichier dans src/assets/shows/ (ex. godot.jpg)
-  //   2. Importez-le en haut de ce fichier :
-  //        import godotPoster from "../assets/shows/godot.jpg";
-  //   3. Ajoutez au spectacle :
-  //        poster: { image: godotPoster, alt: "Affiche du spectacle" },
-  // ---------------------------------------------------------------------------
   shows: {
     title: "Nos spectacles",
     leafletLabel: "Dépliant",
@@ -93,15 +116,149 @@ export const fr: SiteContent = {
         details: [
           { label: "Année", value: "2025–2026" },
           { label: "Auteur", value: "Iakovos Kambanellis" },
-          { label: "Mise en scène", value: "Athina Axiotou" },
+          {
+            label: "Mise en scène & direction artistique",
+            value: "Athina Axiotou",
+          },
+          { label: "Assistante & secrétariat", value: "Kleio Parisi" },
+          {
+            label: "Décors",
+            value:
+              "Athina Axiotou, Stéphane Delaunay, Nikos Hamilakis, Nikos Fertakis, Elena Mylona, Evgenia Strati, Paschalis Pelitaris",
+          },
+          { label: "Affiche", value: "Elena Mylona" },
+          {
+            label: "Programme",
+            value: "Kleio Parisi, Elena Mylona, Athina Axiotou",
+          },
+          {
+            label: "Support technique",
+            value: "Stéphane Delaunay, Periklis Akogiounoglou",
+          },
+          { label: "Direction musicale", value: "Katerina Fotinaki" },
         ],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        poster: { image: ParamithiPoster, alt: "Affiche du spectacle" },
+        description: `
+        « Παραμύθι χωρίς όνομα » (Un conte sans nom) est la pièce de Iakovos Kambanellis,
+          inspirée du livre homonyme de Pénélope Delta. Les paroles des chansons ont été
+          mises en musique par Manos Hadjidakis.
+
+          « Et si nous avions eu tort d'attendre tout d'ailleurs ? Et si notre pays avait
+          tout, et que nous ne l'avions pas vu parce que nous regardions de travers ? »
+
+          Le royaume est en pleine décadence… Le couple royal, depuis longtemps incapable de
+          redresser la situation, s'apprête à quitter le pays, malgré les objections de son
+          fils. Le peuple a faim, souffre, peine de plus en plus à joindre les deux bouts au
+          quotidien. Seul un miracle — l'aide financière demandée (et pas pour la première
+          fois…) à l'Oncle Roi — pourrait sauver la situation. Et oui, le prêt est arrivé une
+          fois de plus ! Ou peut-être pas, cette fois-ci ? La caisse envoyée par l'oncle
+          contient-elle vraiment de l'argent, ou autre chose ?
+
+          <br/>
+
+          #### Musique & chansons
+
+          <br/>
+          Avec la participation de l'Atelier de chant grec, dans l'œuvre homonyme de Manos
+          Hadjidakis, sous la direction de Katerina Fotinaki, qui joue de la guitare sur scène.
+            `,
+        leaflet: ParamithiLeaflet,
+        credits: [
+          {
+            label: "Distribution (par ordre d'apparition)",
+            roles: [
+              { role: "Le Roi", name: "Nikos Hamilakis" },
+              { role: "La Reine", name: "Evgenia Strati" },
+              { role: "Le Prince", name: "Tasos Xenakis" },
+              { role: "Polykarpos", name: "Domingo Aguilera Sánchez" },
+              { role: "Maria", name: "Ifigenia Nikolakopoulou" },
+              { role: "Juge / Femme", name: "Anastasia Vrana" },
+              { role: "La mère pauvre", name: "Elena Mylona" },
+              { role: "Le tavernier", name: "Maria Kostopoulou" },
+              { role: "Spyros", name: "Marina Nikolidaki" },
+              { role: "Le forgeron", name: "Niki Papailiaki" },
+              { role: "Maître d'œuvre / Le muet", name: "Kleio Parisi" },
+              { role: "Giannis", name: "Christina Pappa" },
+              { role: "Michalis", name: "Irini Giannopoulou" },
+              { role: "Philippos", name: "Emilia Patera" },
+              { role: "Theodoros", name: "Sofia Slaftsaki" },
+              { role: "Le boiteux", name: "Nikos Fertakis" },
+              { role: "L'amiral", name: "Dimitris Kalogirou-Valtis" },
+              { role: "Le maître", name: "Paschalis Pelitaris" },
+              { role: "Guest", name: "Konstantinos Delaunay Axiotis" },
+            ],
+          },
+          {
+            label: "Chantent (par ordre d'apparition)",
+            roles: [
+              { role: "Prologue", name: "Maria Kostopoulou" },
+              { role: "« Du forgeron »", name: "Seta Theodoridou" },
+              { role: "« Du vieux marin »", name: "Haris Voulgaris" },
+              { role: "« Du brave »", name: "Konstantinos Hatziantoniou" },
+              { role: "Chanson d'amour", name: "Evgenia Strati" },
+              { role: "« Hector et Andromaque »", name: "Olga Kannavou" },
+              { role: "Épilogue", name: "Stefania Hounta" },
+            ],
+          },
+        ],
+        gallery: galleryFor(
+          "2026_PARAMYTHI",
+          "Photo de la représentation « Un conte sans nom »",
+        ),
       },
       {
         slug: "speed-date",
         title: "Speed date",
-        details: [{ label: "Auteur", value: "Giorgos Iliopoulos" }],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        details: [
+          { label: "Année", value: "2024–2025" },
+          { label: "Auteur", value: "Giorgos Iliopoulos" },
+          {
+            label: "Mise en scène & direction artistique",
+            value: "Athina Axiotou",
+          },
+          { label: "Assistante & secrétariat", value: "Kleio Parisi" },
+          { label: "Affiche", value: "Elena Mylona" },
+          { label: "Programme", value: "Kleio Parisi, Elena Mylona" },
+          {
+            label: "Collaborateur externe & support technique",
+            value: "Stéphane Delaunay",
+          },
+        ],
+        poster: { image: SpeedDatePoster, alt: "Affiche du spectacle" },
+        description: `
+        Douze personnages si différents les uns des autres, réunis dans un même lieu avec un
+        objectif commun : ce soir, ils doivent trouver leur moitié… Des visages
+        d'aujourd'hui, des gens d'à côté que nous avons tous croisés quelque part, chacun
+        avec ses problèmes, son univers, ses démons et ses ambitions, se retrouvent cette
+        nuit dans un seul but : former un couple ! La pression du temps, mais aussi l'effort
+        et l'angoisse d'être acceptés, créent un environnement dense de conflits et de
+        rebondissements qui, à grandes doses d'humour, composent une galerie révélatrice de
+        personnages et de comportements contemporains.
+        `,
+        leaflet: SpeedDateLeaflet,
+        credits: [
+          {
+            label: "Distribution (par ordre d'apparition)",
+            roles: [
+              { role: "La présentatrice", name: "Irini Giannopoulou" },
+              { role: "Niki", name: "Sofia Slaftsaki / Niki Papailiaki" },
+              { role: "Alexandros", name: "Katerina Premeti" },
+              { role: "Myrto", name: "Elena Mylona" },
+              { role: "Haritos", name: "Nikos Fertakis" },
+              { role: "Elli", name: "Danai Leventakou / Marina Nikolidaki" },
+              { role: "Dimitris", name: "Domingo Aguilera Sánchez" },
+              { role: "Tina", name: "Kleio Parisi / Anastasia Vrana" },
+              { role: "Kostas", name: "Paul Béranger" },
+              { role: "Lykourgos", name: "Nikos Hamilakis" },
+              { role: "Maira", name: "Evgenia Strati" },
+              {
+                role: "Fani",
+                name: "Emilia Patera / Ifigenia Nikolakopoulou",
+              },
+              { role: "Petros", name: "Tasos Xenakis" },
+            ],
+          },
+        ],
         gallery: galleryFor(
           "2025_SPEED DATE",
           "Photo de la représentation « Speed date »",
@@ -111,14 +268,42 @@ export const fr: SiteContent = {
         slug: "souvenirs-assassins",
         title: "Δολοφονικές αναμνήσεις",
         details: [
+          { label: "Année", value: "2023–2024" },
           {
             label: "D'après",
             value: "« Souvenirs Assassins » de Serge Valetti",
           },
+          { label: "Mise en scène", value: "Athina Axiotou" },
           { label: "Traduction", value: "Les élèves de l'atelier" },
         ],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        poster: { image: SouvenirsAssasinPoster, alt: "Affiche du spectacle" },
+        description: `
+        <ul style="list-style-type: '- ';">
+          <li> Dites-moi, monsieur, tout cela se passe-t-il dans votre tête ?</li>
+          <li> Oui, pourquoi ?</li>
+          <li> Parfait…</li>
+        </ul>
+
+        <br/>
+
+        Un comédien monte une fois de plus sur scène, décidé à dérouler devant son public le
+        fil de sa vie. Le premier souvenir de son enfance. Le premier vinyle qu'il a tenté
+        d'acheter. Le premier tour de magie qu'il a appris. Ses premières vacances au bord de
+        la mer, à Golfe-Juan, et son premier flirt. Les premiers amours et les premiers
+        drames familiaux… Les premiers signes que…
+
+        <br/>
+
+        — Mais ce n'est pas un homme, c'est un immeuble !
+        `,
+        leaflet: SouvenirAssasinLeaflet,
         videos: [{ videoId: "6G60HXuyqvg" }],
+        credits: [
+          {
+            label: "Distribution (par ordre d'apparition)",
+            roles: [{ role: "Protagoniste", name: "Personne 1" }],
+          },
+        ],
         gallery: galleryFor(
           "2024_SOUVENIRS ASSASSINS",
           "Photo de la représentation « Souvenirs assassins »",
@@ -127,9 +312,67 @@ export const fr: SiteContent = {
       {
         slug: "siga-ta-aimata",
         title: "Σιγά τα αίματα!",
-        details: [{ label: "Auteur", value: "Akis Dimou" }],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        details: [
+          { label: "Année", value: "2022–2023" },
+          { label: "Auteur", value: "Akis Dimou" },
+          {
+            label: "Mise en scène & direction artistique",
+            value: "Athina Axiotou",
+          },
+          { label: "Assistante & secrétariat", value: "Kleio Parisi" },
+          { label: "Affiche", value: "Elena Mylona" },
+          { label: "Programme", value: "Kleio Parisi, Elena Mylona" },
+          { label: "Direction musicale & piano", value: "Olga Kannavou" },
+          { label: "Chorégraphie tango", value: "Melina Skourla" },
+          {
+            label: "Collaborateur externe & support technique",
+            value: "Stéphane Delaunay",
+          },
+        ],
+        poster: { image: SigaTaAimataPoster, alt: "Affiche du spectacle" },
+        description: `
+          L'Orestie d'Eschyle : la seule trilogie antique conservée, elle remporta le premier
+          prix aux Dionysies en 458 av. J.-C. Elle traite des événements de la maison royale
+          des Atrides, et en particulier de la tragédie familiale qui suit le retour
+          d'Agamemnon à Argos après la guerre de Troie…
+          « Oresteia the next generation » est une parodie de l'Orestie, qui commente en
+          parallèle, sur un ton comique, la réalité néo-hellénique contemporaine. Une troupe
+          de comédiens amateurs se prépare fiévreusement (ou pas… c'est le producteur qui en
+          jugera !) à présenter sur scène certains épisodes de la trilogie. Agamemnon revient
+          dans son royaume après 10 ans. Son épouse Clytemnestre, malgré les objections de sa
+          sœur Hélène, projette de l'assassiner. Leur fille Électre, avec ses frères et sœurs
+          Iphigénie (Fifi) et Oreste, et… son ami Pylade, projette à son tour d'assassiner ses
+          parents. La prophétesse Cassandre tente d'avertir Agamemnon tandis qu'Eschyle
+          s'efforce de maintenir les équilibres…
+          `,
+        leaflet: SigaTaAimataLeaflet,
         videos: [{ videoId: "VOJpWu76xN0" }],
+        credits: [
+          {
+            label: "Distribution (par ordre d'apparition)",
+            roles: [
+              { role: "Eschyle", name: "Sotiris Konstantis" },
+              {
+                role: "Clytemnestre",
+                name: "Natasa Saridi, Kleio Parisi, Evgenia Strati, Elena Mylona",
+              },
+              {
+                role: "Hélène",
+                name: "Sofia Slaftsaki, Elena Mylona, Anastasia Vrana",
+              },
+              { role: "Agamemnon", name: "Ippokratis Stampouloglou" },
+              {
+                role: "Cassandre",
+                name: "Katerina Premeti, Irini Giannopoulou",
+              },
+              { role: "Électre", name: "Lemonthea Grigoriadou, Zoi Fragkaki" },
+              { role: "Iphigénie", name: "Gogo Kanellaki, Melina Skourla" },
+              { role: "Oreste", name: "Nikos Hamilakis" },
+              { role: "Pylade", name: "Guelfo Ascanelli" },
+              { role: "Theofylaktos Besikiotis", name: "Sofia Slaftsaki" },
+            ],
+          },
+        ],
         gallery: galleryFor(
           "2023_SIGA TA AIMATA",
           "Photo de la représentation « Σιγά τα αίματα! »",
@@ -139,11 +382,85 @@ export const fr: SiteContent = {
         slug: "gynaika-loser",
         title: "Γυναίκα Loser",
         details: [
-          { label: "Année", value: "2022" },
+          { label: "Année", value: "2021–2022" },
           { label: "Autrice", value: "Vili Sotiropoulou" },
+          {
+            label: "Mise en scène & direction artistique",
+            value: "Athina Axiotou",
+          },
+          { label: "Assistante & secrétariat", value: "Kleio Parisi" },
+          { label: "Programme", value: "Niki Papailiaki, Elena Mylona" },
+          { label: "Affiche", value: "Elena Mylona" },
+          {
+            label: "Collaborateur externe & support technique",
+            value: "Stéphane Delaunay",
+          },
           { label: "Note", value: "Première création sur scène" },
         ],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        poster: { image: GynaikaLooserPoster, alt: "Affiche du spectacle" },
+        description: `
+          « Γυναίκα Loser » suit le parcours de la femme contemporaine, de l'adolescence à
+          l'âge adulte : des libérales des années 80 et des carriéristes solitaires et
+          accomplies des années 2000, jusqu'aux désespérées de la crise. Les femmes de la
+          pièce partagent leurs histoires à travers trois décennies et de nombreux thèmes :
+          l'amour, le sexe, l'amitié, la psychanalyse, la solitude, la carrière, le chômage,
+          la ménopause, l'ascension et la chute de la classe moyenne. Et bien sûr, elles ne
+          sont pas seules. Les hommes, ensemble ou séparément, sont là, sur le même voyage,
+          tantôt dans le rire, tantôt dans les larmes, sur un chemin vers le « Connais-toi
+          toi-même ».
+          `,
+        leaflet: GynaikaLooserLeaflet,
+        credits: [
+          {
+            label: "Distribution (par ordre d'apparition)",
+            roles: [
+              { role: "La nonne (narratrice)", name: "Niki Papailiaki" },
+              {
+                role: "La nonne plus jeune",
+                name: "Zoi Fragkaki, Margarita Bosmi, Anastasia Vrana, Natasa Saridi, Elena Mylona, Christiana Sachini",
+              },
+              { role: "Le psychanalyste", name: "Giorgos Psaltopoulos" },
+              { role: "Tasoulis", name: "Tasos Poulios" },
+              { role: "Telis / Alexios", name: "Sotiris Konstantis" },
+              { role: "Giannis / Christos", name: "Nikos Hamilakis" },
+              { role: "Kostas", name: "Ippokratis Stampouloglou" },
+              {
+                role: "Peny",
+                name: "Evgenia Strati, Natasa Saridi, Elena Mylona, Sofia Slaftsaki",
+              },
+              { role: "Le patron", name: "Giorgos Psaltopoulos" },
+              { role: "Le gourou / Le Français", name: "Sotiris Konstantis" },
+              { role: "Doros", name: "Tasos Poulios" },
+              { role: "Stobos", name: "Ippokratis Stampouloglou" },
+              { role: "Nounou (Sofaki)", name: "Margarita Bosmi" },
+              { role: "Nounou (la Bulgare)", name: "Anastasia Vrana" },
+              { role: "Nounou (la Roumaine)", name: "Kleio Parisi" },
+              { role: "Nounou (la Philippine)", name: "Zoi Fragkaki" },
+              { role: "Nounou (Youlitska)", name: "Evgenia Strati" },
+              { role: "Mirella", name: "Konstantina Partasidou" },
+              { role: "Giorgos", name: "Nikos Hamilakis" },
+              {
+                role: "Collègues / Mamans",
+                name: "Irini Giannopoulou, Kleio Parisi, Christiana Sachini",
+              },
+              { role: "La chasseuse d'hommes (narratrice)", name: "Kleio Parisi" },
+              {
+                role: "La chasseuse d'hommes",
+                name: "Evgenia Strati, Anastasia Vrana, Sofia Slaftsaki, Christiana Sachini, Irini Giannopoulou",
+              },
+              { role: "Markos", name: "Ippokratis Stampouloglou" },
+              { role: "Lena / Angelos", name: "Konstantina Partasidou" },
+              { role: "La thérapeute", name: "Zoi Fragkaki" },
+              { role: "Spyrakos", name: "Sotiris Konstantis" },
+              { role: "Theofilos", name: "Tasos Poulios" },
+              { role: "L'avocat", name: "Nikos Hamilakis" },
+              {
+                role: "Les femmes",
+                name: "Zoi Fragkaki, Elena Mylona, Natasa Saridi",
+              },
+            ],
+          },
+        ],
         gallery: galleryFor(
           "2022_GYNAIKA LOSER",
           "Photo de la représentation « Γυναίκα Loser »",
@@ -154,9 +471,23 @@ export const fr: SiteContent = {
         title: "Περιμένοντας τον δικό μας Γκοντό",
         details: [
           { label: "Année", value: "2020–2021" },
-          { label: "D'après", value: "Samuel Beckett" },
+          {
+            label: "D'après",
+            value: "En attendant Godot de Samuel Beckett",
+          },
+          {
+            label: "Mise en scène & direction artistique",
+            value: "Athina Axiotou",
+          },
+          { label: "Support technique — couteau suisse", value: "Nikos Hamilakis" },
+          { label: "Secrétariat & assistante à tout faire", value: "Kleio Parisi" },
+          { label: "Photographe & assistante à tout faire", value: "Elena Mylona" },
+          { label: "Collaborateur externe", value: "Stéphane Delaunay" },
+          { label: "Décor", value: "Pathoulas Xavier" },
+          { label: "Transports & déménagements", value: "« O kyr-Mitsos »" },
           { label: "Forme", value: "Représentation en ligne" },
         ],
+        poster: { image: GODOTPoster, alt: "Affiche du spectacle" },
         description: `
         “Dans une ruelle solitaire, sous un arbre squelettique et à côté d’un bac oublié, deux sans-abris, deux voyous chapardeurs, un couple marié, deux medecins, une influenceuse et sa follower, deux vieilles dames, deux journalistes, deux policiers, deux jeunes éméchés, se succèderont, sans jamais se rencontrer, pris au piège d’une attente perpétuelle”
 
@@ -171,57 +502,184 @@ export const fr: SiteContent = {
         La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sotre de reméde contre la rupture du lien social que nous avons vécue.
         `,
         videos: [{ videoId: "5FIIp7Lln_4" }],
+        credits: [
+          {
+            label: "Les sans-abris",
+            roles: [
+              { role: "Estragon", name: "Bosmi Margarita" },
+              { role: "Vladimir", name: "Parisi Kleio" },
+            ],
+          },
+          {
+            label: "Les petits voleurs",
+            roles: [
+              { role: "Estragon", name: "Baroumas Giannis" },
+              { role: "Vladimir", name: "Stampouloglou Ippokratis" },
+            ],
+          },
+          {
+            label: "Le couple",
+            roles: [
+              { role: "Estragon", name: "Baroumas Giannis" },
+              { role: "Vladimir", name: "Missiou Vasiliki" },
+            ],
+          },
+          {
+            label: "Les médecins",
+            roles: [
+              { role: "Estragon", name: "Slaftsaki Sofia" },
+              { role: "Vladimir", name: "Strati Evgenia" },
+            ],
+          },
+          {
+            label: "Les influenceurs",
+            roles: [
+              { role: "Estragon", name: "Menagia Amalthia" },
+              { role: "Vladimir", name: "Vrana Anastasia" },
+            ],
+          },
+          {
+            label: "Les grand-mères",
+            roles: [
+              { role: "Estragon", name: "Mitrogogou Anastasia" },
+              { role: "Vladimir", name: "Mylona Elena" },
+            ],
+          },
+          {
+            label: "Les journalistes",
+            roles: [
+              { role: "Estragon", name: "Neokleous Irini" },
+              { role: "Vladimir", name: "Papailiaki Niki" },
+            ],
+          },
+          {
+            label: "Les policiers",
+            roles: [
+              { role: "Estragon", name: "Sachini Christiana" },
+              { role: "Vladimir", name: "Poulios Tasos" },
+            ],
+          },
+          {
+            label: "Les jeunes",
+            roles: [
+              { role: "Estragon", name: "Fragkaki Zoi" },
+              { role: "Vladimir", name: "Hamilakis Nikos" },
+            ],
+          },
+          {
+            label: "Par ordre d'apparition",
+            roles: [
+              {
+                role: "Pozzo",
+                name: "Hamilakis Nikos, Giannopoulou Irini, Stampouloglou Ippokratis",
+              },
+              { role: "Lucky", name: "Konstantis Sotiris" },
+              { role: "Le garçon", name: "Psaltopoulos Giorgos" },
+            ],
+          },
+          {
+            label: "Musique",
+            roles: [
+              {
+                role: "« L'horloge cassée »",
+                name: "Composition et interprétation Konstantinos Delaunay Axiotis",
+              },
+            ],
+          },
+        ],
         gallery: galleryFor(
           "2021_GODOT",
-          "Photo de la représentation « Περιμένοντας τον δικό μας Γκοντό »",
+          "Photo de la représentation « En attendant notre Godot »",
         ),
       },
       {
         slug: "lysistrata",
         title: "Λυσιστράτη ή Μένουμε Ακρόπολη",
         details: [
-          { label: "Année", value: "2020–2021" },
-          { label: "D'après", value: "Aristophane" },
+          { label: "Année", value: "2019–2020" },
+          { label: "D'après", value: "Lysistrata d'Aristophane" },
+          { label: "Mise en scène", value: "Athina Axiotou" },
           { label: "Forme", value: "Représentation en ligne" },
         ],
-        description: "[À REMPLACER] Courte description du spectacle.",
+        poster: { image: AkropoliPoster, alt: "Affiche du spectacle" },
+        description: `
+        Cette année, pour la première fois et avec un grand accueil.
+        `,
         videos: [{ videoId: "F0eUPQy_FyY" }],
-        // Exemple de distribution — décommentez et complétez :
-        // credits: [
-        //   { role: "Mise en scène", name: "Athina Axiotou" },
-        // ],
+        gallery: galleryFor(
+          "2020_AKROPOLI",
+          "Photo de la représentation « Lysistrata ou Nous restons à l'Acropole »",
+        ),
       },
     ],
   },
 
   team: {
     title: "L'équipe",
-    // Photo de groupe : placez le fichier dans src/assets/, importez-le en haut
-    // du fichier puis décommentez la ligne suivante :
-    // photo: { image: TeamPhoto, alt: "L'équipe" },
+    photo: { image: TeamBanner, alt: "L'équipe" },
     director: {
       title: "Mise en scène & Enseignement",
       name: "Athina Axiotou",
-      // Portrait : importez l'image en haut du fichier puis décommentez :
-      // photo: { image: DirectorPhoto, alt: "Athina Axiotou" },
-      body: `[À REMPLACER] Une courte biographie de la metteuse en scène :
-        parcours, formation, démarche.
-
-        [À REMPLACER] Un second paragraphe sur sa vision du théâtre et son rôle au
-        sein de la compagnie.`,
+      photo: { image: AthinaImage, alt: "Athina Axiotou" },
+      body: `Athina Axiotou est comédienne, metteuse en scène et fondatrice de la troupe de
+        théâtre Opos Opos à Paris. Au long de son parcours dans le milieu, elle a participé à
+        de nombreux spectacles et a enseigné dans de nombreux ateliers de théâtre, dans
+        divers arrondissements et écoles de Paris.`,
     },
     members: {
       title: "Les membres",
       year: "2025–2026",
       names: [
-        { name: "[À REMPLACER] Prénom Nom" },
-        { name: "[À REMPLACER] Prénom Nom" },
-        { name: "[À REMPLACER] Prénom Nom" },
+        { name: "Hamilakis Nikos" },
+        { name: "Strati Evgenia" },
+        { name: "Xenakis Tasos" },
+        { name: "Aguilera Sánchez Domingo" },
+        { name: "Nikolakopoulou Ifigenia" },
+        { name: "Vrana Anastasia" },
+        { name: "Mylona Elena" },
+        { name: "Kostopoulou Maria" },
+        { name: "Nikolidaki Marina" },
+        { name: "Papailiaki Niki" },
+        { name: "Parisi Kleio" },
+        { name: "Pappa Christina" },
+        { name: "Giannopoulou Irini" },
+        { name: "Patera Emilia" },
+        { name: "Slaftsaki Sofia" },
+        { name: "Fertakis Nikos" },
+        { name: "Kalogirou-Valtis Dimitris" },
+        { name: "Pelitaris Paschalis" },
       ],
     },
     alumni: {
       title: "Anciens membres",
-      names: ["[À REMPLACER] Prénom Nom", "[À REMPLACER] Prénom Nom"],
+      names: [
+        "Konstantis Sotiris",
+        "Stampouloglou Ippokratis",
+        "Psaltopoulos Giorgos",
+        "Missiou Vasiliki",
+        "Baroumas Giannis",
+        "Menagia Amalthia",
+        "Vlachopoulos Stefanos",
+        "Gogolou Anna",
+        "Kofos Dimitris",
+        "Militarou Elena",
+        "Sachini Christiana",
+        "Mitrogogou Anastasia",
+        "Neokleous Irini",
+        "Poulios Tasos",
+        "Fragkaki Zoi",
+        "Saridi Natasa",
+        "Partasidou Konstantina",
+        "Kanellaki Gogo",
+        "Skourla Melina",
+        "Premeti Katerina",
+        "Ascanelli Guelfo",
+        "Grigoriadou Lemonthea",
+        "Fragkioudaki Kalliopi",
+        "Zachariadis Panagiotis",
+        "Beranger Paul",
+        "Leventakou Danai",
+      ],
     },
   },
 
@@ -248,7 +706,7 @@ export const fr: SiteContent = {
     ],
     link: {
       label: "Site de la Communauté",
-      href: "https://example.org",
+      href: "https://communaute-hellenique.org/index.html",
     },
   },
 
@@ -256,10 +714,15 @@ export const fr: SiteContent = {
     title: "Contact",
     body: `Nous serons ravis d'échanger avec vous — pour des informations sur les
       spectacles et les cours, pour une collaboration ou pour rejoindre la troupe.`,
-    email: "contact@example.org",
-    address: "[À REMPLACER] Maison de la Grèce, Paris",
+    email: "list.chpe@gmail.com",
+    address:
+      "Communauté Hellénique de Paris et des Environs, 9 Rue Mesnil, 75016 Paris, France",
     socials: [
-      { label: "Facebook", href: "https://facebook.com/", icon: "facebook" },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/theatrikoergastirienilikonCHPE",
+        icon: "facebook",
+      },
     ],
   },
 };
