@@ -1,7 +1,8 @@
 ---
-// COMMUNITY (Η Κοινότητα) — placeholder; part of the later batch.
+// COMMUNITY (Η Κοινότητα): a short note about the Greek Community of Paris that
+// hosts the workshop, with a few photos. Content lives in the `community` data.
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Placeholder from "../../components/Placeholder.astro";
+import Community from "../../components/Community.astro";
 import { content } from "../../data";
 import { LOCALES } from "../../i18n/config";
 import type { Locale } from "../../i18n/config";
@@ -16,5 +17,5 @@ const pageTitle = `${data.nav.community} — ${data.meta.title}`;
 ---
 
 <BaseLayout lang={lang} content={data} title={pageTitle}>
-  <Placeholder lang={lang} title={data.nav.community} />
+  <Community community={data.community} />
 </BaseLayout>

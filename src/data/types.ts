@@ -199,6 +199,8 @@ export interface SiteContent {
   };
   community: SectionText & {
     link?: Link;
+    // Photos spread through the community page (the house, rehearsals, backstage…).
+    images?: Figure[];
   };
   contact: {
     title: string;

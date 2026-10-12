@@ -1,0 +1,117 @@
+---
+// Community page (Η Κοινότητα): a short, warm note about the Greek Community of
+// Paris that hosts the workshop, with a few photos spread around. The first
+// photo sits beside the text; the rest form a row below.
+import { Image } from "astro:assets";
+import Markdown from "./Markdown.astro";
+import type { SiteContent } from "../data/types";
+
+interface Props {
+  community: SiteContent["community"];
+}
+
+const { community } = Astro.props;
+const [lead, ...rest] = community.images ?? [];
+---
+
+<article class="community section">
+  <div class="container">
+    <h1 class="section__title">{community.title}</h1>
+
+    <div class="community__intro">
+      <div class="prose">
+        <Markdown text={community.body} />
+
+        {
+          community.link && (
+            <p class="community__link">
+              <a
+                href={community.link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {community.link.label} →
+              </a>
+            </p>
+          )
+        }
+      </div>
+
+      {
+        lead && (
+          <figure class="community__figure">
+            <Image
+              src={lead.image}
+              alt={lead.alt}
+              widths={[320, 640]}
+              sizes="(min-width: 48rem) 20rem, 90vw"
+              class="community__img"
+            />
+          </figure>
+        )
+      }
+    </div>
+
+    {
+      rest.length > 0 && (
+        <div class="community__gallery">
+          {rest.map((figure) => (
+            <figure class="community__figure">
+              <Image
+                src={figure.image}
+                alt={figure.alt}
+                widths={[400, 800]}
+                sizes="(min-width: 48rem) 28rem, 90vw"
+                class="community__img"
+              />
+            </figure>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</article>
+
+<style>
+  .community__intro {
+    display: grid;
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  /* Text on the left, the lead photo on the right, from tablet up. */
+  @media (min-width: 48rem) {
+    .community__intro {
+      grid-template-columns: 1fr 20rem;
+    }
+  }
+
+  .community__figure {
+    margin: 0;
+  }
+
+  .community__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  .community__gallery {
+    margin-top: var(--space-xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--space-m);
+  }
+
+  .community__link {
+    margin-top: var(--space-m);
+    font-weight: 600;
+  }
+
+  .community__link a {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+</style>

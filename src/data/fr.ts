@@ -4,6 +4,11 @@ import type { SiteContent } from "./types";
 
 import homePageBanner from "../assets/home-page-banner.jpg";
 
+// Community page photos
+import CommunityHouse from "../assets/misc/Maison de la Grèce.jpg";
+import CommunityProva from "../assets/misc/prova.jpg";
+import CommunityBackstage from "../assets/misc/backstage-godot.jpg";
+
 export const fr: SiteContent = {
   meta: {
     title: "Nom de la Compagnie — Théâtre",
@@ -200,11 +205,28 @@ export const fr: SiteContent = {
   },
 
   community: {
-    title: "Le lieu qui nous accueille",
-    body: `[À REMPLACER] Présentez la structure, le théâtre ou la communauté qui vous
-      héberge et soutient votre travail.`,
+    title: "La Communauté Hellénique de Paris et des environs",
+    body: `Notre atelier de théâtre est né et a grandi au sein de la Communauté
+      Hellénique de Paris et des environs. Dès la toute première année, la
+      Communauté nous a accueillis, soutenus et accompagnés à chaque étape.
+
+      Nos répétitions et nos cours ont toujours lieu à la Maison de la Grèce,
+      ce lieu devenu une seconde maison pour nous tous. Sans son hospitalité et
+      son soutien constant, notre troupe n'existerait tout simplement pas.
+
+      Forte d'une longue histoire au service de l'hellénisme de la diaspora, la
+      Communauté entretient le lien vivant avec notre langue et notre culture —
+      et nous sommes fiers d'en être une petite partie.`,
+    images: [
+      { image: CommunityHouse, alt: "La Maison de la Grèce" },
+      { image: CommunityProva, alt: "Répétition de la troupe" },
+      {
+        image: CommunityBackstage,
+        alt: "Dans les coulisses de notre spectacle en ligne",
+      },
+    ],
     link: {
-      label: "[À REMPLACER] Site du lieu",
+      label: "Site de la Communauté",
       href: "https://example.org",
     },
   },

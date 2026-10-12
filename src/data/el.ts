@@ -6,6 +6,11 @@ import homePageBanner from "../assets/home-page-banner.jpg";
 import TeamBanner from "../assets/team-banner.jpg";
 import AthinaImage from "../assets/athina.jpg";
 
+// Community page photos
+import CommunityHouse from "../assets/misc/Maison de la Grèce.jpg";
+import CommunityProva from "../assets/misc/prova.jpg";
+import CommunityBackstage from "../assets/misc/backstage-godot.jpg";
+
 // ---------------- Show Images ----------------
 // --- Gynaika Looser
 import GynaikaLooserPoster from "../assets/shows/2022_GYNAIKA LOSER/AFFICHE WINNER-logos.jpg";
@@ -909,12 +914,29 @@ export const el: SiteContent = {
   },
 
   community: {
-    title: "Ο χώρος που μας φιλοξενεί",
-    body: `[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Παρουσιάστε τον φορέα, το θέατρο ή την κοινότητα που σας
-      φιλοξενεί και στηρίζει τη δουλειά σας.`,
+    title: "Η Ελληνική Κοινότητα Παρισιού και Περιχώρων",
+    body: `Το Θεατρικό μας Εργαστήρι γεννήθηκε και μεγάλωσε μέσα στην αγκαλιά της
+      Ελληνικής Κοινότητας Παρισιού και Περιχώρων. Από την πρώτη κιόλας χρονιά, η
+      Κοινότητα μάς φιλοξένησε, μας στήριξε και μας συνόδευσε σε κάθε μας βήμα.
+
+      Οι πρόβες και τα μαθήματά μας γίνονται πάντα στο Ελληνικό Σπίτι (Maison de la
+      Grèce), τον χώρο που έγινε δεύτερο σπίτι για όλους μας. Χωρίς τη φιλοξενία και
+      τη διαρκή στήριξη της Κοινότητας, η ομάδα μας απλώς δεν θα μπορούσε να υπάρχει.
+
+      Με μακρά ιστορία προσφοράς στον ελληνισμό της διασποράς, η Κοινότητα κρατά
+      ζωντανό τον δεσμό με τη γλώσσα και τον πολιτισμό μας — κι εμείς είμαστε
+      περήφανοι που αποτελούμε ένα μικρό κομμάτι αυτής της προσπάθειας.`,
+    images: [
+      { image: CommunityHouse, alt: "Το Ελληνικό Σπίτι (Maison de la Grèce)" },
+      { image: CommunityProva, alt: "Πρόβα της ομάδας" },
+      {
+        image: CommunityBackstage,
+        alt: "Στα παρασκήνια της διαδικτυακής μας παράστασης",
+      },
+    ],
     link: {
-      label: "[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Ιστότοπος του χώρου",
-      href: "https://example.org",
+      label: "Ιστότοπος της Κοινότητας",
+      href: "https://communaute-hellenique.org/index.html",
     },
   },
 
