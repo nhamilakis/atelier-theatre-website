@@ -682,9 +682,7 @@ export const el: SiteContent = {
           { label: "Μορφή", value: "Διαδικτυακή παρουσίαση" },
         ],
         poster: { image: AkropoliPoster, alt: "Αφίσα της παράστασης" },
-        description: `
-        Φετος για πρωτη χρονια και με μεγαλη ανταποκριση
-        `,
+        description: ``,
         videos: [{ videoId: "F0eUPQy_FyY" }],
         gallery: galleryFor(
           "2020_AKROPOLI",
