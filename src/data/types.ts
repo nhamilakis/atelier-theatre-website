@@ -32,6 +32,13 @@ export interface Link {
   href: string;
 }
 
+// A social link with an optional brand icon shown next to the label.
+export interface Social {
+  label: string;
+  href: string;
+  icon?: "facebook" | "instagram";
+}
+
 // --- Home page ---------------------------------------------------------------
 
 // News posts are a content collection (src/content/news/*.md), not data here.
@@ -206,6 +213,11 @@ export interface SiteContent {
     title: string;
     body: Markdown;
     email?: string;
-    socials?: Link[];
+    // Postal address; also used as the map location when `mapEmbedSrc` is unset.
+    address?: string;
+    // Optional exact map embed (a Google Maps "Embed a map" src URL). When set,
+    // it overrides the map derived from `address`.
+    mapEmbedSrc?: string;
+    socials?: Social[];
   };
 }

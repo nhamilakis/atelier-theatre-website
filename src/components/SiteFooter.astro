@@ -1,4 +1,5 @@
 ---
+import SocialLink from "./SocialLink.astro";
 import type { SiteContent } from "../data/types";
 
 interface Props {
@@ -19,9 +20,7 @@ const year = new Date().getFullYear();
         <ul role="list" class="site-footer__socials">
           {contact.socials.map((social) => (
             <li>
-              <a href={social.href} rel="noopener noreferrer" target="_blank">
-                {social.label}
-              </a>
+              <SocialLink social={social} />
             </li>
           ))}
         </ul>

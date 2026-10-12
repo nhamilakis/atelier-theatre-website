@@ -1,0 +1,112 @@
+---
+// Contact page: a short note, email, address and social links on one side, and
+// a map of where the workshop takes place on the other. The map embed is taken
+// from `mapEmbedSrc` if set, otherwise derived from the `address`.
+import Markdown from "./Markdown.astro";
+import SocialLink from "./SocialLink.astro";
+import type { SiteContent } from "../data/types";
+
+interface Props {
+  contact: SiteContent["contact"];
+}
+
+const { contact } = Astro.props;
+
+const mapSrc =
+  contact.mapEmbedSrc ??
+  (contact.address
+    ? `https://www.google.com/maps?q=${encodeURIComponent(contact.address)}&output=embed`
+    : null);
+---
+
+<article class="contact section">
+  <div class="container">
+    <h1 class="section__title">{contact.title}</h1>
+
+    <div class="contact__grid">
+      <div class="contact__details">
+        <div class="prose">
+          <Markdown text={contact.body} />
+        </div>
+
+        {
+          contact.email && (
+            <p class="contact__email">
+              <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </p>
+          )
+        }
+
+        {contact.address && <p class="contact__address">{contact.address}</p>}
+
+        {
+          contact.socials && contact.socials.length > 0 && (
+            <ul role="list" class="contact__socials">
+              {contact.socials.map((social) => (
+                <li>
+                  <SocialLink social={social} />
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      {
+        mapSrc && (
+          <div class="contact__map">
+            <iframe
+              src={mapSrc}
+              title={contact.title}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</article>
+
+<style>
+  .contact__grid {
+    display: grid;
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  @media (min-width: 48rem) {
+    .contact__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .contact__email {
+    margin-top: var(--space-m);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+  }
+
+  .contact__address {
+    margin-top: var(--space-s);
+    color: var(--color-muted);
+  }
+
+  .contact__socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-m);
+    list-style: none;
+    margin: var(--space-m) 0 0;
+    padding: 0;
+  }
+
+  .contact__map iframe {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    border: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+</style>

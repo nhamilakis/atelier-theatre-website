@@ -1,7 +1,8 @@
 ---
-// CONTACT (Επικοινωνία) — placeholder; part of the later batch.
+// CONTACT (Επικοινωνία): email, address, a map of the venue and social links.
+// Content lives in the `contact` data.
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Placeholder from "../../components/Placeholder.astro";
+import Contact from "../../components/Contact.astro";
 import { content } from "../../data";
 import { LOCALES } from "../../i18n/config";
 import type { Locale } from "../../i18n/config";
@@ -16,5 +17,5 @@ const pageTitle = `${data.nav.contact} — ${data.meta.title}`;
 ---
 
 <BaseLayout lang={lang} content={data} title={pageTitle}>
-  <Placeholder lang={lang} title={data.nav.contact} />
+  <Contact contact={data.contact} />
 </BaseLayout>

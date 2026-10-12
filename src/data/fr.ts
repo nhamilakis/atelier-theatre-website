@@ -254,12 +254,12 @@ export const fr: SiteContent = {
 
   contact: {
     title: "Contact",
-    body: `[À REMPLACER] Comment nous joindre pour une programmation, une collaboration
-      ou toute autre demande.`,
+    body: `Nous serons ravis d'échanger avec vous — pour des informations sur les
+      spectacles et les cours, pour une collaboration ou pour rejoindre la troupe.`,
     email: "contact@example.org",
+    address: "[À REMPLACER] Maison de la Grèce, Paris",
     socials: [
-      { label: "Instagram", href: "https://instagram.com/" },
-      { label: "Facebook", href: "https://facebook.com/" },
+      { label: "Facebook", href: "https://facebook.com/", icon: "facebook" },
     ],
   },
 };

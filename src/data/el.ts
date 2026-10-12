@@ -761,9 +761,17 @@ export const el: SiteContent = {
 
   contact: {
     title: "Επικοινωνία",
-    body: `[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Πώς μπορείτε να επικοινωνήσετε μαζί μας για προγραμματισμό,
-      συνεργασία ή οποιοδήποτε άλλο αίτημα.`,
-    email: "contact@example.org",
-    socials: [{ label: "Facebook", href: "https://facebook.com/" }],
+    body: `Θα χαρούμε να επικοινωνήσετε μαζί μας — για πληροφορίες σχετικά με τις
+      παραστάσεις και τα μαθήματα, για συνεργασίες ή για να γίνετε μέλος της ομάδας.`,
+    email: "list.chpe@gmail.com",
+    address:
+      "Communauté Hellénique de Paris et des Environs, 9 Rue Mesnil, 75016 Paris, France",
+    socials: [
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/theatrikoergastirienilikonCHPE",
+        icon: "facebook",
+      },
+    ],
   },
 };
