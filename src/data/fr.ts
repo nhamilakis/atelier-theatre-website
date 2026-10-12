@@ -1,4 +1,5 @@
 import type { SiteContent } from "./types";
+import { galleryFor } from "./showPhotos";
 
 // --- Images & content
 
@@ -101,6 +102,10 @@ export const fr: SiteContent = {
         title: "Speed date",
         details: [{ label: "Auteur", value: "Giorgos Iliopoulos" }],
         description: "[À REMPLACER] Courte description du spectacle.",
+        gallery: galleryFor(
+          "2025_SPEED DATE",
+          "Photo de la représentation « Speed date »",
+        ),
       },
       {
         slug: "souvenirs-assassins",
@@ -114,6 +119,10 @@ export const fr: SiteContent = {
         ],
         description: "[À REMPLACER] Courte description du spectacle.",
         videos: [{ videoId: "6G60HXuyqvg" }],
+        gallery: galleryFor(
+          "2024_SOUVENIRS ASSASSINS",
+          "Photo de la représentation « Souvenirs assassins »",
+        ),
       },
       {
         slug: "siga-ta-aimata",
@@ -121,6 +130,10 @@ export const fr: SiteContent = {
         details: [{ label: "Auteur", value: "Akis Dimou" }],
         description: "[À REMPLACER] Courte description du spectacle.",
         videos: [{ videoId: "VOJpWu76xN0" }],
+        gallery: galleryFor(
+          "2023_SIGA TA AIMATA",
+          "Photo de la représentation « Σιγά τα αίματα! »",
+        ),
       },
       {
         slug: "gynaika-loser",
@@ -131,6 +144,10 @@ export const fr: SiteContent = {
           { label: "Note", value: "Première création sur scène" },
         ],
         description: "[À REMPLACER] Courte description du spectacle.",
+        gallery: galleryFor(
+          "2022_GYNAIKA LOSER",
+          "Photo de la représentation « Γυναίκα Loser »",
+        ),
       },
       {
         slug: "godot",
@@ -154,6 +171,10 @@ export const fr: SiteContent = {
         La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sotre de reméde contre la rupture du lien social que nous avons vécue.
         `,
         videos: [{ videoId: "5FIIp7Lln_4" }],
+        gallery: galleryFor(
+          "2021_GODOT",
+          "Photo de la représentation « Περιμένοντας τον δικό μας Γκοντό »",
+        ),
       },
       {
         slug: "lysistrata",
