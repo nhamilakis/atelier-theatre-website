@@ -63,7 +63,7 @@ export const fr: SiteContent = {
   company: {
     title:
       "L'Atelier de théâtre pour adultes de la Communauté Hellénique de Paris et des environs",
-    body: `Né en 2019 comme troupe de théâtre de Grecs de la diaspora, à l'initiative
+    body: `L’Atelier de théâtre pour adultes est né en 2019 comme troupe de théâtre de Grecs de la diaspora, à l'initiative
       de la Communauté Hellénique de Paris et des environs et d'Athina Axiotou. En 2020
       et 2021, l'atelier a adapté son activité théâtrale aux restrictions imposées par la
       pandémie et a présenté en ligne « Lysistrata - Nous restons à l'Acropole », d'après
@@ -318,9 +318,9 @@ export const fr: SiteContent = {
         poster: { image: SouvenirsAssasinPoster, alt: "Affiche du spectacle" },
         description: `
         <ul style="list-style-type: '- ';">
-          <li> Dites-moi, monsieur, tout cela se passe-t-il dans votre tête ?</li>
-          <li> Oui, pourquoi ?</li>
-          <li> Parfait…</li>
+          <li> "Dites-moi, monsieur, tout cela se passe-t-il dans votre tête ?" </li>
+          <li> "Oui, pourquoi ?"</li>
+          <li> "Parfait…" </li>
         </ul>
 
         <br/>
@@ -333,7 +333,7 @@ export const fr: SiteContent = {
 
         <br/>
 
-        — Mais ce n'est pas un homme, c'est un immeuble !
+        "Mais ce n'est pas un homme, c'est un immeuble !"
         `,
         leaflet: [
           {
@@ -604,7 +604,7 @@ export const fr: SiteContent = {
         ],
         poster: { image: GODOTPoster, alt: "Affiche du spectacle" },
         description: `
-        “Dans une ruelle solitaire, sous un arbre squelettique et à côté d’un bac oublié, deux sans-abris, deux voyous chapardeurs, un couple marié, deux medecins, une influenceuse et sa follower, deux vieilles dames, deux journalistes, deux policiers, deux jeunes éméchés, se succèderont, sans jamais se rencontrer, pris au piège d’une attente perpétuelle”
+        “Dans une ruelle solitaire, sous un arbre squelettique et à côté d’un banc oublié, deux sans-abris, deux voyous chapardeurs, un couple marié, deux médecins, une influenceuse et sa follower, deux vieilles dames, deux journalistes, deux policiers, deux jeunes éméchés, se succèderont, sans jamais se rencontrer, pris au piège d’une attente perpétuelle”
 
         Dés la création de l’Atelier Théâtre de la Communauté Hellénique de Paris et environs, en octobre 2019, la metteuse en scène Athina Axiotou a dû innover et élaborer de nouvelles approches du théâtre dans le contexte de restrictions que la pandémie nous a imposées.
 
@@ -614,7 +614,7 @@ export const fr: SiteContent = {
 
         Les décors ont été montés à la maison de la Gréce avec le peu de moyens dont nous disposions et surtout grâce à l’aide de tous les membres de la troupe.
 
-        La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sotre de reméde contre la rupture du lien social que nous avons vécue.
+        La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sorte de reméde contre la rupture du lien social que nous avons vécue.
         `,
         videos: [{ videoId: "5FIIp7Lln_4" }],
         credits: [
@@ -752,7 +752,7 @@ export const fr: SiteContent = {
         videos: [{ videoId: "F0eUPQy_FyY" }],
         credits: [
           {
-            label: "Distribution (par ordre alphabétique)",
+            label: "",
             roles: [
               { role: "Epivoulos", name: "Baroumas Yannis" },
               { role: "Myrrhiné", name: "Bosmi Margarita" },
@@ -852,7 +852,7 @@ export const fr: SiteContent = {
     body: `Nous serons ravis d'échanger avec vous — pour des informations sur les
       spectacles et les cours, pour une collaboration ou pour rejoindre la troupe.`,
     courses:
-      "Les cours ont lieu chaque Mardi, 19:00 - 21:30, à la Maison de la Grèce.",
+      "Les cours ont lieu chaque Mardi, 19:30 - 21:30, à la Maison de la Grèce.",
     email: "list.chpe@gmail.com",
     tel_communaute: "+33 (0)1 47 04 67 89",
     address:

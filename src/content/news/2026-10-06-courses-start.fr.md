@@ -1,5 +1,5 @@
 ---
-title: "Les cours ont commencé !"
+title: "C'est la rentrée!"
 date: 2026-10-06
 lang: fr
 ---
