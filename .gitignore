@@ -23,3 +23,15 @@ pnpm-debug.log*
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
+
+# This project keeps its images and PDFs in git. A global gitignore may ignore
+# these file types; re-include them here (a repo .gitignore overrides the global
+# core.excludesFile). This only affects this repository.
+!*.jpg
+!*.JPG
+!*.jpeg
+!*.JPEG
+!*.png
+!*.PNG
+!*.webp
+!*.pdf
