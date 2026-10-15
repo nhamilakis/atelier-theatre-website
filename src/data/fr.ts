@@ -41,7 +41,7 @@ import AkropoliPoster from "../assets/shows/akropoli.jpg";
 
 export const fr: SiteContent = {
   meta: {
-    title: "Atelier de théâtre pour adultes",
+    title: "Ateliers de théâtre",
     description:
       "[À REMPLACER] Troupe de théâtre — présentation, créations et contact.",
   },
@@ -56,10 +56,10 @@ export const fr: SiteContent = {
   hero: {
     header_title: "",
     title:
-      "L'Atelier de théâtre pour adultes de la Communauté Hellénique de Paris et des environs",
+      "Les Ateliers de théâtre de la Communauté Hellénique de Paris et des environs",
     tagline: "[À REMPLACER] Une phrase qui résume l'esprit de la troupe.",
     footer_title:
-      "Atelier de théâtre pour adultes de la Communauté Hellénique de Paris et des environs",
+      "Ateliers de théâtre de la Communauté Hellénique de Paris et des environs",
   },
 
   company: {
@@ -68,13 +68,13 @@ export const fr: SiteContent = {
     body: `Né en 2019 comme troupe de théâtre de Grecs de la diaspora, à l'initiative
       de la Communauté Hellénique de Paris et des environs et d'Athina Axiotou. En 2020
       et 2021, l'atelier a adapté son activité théâtrale aux restrictions imposées par la
-      pandémie et a présenté en ligne « Lysistrata ou Nous restons à l'Acropole », d'après
-      l'œuvre d'Aristophane, et « En attendant notre Godot », d'après l'œuvre de Samuel
+      pandémie et a présenté en ligne « Lysistrata - Nous restons à l'Acropole », d'après
+      l'œuvre d'Aristophane Lysistrata, et « En attendant notre Godot », d'après l'œuvre de Samuel
       Beckett. En 2022, la première représentation sur scène a été accueillie avec succès,
       « Γυναίκα Loser » de Vili Sotiropoulou ; les saisons suivantes ont suivi, dans
       l'ordre, les spectacles « Σιγά τα αίματα » d'Akis Dimou, « Souvenirs assassins » —
-      d'après l'œuvre de Serge Valetti, traduite par les élèves de l'atelier — et
-      « Speed date » de Giorgos Iliopoulos.`,
+      d'après l'œuvre de Serge Valetti, traduite par les élèves de l'atelier,
+      « Speed date » de Giorgos Iliopoulos et notre dernier spectacle « Παραμύθι χωρίς όνομα » (Un conte sans nom) de Iakovos Kambanellis.`,
   },
 
   home: {

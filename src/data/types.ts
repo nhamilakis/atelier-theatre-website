@@ -90,6 +90,7 @@ export interface Show {
   // stays on the same show. Latin, lowercase, hyphenated.
   slug: string;
   title: string;
+  subtitle: string;
   // Blank line = new paragraph; **bold**, *italics*, > blockquote, lists and
   // [links](…) all work. Leading indentation of each line is stripped before
   // rendering, so you can indent the template literal freely in the data file.
