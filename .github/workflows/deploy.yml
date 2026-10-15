@@ -1,37 +1,39 @@
-name: Deploy to GitHub Pages (test)
+# Build the Astro site and deploy it to GitHub Pages.
+# Enable this in the repo: Settings → Pages → "Build and deployment" →
+# Source: "GitHub Actions".
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [master, main]
+  # Allow running the workflow manually from the Actions tab.
   workflow_dispatch:
 
+# Permissions needed by the Pages deployment.
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow one concurrent deployment; don't cancel an in-progress run.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Create a temporary page
-        run: |
-          mkdir -p temp-site
-          cat > temp-site/index.html <<'EOF'
-          <!doctype html>
-          <html>
-            <head><meta charset="utf-8"><title>Coming soon</title></head>
-            <body>
-              <h1>Coming soon</h1>
-              <p>Deployment test OK.</p>
-            </body>
-          </html>
-          EOF
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Upload as Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: temp-site
+      - name: Build with Astro
+        uses: withastro/action@v3
+        # withastro/action installs dependencies, runs `astro build`, and
+        # uploads ./dist as a Pages artifact. The "github" target's site/base
+        # are set in astro.config.mjs — edit the domain placeholder there.
+        env:
+          DEPLOY_TARGET: github
 
   deploy:
     needs: build

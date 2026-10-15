@@ -25,7 +25,7 @@ const TARGETS = {
   // 2. GitHub Pages on a custom domain (served from the root).
   //    TODO: replace with your real domain.
   github: {
-    site: "https://REPLACE-WITH-YOUR-DOMAIN.org",
+    site: "https://theatre.communaute-hellenique-paris.org",
     base: "/",
   },
 
