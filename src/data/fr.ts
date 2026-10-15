@@ -106,6 +106,12 @@ export const fr: SiteContent = {
           source: "ethnos.gr · 2020 (en grec)",
         },
         {
+          label:
+            "Athina Axiotou : l’âme de la troupe de théâtre OposOpos à Paris",
+          href: "https://hephaestuswien.com/athina-auxentiou-opos-opos/",
+          source: "hephaestuswien.com - 2020",
+        },
+        {
           label: "Interview d'Athina Axiotou sur Real FM",
           href: "https://soundcloud.com/athina-axiotou",
           source: "Real FM · SoundCloud (en grec)",

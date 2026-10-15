@@ -121,6 +121,11 @@ export const el: SiteContent = {
           source: "ethnos.gr · 2020",
         },
         {
+          label: "Αθηνά Αξιώτου: η ψυχή της θεατρικής ομάδας OposOpos Παρισιού",
+          href: "https://hephaestuswien.com/athina-auxentiou-opos-opos/",
+          source: "hephaestuswien.com - 2020",
+        },
+        {
           label: "Συνέντευξη της Αθηνάς Αξιώτου στον Real FM",
           href: "https://soundcloud.com/athina-axiotou",
           source: "Real FM · SoundCloud",
