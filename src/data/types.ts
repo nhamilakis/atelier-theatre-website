@@ -76,6 +76,14 @@ export interface Figure {
   alt: string;
 }
 
+// One leaflet / programme (a PDF) for a show, optionally labelled by its run.
+export interface ShowLeaflet {
+  // URL to a PDF. Import it at the top of the data file and reference it here.
+  file: string;
+  // Optional label, e.g. which run/date the programme is from.
+  label?: string;
+}
+
 // One video for a show: a YouTube id plus an optional caption/label.
 export interface ShowVideo {
   // Optional label shown above the embed, e.g. "Τρέιλερ" / "Ολόκληρη παράσταση".
@@ -105,10 +113,9 @@ export interface Show {
   // Optional videos (trailer, teaser, full recording…), shown as embeds, each
   // with an optional label above it.
   videos?: ShowVideo[];
-  // Optional leaflet / programme: a URL to a PDF. Import it at the top of the
-  // data file (`import x from "../assets/.../leaflet.pdf"`) so the path is
-  // correct for every deploy target, then set `leaflet: x`.
-  leaflet?: string;
+  // Optional leaflets / programmes (PDFs). A show played several times can list
+  // one per run, each with an optional label.
+  leaflet?: ShowLeaflet[];
   // Optional photo gallery: imported images shown as thumbnails that open in a
   // pop-up (lightbox).
   gallery?: Figure[];
@@ -199,11 +206,6 @@ export interface SiteContent {
       year?: string;
       names: TeamMember[];
     };
-    // Former members (just names — no portraits).
-    alumni: {
-      title: string;
-      names: string[];
-    };
   };
   community: SectionText & {
     link?: Link;
@@ -213,9 +215,12 @@ export interface SiteContent {
   contact: {
     title: string;
     body: Markdown;
+    // Optional short note about when the courses take place (day & time).
+    courses?: Markdown;
     email?: string;
     // Postal address; also used as the map location when `mapEmbedSrc` is unset.
     address?: string;
+    tel_communaute?: string;
     // Optional exact map embed (a Google Maps "Embed a map" src URL). When set,
     // it overrides the map derived from `address`.
     mapEmbedSrc?: string;

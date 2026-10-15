@@ -1,7 +1,7 @@
 ---
 // One card in the shows gallery: a picture (custom cardImage, else the poster,
 // else a 🎭 placeholder) that links to the show's own page, with its title and
-// year underneath. The whole card is the link.
+// subtitle underneath. The whole card is the link.
 import { Image } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import type { Show } from "../data/types";
@@ -16,8 +16,6 @@ const { show, lang } = Astro.props;
 
 const href = getRelativeLocaleUrl(lang, `shows/${show.slug}`);
 const image = show.cardImage ?? show.poster;
-// Surface the year under the title when the data has one (el: "Έτος", fr: "Année").
-const year = show.details?.find((d) => d.label === "Έτος" || d.label === "Année");
 ---
 
 <a class="show-card" href={href}>
@@ -39,7 +37,7 @@ const year = show.details?.find((d) => d.label === "Έτος" || d.label === "An
     }
   </div>
   <h2 class="show-card__title">{show.title}</h2>
-  {year && <p class="show-card__year">{year.value}</p>}
+  {show.subtitle && <p class="show-card__year">{show.subtitle}</p>}
 </a>
 
 <style>

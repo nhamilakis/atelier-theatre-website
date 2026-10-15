@@ -4,7 +4,6 @@
 //     photo is set yet)
 //   - Director & Teacher + bio
 //   - current members (with the season year)
-//   - alumni
 import { Image } from "astro:assets";
 import Markdown from "./Markdown.astro";
 import type { SiteContent } from "../data/types";
@@ -16,15 +15,13 @@ interface Props {
 }
 
 const { team, lang } = Astro.props;
-const { director, members, alumni } = team;
+const { director, members } = team;
 
-// Rosters read best alphabetically (credits stay in appearance order, in the
+// Members read best alphabetically (credits stay in appearance order, in the
 // data). Locale-aware so Greek sorts correctly; data order is left untouched.
-// Members are objects ({ name, photo? }); alumni are plain name strings.
 const sortedMembers = [...members.names].sort((a, b) =>
   a.name.localeCompare(b.name, lang),
 );
-const alumniNames = [...alumni.names].sort((a, b) => a.localeCompare(b, lang));
 
 const membersHeading = members.year
   ? `${members.title} (${members.year})`
@@ -102,19 +99,6 @@ const membersHeading = members.year
         }
       </ul>
     </section>
-
-    {
-      alumni.names.length > 0 && (
-        <section class="team__section">
-          <h2 class="team__section-title">{alumni.title}</h2>
-          <ul role="list" class="team__names team__names--muted">
-            {alumniNames.map((name) => (
-              <li>{name}</li>
-            ))}
-          </ul>
-        </section>
-      )
-    }
   </div>
 </article>
 
@@ -251,25 +235,5 @@ const membersHeading = members.year
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  /* Alumni: plain names, packed into balanced columns. */
-  .team__names {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    /* Many short names pack into balanced columns (as many ~12rem columns as
-       fit) and read top-to-bottom, instead of one tall vertical list. */
-    columns: 12rem;
-    column-gap: var(--space-l);
-  }
-
-  .team__names li {
-    break-inside: avoid;
-    padding-block: 0.15rem;
-  }
-
-  .team__names--muted li {
-    color: var(--color-muted);
   }
 </style>

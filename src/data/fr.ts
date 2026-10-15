@@ -35,9 +35,6 @@ import AkropoliPoster from "../assets/shows/akropoli.jpg";
 // -----------------------------------------------------------------------------
 // FRENCH CONTENT / CONTENU FRANÇAIS
 // -----------------------------------------------------------------------------
-// Traduit depuis el.ts. Les noms sont translittérés en caractères latins ; les
-// titres des spectacles restent en grec. [À REMPLACER] = texte provisoire.
-// -----------------------------------------------------------------------------
 
 export const fr: SiteContent = {
   meta: {
@@ -57,7 +54,8 @@ export const fr: SiteContent = {
     header_title: "",
     title:
       "Les Ateliers de théâtre de la Communauté Hellénique de Paris et des environs",
-    tagline: "[À REMPLACER] Une phrase qui résume l'esprit de la troupe.",
+    // [À REMPLACER] Une phrase qui résume l'esprit de la troupe.
+    tagline: "",
     footer_title:
       "Ateliers de théâtre de la Communauté Hellénique de Paris et des environs",
   },
@@ -84,8 +82,8 @@ export const fr: SiteContent = {
     banner: homePageBanner,
     articles: {
       title: "Articles & mentions",
-      intro:
-        "[À REMPLACER] Publications et mentions de la compagnie dans la presse.",
+      // [À REMPLACER] Publications et mentions de la compagnie dans la presse.
+      intro: "",
       items: [
         {
           label: "[À REMPLACER] Titre de l'article",
@@ -107,12 +105,50 @@ export const fr: SiteContent = {
     leafletLabel: "Dépliant",
     galleryLabel: "Galerie",
     creditsLabel: "Distribution",
-    intro:
-      "[À REMPLACER] Une courte introduction aux spectacles de la compagnie.",
+    // [À REMPLACER] Une courte introduction aux spectacles de la compagnie.
+    intro: "",
     items: [
       {
         slug: "paramythi",
         title: "Παραμύθι χωρίς όνομα",
+        subtitle: "Saison théâtrale 2025–2026",
+        poster: { image: ParamithiPoster, alt: "Affiche du spectacle" },
+        description: `
+        « Παραμύθι χωρίς όνομα » (Un conte sans nom) est la pièce de Iakovos Kambanellis,
+          inspirée du livre homonyme de Pénélope Delta. Les paroles des chansons ont été
+          mises en musique par Manos Hadjidakis.
+
+          « Et si nous avions eu tort d'attendre tout d'ailleurs ? Et si notre pays avait
+          tout, et que nous ne l'avions pas vu parce que nous regardions de travers ? »
+
+          Le royaume est en pleine décadence… Le couple royal, depuis longtemps incapable de
+          redresser la situation, s'apprête à quitter le pays, malgré les objections de son
+          fils. Le peuple a faim, souffre, peine de plus en plus à joindre les deux bouts au
+          quotidien. Seul un miracle — l'aide financière demandée (et pas pour la première
+          fois…) à l'Oncle Roi — pourrait sauver la situation. Et oui, le prêt est arrivé une
+          fois de plus ! Ou peut-être pas, cette fois-ci ? La caisse envoyée par l'oncle
+          contient-elle vraiment de l'argent, ou autre chose ?
+        `,
+        leaflet: [
+          {
+            label: "Dépliant du spectacle — Mai 2026",
+            file: ParamithiLeaflet,
+          },
+        ],
+        gallery: galleryFor(
+          "2026_PARAMYTHI",
+          "Photo de la représentation « Un conte sans nom »",
+        ),
+        /*
+        // From description
+        // <br/>
+        //
+        // #### Musique & chansons
+        //
+        // <br/>
+        // Avec la participation de l'Atelier de chant grec, dans l'œuvre homonyme de Manos
+        // Hadjidakis, sous la direction de Katerina Fotinaki, qui joue de la guitare sur scène.
+
         details: [
           { label: "Année", value: "2025–2026" },
           { label: "Auteur", value: "Iakovos Kambanellis" },
@@ -137,32 +173,6 @@ export const fr: SiteContent = {
           },
           { label: "Direction musicale", value: "Katerina Fotinaki" },
         ],
-        poster: { image: ParamithiPoster, alt: "Affiche du spectacle" },
-        description: `
-        « Παραμύθι χωρίς όνομα » (Un conte sans nom) est la pièce de Iakovos Kambanellis,
-          inspirée du livre homonyme de Pénélope Delta. Les paroles des chansons ont été
-          mises en musique par Manos Hadjidakis.
-
-          « Et si nous avions eu tort d'attendre tout d'ailleurs ? Et si notre pays avait
-          tout, et que nous ne l'avions pas vu parce que nous regardions de travers ? »
-
-          Le royaume est en pleine décadence… Le couple royal, depuis longtemps incapable de
-          redresser la situation, s'apprête à quitter le pays, malgré les objections de son
-          fils. Le peuple a faim, souffre, peine de plus en plus à joindre les deux bouts au
-          quotidien. Seul un miracle — l'aide financière demandée (et pas pour la première
-          fois…) à l'Oncle Roi — pourrait sauver la situation. Et oui, le prêt est arrivé une
-          fois de plus ! Ou peut-être pas, cette fois-ci ? La caisse envoyée par l'oncle
-          contient-elle vraiment de l'argent, ou autre chose ?
-
-          <br/>
-
-          #### Musique & chansons
-
-          <br/>
-          Avec la participation de l'Atelier de chant grec, dans l'œuvre homonyme de Manos
-          Hadjidakis, sous la direction de Katerina Fotinaki, qui joue de la guitare sur scène.
-            `,
-        leaflet: ParamithiLeaflet,
         credits: [
           {
             label: "Distribution (par ordre d'apparition)",
@@ -201,14 +211,34 @@ export const fr: SiteContent = {
             ],
           },
         ],
-        gallery: galleryFor(
-          "2026_PARAMYTHI",
-          "Photo de la représentation « Un conte sans nom »",
-        ),
+        */
       },
       {
         slug: "speed-date",
         title: "Speed date",
+        subtitle: "Saison théâtrale 2024–2025",
+        poster: { image: SpeedDatePoster, alt: "Affiche du spectacle" },
+        description: `
+        Douze personnages si différents les uns des autres, réunis dans un même lieu avec un
+        objectif commun : ce soir, ils doivent trouver leur moitié… Des visages
+        d'aujourd'hui, des gens d'à côté que nous avons tous croisés quelque part, chacun
+        avec ses problèmes, son univers, ses démons et ses ambitions, se retrouvent cette
+        nuit dans un seul but : former un couple ! La pression du temps, mais aussi l'effort
+        et l'angoisse d'être acceptés, créent un environnement dense de conflits et de
+        rebondissements qui, à grandes doses d'humour, composent une galerie révélatrice de
+        personnages et de comportements contemporains.
+        `,
+        leaflet: [
+          {
+            label: "Dépliant du spectacle — Mai 2025",
+            file: SpeedDateLeaflet,
+          },
+        ],
+        gallery: galleryFor(
+          "2025_SPEED DATE",
+          "Photo de la représentation « Speed date »",
+        ),
+        /*
         details: [
           { label: "Année", value: "2024–2025" },
           { label: "Auteur", value: "Giorgos Iliopoulos" },
@@ -224,18 +254,6 @@ export const fr: SiteContent = {
             value: "Stéphane Delaunay",
           },
         ],
-        poster: { image: SpeedDatePoster, alt: "Affiche du spectacle" },
-        description: `
-        Douze personnages si différents les uns des autres, réunis dans un même lieu avec un
-        objectif commun : ce soir, ils doivent trouver leur moitié… Des visages
-        d'aujourd'hui, des gens d'à côté que nous avons tous croisés quelque part, chacun
-        avec ses problèmes, son univers, ses démons et ses ambitions, se retrouvent cette
-        nuit dans un seul but : former un couple ! La pression du temps, mais aussi l'effort
-        et l'angoisse d'être acceptés, créent un environnement dense de conflits et de
-        rebondissements qui, à grandes doses d'humour, composent une galerie révélatrice de
-        personnages et de comportements contemporains.
-        `,
-        leaflet: SpeedDateLeaflet,
         credits: [
           {
             label: "Distribution (par ordre d'apparition)",
@@ -259,14 +277,44 @@ export const fr: SiteContent = {
             ],
           },
         ],
-        gallery: galleryFor(
-          "2025_SPEED DATE",
-          "Photo de la représentation « Speed date »",
-        ),
+        */
       },
       {
         slug: "souvenirs-assassins",
         title: "Δολοφονικές αναμνήσεις",
+        subtitle: "Saison théâtrale 2023–2024",
+        poster: { image: SouvenirsAssasinPoster, alt: "Affiche du spectacle" },
+        description: `
+        <ul style="list-style-type: '- ';">
+          <li> Dites-moi, monsieur, tout cela se passe-t-il dans votre tête ?</li>
+          <li> Oui, pourquoi ?</li>
+          <li> Parfait…</li>
+        </ul>
+
+        <br/>
+
+        Un comédien monte une fois de plus sur scène, décidé à dérouler devant son public le
+        fil de sa vie. Le premier souvenir de son enfance. Le premier vinyle qu'il a tenté
+        d'acheter. Le premier tour de magie qu'il a appris. Ses premières vacances au bord de
+        la mer, à Golfe-Juan, et son premier flirt. Les premiers amours et les premiers
+        drames familiaux… Les premiers signes que…
+
+        <br/>
+
+        — Mais ce n'est pas un homme, c'est un immeuble !
+        `,
+        leaflet: [
+          {
+            label: "Dépliant du spectacle — Juin 2024",
+            file: SouvenirAssasinLeaflet,
+          },
+        ],
+        videos: [{ videoId: "6G60HXuyqvg" }],
+        gallery: galleryFor(
+          "2024_SOUVENIRS ASSASSINS",
+          "Photo de la représentation « Souvenirs assassins »",
+        ),
+        /*
         details: [
           { label: "Année", value: "2023–2024" },
           {
@@ -289,28 +337,6 @@ export const fr: SiteContent = {
           },
           { label: "Traduction", value: "Les élèves de l'atelier" },
         ],
-        poster: { image: SouvenirsAssasinPoster, alt: "Affiche du spectacle" },
-        description: `
-        <ul style="list-style-type: '- ';">
-          <li> Dites-moi, monsieur, tout cela se passe-t-il dans votre tête ?</li>
-          <li> Oui, pourquoi ?</li>
-          <li> Parfait…</li>
-        </ul>
-
-        <br/>
-
-        Un comédien monte une fois de plus sur scène, décidé à dérouler devant son public le
-        fil de sa vie. Le premier souvenir de son enfance. Le premier vinyle qu'il a tenté
-        d'acheter. Le premier tour de magie qu'il a appris. Ses premières vacances au bord de
-        la mer, à Golfe-Juan, et son premier flirt. Les premiers amours et les premiers
-        drames familiaux… Les premiers signes que…
-
-        <br/>
-
-        — Mais ce n'est pas un homme, c'est un immeuble !
-        `,
-        leaflet: SouvenirAssasinLeaflet,
-        videos: [{ videoId: "6G60HXuyqvg" }],
         credits: [
           {
             label: "Distribution (par ordre d'apparition)",
@@ -335,14 +361,40 @@ export const fr: SiteContent = {
             ],
           },
         ],
-        gallery: galleryFor(
-          "2024_SOUVENIRS ASSASSINS",
-          "Photo de la représentation « Souvenirs assassins »",
-        ),
+        */
       },
       {
         slug: "siga-ta-aimata",
         title: "Σιγά τα αίματα!",
+        subtitle: "Saison théâtrale 2022–2023",
+        poster: { image: SigaTaAimataPoster, alt: "Affiche du spectacle" },
+        description: `
+          L'Orestie d'Eschyle : la seule trilogie antique conservée, elle remporta le premier
+          prix aux Dionysies en 458 av. J.-C. Elle traite des événements de la maison royale
+          des Atrides, et en particulier de la tragédie familiale qui suit le retour
+          d'Agamemnon à Argos après la guerre de Troie…
+          « Oresteia the next generation » est une parodie de l'Orestie, qui commente en
+          parallèle, sur un ton comique, la réalité néo-hellénique contemporaine. Une troupe
+          de comédiens amateurs se prépare fiévreusement (ou pas… c'est le producteur qui en
+          jugera !) à présenter sur scène certains épisodes de la trilogie. Agamemnon revient
+          dans son royaume après 10 ans. Son épouse Clytemnestre, malgré les objections de sa
+          sœur Hélène, projette de l'assassiner. Leur fille Électre, avec ses frères et sœurs
+          Iphigénie (Fifi) et Oreste, et… son ami Pylade, projette à son tour d'assassiner ses
+          parents. La prophétesse Cassandre tente d'avertir Agamemnon tandis qu'Eschyle
+          s'efforce de maintenir les équilibres…
+          `,
+        leaflet: [
+          {
+            label: "Dépliant du spectacle — Juin 2023",
+            file: SigaTaAimataLeaflet,
+          },
+        ],
+        videos: [{ videoId: "VOJpWu76xN0" }],
+        gallery: galleryFor(
+          "2023_SIGA TA AIMATA",
+          "Photo de la représentation « Σιγά τα αίματα! »",
+        ),
+        /*
         details: [
           { label: "Année", value: "2022–2023" },
           { label: "Auteur", value: "Akis Dimou" },
@@ -360,24 +412,6 @@ export const fr: SiteContent = {
             value: "Stéphane Delaunay",
           },
         ],
-        poster: { image: SigaTaAimataPoster, alt: "Affiche du spectacle" },
-        description: `
-          L'Orestie d'Eschyle : la seule trilogie antique conservée, elle remporta le premier
-          prix aux Dionysies en 458 av. J.-C. Elle traite des événements de la maison royale
-          des Atrides, et en particulier de la tragédie familiale qui suit le retour
-          d'Agamemnon à Argos après la guerre de Troie…
-          « Oresteia the next generation » est une parodie de l'Orestie, qui commente en
-          parallèle, sur un ton comique, la réalité néo-hellénique contemporaine. Une troupe
-          de comédiens amateurs se prépare fiévreusement (ou pas… c'est le producteur qui en
-          jugera !) à présenter sur scène certains épisodes de la trilogie. Agamemnon revient
-          dans son royaume après 10 ans. Son épouse Clytemnestre, malgré les objections de sa
-          sœur Hélène, projette de l'assassiner. Leur fille Électre, avec ses frères et sœurs
-          Iphigénie (Fifi) et Oreste, et… son ami Pylade, projette à son tour d'assassiner ses
-          parents. La prophétesse Cassandre tente d'avertir Agamemnon tandis qu'Eschyle
-          s'efforce de maintenir les équilibres…
-          `,
-        leaflet: SigaTaAimataLeaflet,
-        videos: [{ videoId: "VOJpWu76xN0" }],
         credits: [
           {
             label: "Distribution (par ordre d'apparition)",
@@ -404,14 +438,35 @@ export const fr: SiteContent = {
             ],
           },
         ],
-        gallery: galleryFor(
-          "2023_SIGA TA AIMATA",
-          "Photo de la représentation « Σιγά τα αίματα! »",
-        ),
+        */
       },
       {
         slug: "gynaika-loser",
         title: "Γυναίκα Loser",
+        subtitle: "Saison théâtrale 2021–2022",
+        poster: { image: GynaikaLooserPoster, alt: "Affiche du spectacle" },
+        description: `
+          « Γυναίκα Loser » suit le parcours de la femme contemporaine, de l'adolescence à
+          l'âge adulte : des libérales des années 80 et des carriéristes solitaires et
+          accomplies des années 2000, jusqu'aux désespérées de la crise. Les femmes de la
+          pièce partagent leurs histoires à travers trois décennies et de nombreux thèmes :
+          l'amour, le sexe, l'amitié, la psychanalyse, la solitude, la carrière, le chômage,
+          la ménopause, l'ascension et la chute de la classe moyenne. Et bien sûr, elles ne
+          sont pas seules. Les hommes, ensemble ou séparément, sont là, sur le même voyage,
+          tantôt dans le rire, tantôt dans les larmes, sur un chemin vers le « Connais-toi
+          toi-même ».
+          `,
+        leaflet: [
+          {
+            label: "Dépliant du spectacle — Mai 2022",
+            file: GynaikaLooserLeaflet,
+          },
+        ],
+        gallery: galleryFor(
+          "2022_GYNAIKA LOSER",
+          "Photo de la représentation « Γυναίκα Loser »",
+        ),
+        /*
         details: [
           { label: "Année", value: "2021–2022" },
           { label: "Autrice", value: "Vili Sotiropoulou" },
@@ -428,19 +483,6 @@ export const fr: SiteContent = {
           },
           { label: "Note", value: "Première création sur scène" },
         ],
-        poster: { image: GynaikaLooserPoster, alt: "Affiche du spectacle" },
-        description: `
-          « Γυναίκα Loser » suit le parcours de la femme contemporaine, de l'adolescence à
-          l'âge adulte : des libérales des années 80 et des carriéristes solitaires et
-          accomplies des années 2000, jusqu'aux désespérées de la crise. Les femmes de la
-          pièce partagent leurs histoires à travers trois décennies et de nombreux thèmes :
-          l'amour, le sexe, l'amitié, la psychanalyse, la solitude, la carrière, le chômage,
-          la ménopause, l'ascension et la chute de la classe moyenne. Et bien sûr, elles ne
-          sont pas seules. Les hommes, ensemble ou séparément, sont là, sur le même voyage,
-          tantôt dans le rire, tantôt dans les larmes, sur un chemin vers le « Connais-toi
-          toi-même ».
-          `,
-        leaflet: GynaikaLooserLeaflet,
         credits: [
           {
             label: "Distribution (par ordre d'apparition)",
@@ -495,14 +537,12 @@ export const fr: SiteContent = {
             ],
           },
         ],
-        gallery: galleryFor(
-          "2022_GYNAIKA LOSER",
-          "Photo de la représentation « Γυναίκα Loser »",
-        ),
+        */
       },
       {
         slug: "godot",
         title: "Περιμένοντας τον δικό μας Γκοντό",
+        subtitle: "Saison théâtrale 2020–2021",
         details: [
           { label: "Année", value: "2020–2021" },
           {
@@ -536,11 +576,11 @@ export const fr: SiteContent = {
 
         Dés la création de l’Atelier Théâtre de la Communauté Hellénique de Paris et environs, en octobre 2019, la metteuse en scène Athina Axiotou a dû innover et élaborer de nouvelles approches du théâtre dans le contexte de restrictions que la pandémie nous a imposées.
 
-        Si l’année dernière, avec la mise en scéne d’un texte revisité de Lysistrata d’Aristophane, elle avait réussi à montrer la nécessité de résister aux nouvelles atterrantes reçues en début de la pandémie, cette année elle a choisi de travailler sur le ressenti du temps suspendu et sur “l’absurde” de l’attente que nous avons endurée ces derniers temps, en s'appuyant sur la piéce de S. Beckett “En attendant Godot”.
+        Si avec la mise en scéne d’un texte revisité de Lysistrata d’Aristophane, elle avait réussi à montrer la nécessité de résister aux nouvelles atterrantes reçues en début de la pandémie, cette année elle a choisi de travailler sur le ressenti du temps suspendu et sur “l’absurde” de l’attente que nous avons endurée ces derniers temps, en s'appuyant sur la piéce de S. Beckett “En attendant Godot”.
 
         La majorité des répétitions se sont faites en ligne, trés peu de répétitions en présentiel ont pu être realisées, entre la levée des restrictions de déplacement et la représentation finale.
 
-        Les décors ont ét” montés à la maison de la Gréce avec le peu de moyens dont nous disposions et surtout grâce à l’aide de tous les membres de la troupe.
+        Les décors ont été montés à la maison de la Gréce avec le peu de moyens dont nous disposions et surtout grâce à l’aide de tous les membres de la troupe.
 
         La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sotre de reméde contre la rupture du lien social que nous avons vécue.
         `,
@@ -638,6 +678,7 @@ export const fr: SiteContent = {
       {
         slug: "lysistrata",
         title: "Λυσιστράτη ή Μένουμε Ακρόπολη",
+        subtitle: "Saison théâtrale 2020–2021",
         details: [
           { label: "Année", value: "2019–2020" },
           { label: "D'après", value: "Lysistrata d'Aristophane" },
@@ -693,37 +734,6 @@ export const fr: SiteContent = {
         { name: "Pelitaris Paschalis" },
       ],
     },
-    alumni: {
-      title: "Anciens membres",
-      names: [
-        "Konstantis Sotiris",
-        "Stampouloglou Ippokratis",
-        "Psaltopoulos Giorgos",
-        "Missiou Vasiliki",
-        "Baroumas Giannis",
-        "Menagia Amalthia",
-        "Vlachopoulos Stefanos",
-        "Gogolou Anna",
-        "Kofos Dimitris",
-        "Militarou Elena",
-        "Sachini Christiana",
-        "Mitrogogou Anastasia",
-        "Neokleous Irini",
-        "Poulios Tasos",
-        "Fragkaki Zoi",
-        "Saridi Natasa",
-        "Partasidou Konstantina",
-        "Kanellaki Gogo",
-        "Skourla Melina",
-        "Premeti Katerina",
-        "Ascanelli Guelfo",
-        "Grigoriadou Lemonthea",
-        "Fragkioudaki Kalliopi",
-        "Zachariadis Panagiotis",
-        "Beranger Paul",
-        "Leventakou Danai",
-      ],
-    },
   },
 
   community: {
@@ -733,8 +743,7 @@ export const fr: SiteContent = {
       Communauté nous a accueillis, soutenus et accompagnés à chaque étape.
 
       Nos répétitions et nos cours ont toujours lieu à la Maison de la Grèce,
-      ce lieu devenu une seconde maison pour nous tous. Sans son hospitalité et
-      son soutien constant, notre troupe n'existerait tout simplement pas.
+      ce lieu devenu une seconde maison pour nous tous.
 
       Forte d'une longue histoire au service de l'hellénisme de la diaspora, la
       Communauté entretient le lien vivant avec notre langue et notre culture —
@@ -757,7 +766,10 @@ export const fr: SiteContent = {
     title: "Contact",
     body: `Nous serons ravis d'échanger avec vous — pour des informations sur les
       spectacles et les cours, pour une collaboration ou pour rejoindre la troupe.`,
+    courses:
+      "Les cours ont lieu chaque Mardi, 19:00 - 21:30, à la Maison de la Grèce.",
     email: "list.chpe@gmail.com",
+    tel_communaute: "+33 (0)1 47 04 67 89",
     address:
       "Communauté Hellénique de Paris et des Environs, 9 Rue Mesnil, 75016 Paris, France",
     socials: [

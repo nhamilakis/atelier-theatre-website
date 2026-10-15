@@ -32,7 +32,7 @@ const pageTitle = `${show.title} — ${data.meta.title}`;
       <ShowDetail
         show={show}
         lang={lang}
-        leafletLabel={shows.leafletLabel ?? "Φυλλάδιο"}
+        leafletLabel={shows.leafletLabel || "Φυλλάδιο"}
         galleryLabel={shows.galleryLabel ?? "Φωτογραφίες"}
         creditsLabel={shows.creditsLabel ?? "Διανομή"}
         backHref={getRelativeLocaleUrl(lang, "shows")}

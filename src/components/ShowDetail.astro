@@ -34,6 +34,11 @@ const galleryFullSrc = await Promise.all(
     getImage({ src: photo.image, width: 1600 }).then((img) => img.src),
   ),
 );
+
+// With details, the description sits full-width below the header; without them
+// it slides up beside the poster (where the details would have been) so there's
+// no empty gap.
+const hasDetails = Boolean(show.details && show.details.length > 0);
 ---
 
 <article class="show-detail">
@@ -62,7 +67,7 @@ const galleryFullSrc = await Promise.all(
       <h1 class="show-detail__title">{show.title}</h1>
 
       {
-        show.details && show.details.length > 0 && (
+        hasDetails && (
           <dl class="show-detail__details">
             {show.details.map((detail) => (
               <div class="show-detail__detail">
@@ -73,11 +78,21 @@ const galleryFullSrc = await Promise.all(
           </dl>
         )
       }
+
+      {
+        !hasDetails && (
+          <Markdown text={show.description} class="show-detail__description" />
+        )
+      }
     </div>
   </header>
 
   <div class="show-detail__body">
-    <Markdown text={show.description} class="show-detail__description" />
+    {
+      hasDetails && (
+        <Markdown text={show.description} class="show-detail__description" />
+      )
+    }
 
     {
       show.videos && show.videos.length > 0 && (
@@ -101,12 +116,21 @@ const galleryFullSrc = await Promise.all(
     }
 
     {
-      show.leaflet && (
-        <p class="show-detail__leaflet">
-          <a href={show.leaflet} target="_blank" rel="noopener noreferrer">
-            {leafletLabel} →
-          </a>
-        </p>
+      show.leaflet && show.leaflet.length > 0 && (
+        <ul role="list" class="show-detail__leaflets">
+          {show.leaflet.map((item) => (
+            <li>
+              <a
+                class="show-detail__leaflet-link"
+                href={item.file}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.label || leafletLabel} →
+              </a>
+            </li>
+          ))}
+        </ul>
       )
     }
 
@@ -345,12 +369,16 @@ const galleryFullSrc = await Promise.all(
     color: var(--title-color);
   }
 
-  .show-detail__leaflet {
+  .show-detail__leaflets {
     margin-top: var(--space-l);
-    font-weight: 600;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-xs);
   }
 
-  .show-detail__leaflet a {
+  .show-detail__leaflet-link {
+    font-weight: 600;
     color: var(--color-link);
     text-decoration: none;
   }
