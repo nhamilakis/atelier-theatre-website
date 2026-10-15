@@ -709,19 +709,72 @@ export const fr: SiteContent = {
       },
       {
         slug: "lysistrata",
-        title: "Λυσιστράτη ή Μένουμε Ακρόπολη",
+        title: "Λυσιστράτη - Μένουμε Ακρόπολη",
         subtitle: "Saison théâtrale 2020–2021",
         details: [
           { label: "Année", value: "2019–2020" },
-          { label: "D'après", value: "Lysistrata d'Aristophane" },
-          { label: "Mise en scène", value: "Athina Axiotou" },
-          { label: "Forme", value: "Représentation en ligne" },
+          { label: "D'après", value: "« Lysistrata » d'Aristophane" },
+          {
+            label: "Conception, mise en scène & montage",
+            value: "Athina Axiotou",
+          },
+          {
+            label: "Équipe technique « Ierapetra »",
+            value: "Yannis Baroumas, Nicolas Hamilakis",
+          },
+          { label: "Partenaire extérieur", value: "Stéphane Delaunay" },
+          {
+            label: "Forme",
+            value: "Représentation en ligne (première mondiale)",
+          },
         ],
         poster: { image: AkropoliPoster, alt: "Affiche du spectacle" },
         description: `
-        Cette année, pour la première fois et avec un grand accueil.
+        Pour la première année, et avec un grand succès, l'Atelier de théâtre pour adultes de
+          la Communauté Hellénique de Paris et des environs a vu le jour. Dix-huit élèves et la
+          metteuse en scène Athina Axiotou préparaient avec énergie la « Lysistrata »
+          d'Aristophane, jusqu'à ce que l'épidémie de coronavirus nous oblige à interrompre les
+          répétitions.
+
+          Le confinement et l'isolement, loin de nous arrêter, sont devenus un défi pour
+          continuer. Comment nos personnages réagiraient-ils si une nouvelle pandémie frappait
+          Athènes en 411 av. J.-C. ? Ainsi, le « Nous restons à la maison » est devenu pour
+          nous « Nous restons à l'Acropole ».
+
+          Visioconférences, répétitions et tournages à distance ont rempli nos journées. Chacun
+          a écrit son texte et confectionné costumes et décors avec ce qu'il avait chez lui.
+          L'idée de départ, toute simple, est vite devenue une superproduction, avec de la
+          prose, des chansons et beaucoup d'entrain.
+
+          Nous sommes très fiers de présenter « Nous restons à l'Acropole » en première
+          mondiale ! Les anachronismes, toujours avec licence poétique, ne sont pas fortuits !
         `,
         videos: [{ videoId: "F0eUPQy_FyY" }],
+        credits: [
+          {
+            label: "Distribution (par ordre alphabétique)",
+            roles: [
+              { role: "Epivoulos", name: "Baroumas Yannis" },
+              { role: "Myrrhiné", name: "Bosmi Margarita" },
+              { role: "Stratyllis", name: "Giannopoulou Eirini" },
+              { role: "Anissalo", name: "Gogolou Anna" },
+              { role: "L'enfant de Cinésias", name: "Hamilakis Nicolas" },
+              { role: "Démaratos", name: "Kofos Dimitrios" },
+              { role: "Proboulos", name: "Konstantis Sotiris" },
+              { role: "Cléonice", name: "Menagia Amalthia" },
+              { role: "Idothéa", name: "Militarou Elena" },
+              { role: "Vatyllis", name: "Missiou Vasiliki" },
+              { role: "Deinomahi", name: "Papailiaki Niki" },
+              { role: "Clio l'Aixonienne", name: "Parisi Clio" },
+              { role: "Strymodore", name: "Psaltopoulos Georges" },
+              { role: "Lampito", name: "Slaftsaki Sofia" },
+              { role: "Cinésias Péonidis", name: "Stampouloglou Ippokratis" },
+              { role: "Lysistrata", name: "Strati Evgenia" },
+              { role: "Drakis", name: "Vlahopoulos Stéphane" },
+              { role: "Glaucinna", name: "Vrana Anastasia" },
+            ],
+          },
+        ],
         gallery: galleryFor(
           "2020_AKROPOLI",
           "Photo de la représentation « Lysistrata ou Nous restons à l'Acropole »",
