@@ -33,6 +33,18 @@ const telHref = contact.tel_communaute?.replace(/[^+\d]/g, "");
         </div>
 
         {
+          contact.socials && contact.socials.length > 0 && (
+            <ul role="list" class="contact__socials">
+              {contact.socials.map((social) => (
+                <li>
+                  <SocialLink social={social} />
+                </li>
+              ))}
+            </ul>
+          )
+        }
+
+        {
           contact.courses && (
             <div class="contact__courses">
               <Markdown text={contact.courses} />
@@ -64,18 +76,6 @@ const telHref = contact.tel_communaute?.replace(/[^+\d]/g, "");
         }
 
         {contact.address && <p class="contact__address">{contact.address}</p>}
-
-        {
-          contact.socials && contact.socials.length > 0 && (
-            <ul role="list" class="contact__socials">
-              {contact.socials.map((social) => (
-                <li>
-                  <SocialLink social={social} />
-                </li>
-              ))}
-            </ul>
-          )
-        }
       </div>
 
       {

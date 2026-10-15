@@ -11,5 +11,3 @@ Le mardi 6 octobre, la nouvelle saison théâtrale a débuté pour nos deux atel
 beaucoup d'envie et d'entrain, anciens et nouveaux membres ont démarré en force
 avec du jeu théâtral et des exercices d'improvisation. Quelque chose se prépare
 déjà, à vive allure. Stay tuned !
-
-Les cours ont lieu chaque **mardi**, de **19h00 à 21h30**, à la Maison de la Grèce.
