@@ -82,13 +82,33 @@ export const fr: SiteContent = {
     banner: homePageBanner,
     articles: {
       title: "Articles & mentions",
-      // [À REMPLACER] Publications et mentions de la compagnie dans la presse.
       intro: "",
       items: [
         {
-          label: "[À REMPLACER] Titre de l'article",
-          href: "https://example.org",
-          source: "[À REMPLACER] Média / année",
+          label: "« Un conte sans nom » présenté avec succès à Paris",
+          href: "https://www.thesnewsline.com/parisi-to-theatriko-ergastiri-tis-ellinikis-koinotitas-parousiase-me-epitychia-to-paramythi-choris-onoma/",
+          source: "thesnewsline.com · 2026 (en grec)",
+        },
+        {
+          label: "Le théâtre amateur grec de la diaspora (photos)",
+          href: "https://www.thesnewsline.com/parisi-to-elliniko-erasitechniko-theatro-sti-diaspora-fotografies/",
+          source: "thesnewsline.com · 2025 (en grec)",
+        },
+        {
+          label: "« Lysistrata ou Nous restons à l'Acropole »",
+          href: "https://www.clickatlife.gr/theatro/story/164846",
+          source: "clickatlife.gr · 2020 (en grec)",
+        },
+        {
+          label:
+            "« Lysistrata reste à l'Acropole » cette année, à cause du coronavirus",
+          href: "https://www.ethnos.gr/culture/article/106524/hlysistrathemeineakropolhfetoslogokoronoioy",
+          source: "ethnos.gr · 2020 (en grec)",
+        },
+        {
+          label: "Interview d'Athina Axiotou sur Real FM",
+          href: "https://soundcloud.com/athina-axiotou",
+          source: "Real FM · SoundCloud (en grec)",
         },
       ],
     },
@@ -139,6 +159,12 @@ export const fr: SiteContent = {
           "2026_PARAMYTHI",
           "Photo de la représentation « Un conte sans nom »",
         ),
+        videos: [
+          {
+            label: "Teaser du spectacle — Mai 2026",
+            videoId: "cJKA2SQghx8",
+          },
+        ],
         /*
         // From description
         // <br/>

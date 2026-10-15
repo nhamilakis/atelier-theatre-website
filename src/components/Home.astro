@@ -3,6 +3,7 @@
 // Latest show → Articles & mentions (+ Crowdfunding when present). Contact has
 // its own page, so it isn't repeated here.
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { Image } from "astro:assets";
 import Hero from "./sections/Hero.astro";
 import Markdown from "./Markdown.astro";
 import ShowCard from "./ShowCard.astro";
@@ -51,6 +52,15 @@ const dateLabel = new Intl.DateTimeFormat(lang, {
               <p class="home-news__date">{dateLabel.format(post.data.date)}</p>
               <h3 class="home-news__title">{post.data.title}</h3>
               <Markdown text={post.body ?? ""} class="prose" />
+              {post.data.image && (
+                <Image
+                  src={post.data.image}
+                  alt={post.data.imageAlt ?? ""}
+                  widths={[320, 640]}
+                  sizes="(min-width: 48rem) 320px, 60vw"
+                  class="home-news__image"
+                />
+              )}
             </li>
           ))}
         </ul>
@@ -147,6 +157,16 @@ const dateLabel = new Intl.DateTimeFormat(lang, {
     margin-bottom: var(--space-xs);
     color: var(--title-color);
     font-size: var(--text-lg);
+  }
+
+  .home-news__image {
+    display: block;
+    width: 100%;
+    max-width: 18rem;
+    height: auto;
+    margin-top: var(--space-s);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
   }
 
   /* --- Latest show -------------------------------------------------------- */

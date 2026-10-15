@@ -97,12 +97,33 @@ export const el: SiteContent = {
     banner: homePageBanner,
     articles: {
       title: "Άρθρα & αναφορές",
-      intro: "[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] ******",
+      intro: "",
       items: [
         {
-          label: "[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Τίτλος άρθρου",
-          href: "https://example.org",
-          source: "[ΠΡΟΣ ΑΝΤΙΚΑΤΑΣΤΑΣΗ] Μέσο / έτος",
+          label:
+            "Το «Παραμύθι χωρίς όνομα» παρουσιάστηκε με επιτυχία στο Παρίσι",
+          href: "https://www.thesnewsline.com/parisi-to-theatriko-ergastiri-tis-ellinikis-koinotitas-parousiase-me-epitychia-to-paramythi-choris-onoma/",
+          source: "thesnewsline.com · 2026",
+        },
+        {
+          label: "Το ελληνικό ερασιτεχνικό θέατρο στη διασπορά (φωτογραφίες)",
+          href: "https://www.thesnewsline.com/parisi-to-elliniko-erasitechniko-theatro-sti-diaspora-fotografies/",
+          source: "thesnewsline.com · 2025",
+        },
+        {
+          label: "«Λυσιστράτη ή Μένουμε Ακρόπολη»",
+          href: "https://www.clickatlife.gr/theatro/story/164846",
+          source: "clickatlife.gr · 2020",
+        },
+        {
+          label: "Η Λυσιστράτη «μένει Ακρόπολη» φέτος λόγω κορονοϊού",
+          href: "https://www.ethnos.gr/culture/article/106524/hlysistrathemeineakropolhfetoslogokoronoioy",
+          source: "ethnos.gr · 2020",
+        },
+        {
+          label: "Συνέντευξη της Αθηνάς Αξιώτου στον Real FM",
+          href: "https://soundcloud.com/athina-axiotou",
+          source: "Real FM · SoundCloud",
         },
       ],
     },
