@@ -578,7 +578,7 @@ export const fr: SiteContent = {
         details: [
           { label: "Année", value: "2020–2021" },
           {
-            label: "D'après",
+            label: "D'après la pièce",
             value: "En attendant Godot de Samuel Beckett",
           },
           {
@@ -586,35 +586,28 @@ export const fr: SiteContent = {
             value: "Athina Axiotou",
           },
           {
-            label: "Support technique — couteau suisse",
+            label: "Support technique",
             value: "Nikos Hamilakis",
           },
           {
-            label: "Secrétariat & assistante à tout faire",
+            label: "Secrétariat & assistance",
             value: "Kleio Parisi",
           },
           {
-            label: "Photographe & assistante à tout faire",
+            label: "Photographe & assistance",
             value: "Elena Mylona",
           },
           { label: "Collaborateur externe", value: "Stéphane Delaunay" },
           { label: "Décor", value: "Pathoulas Xavier" },
-          { label: "Transports & déménagements", value: "« O kyr-Mitsos »" },
           { label: "Forme", value: "Représentation en ligne" },
         ],
         poster: { image: GODOTPoster, alt: "Affiche du spectacle" },
         description: `
-        “Dans une ruelle solitaire, sous un arbre squelettique et à côté d’un banc oublié, deux sans-abris, deux voyous chapardeurs, un couple marié, deux médecins, une influenceuse et sa follower, deux vieilles dames, deux journalistes, deux policiers, deux jeunes éméchés, se succèderont, sans jamais se rencontrer, pris au piège d’une attente perpétuelle”
+        « Sur une route solitaire, sous un arbre dénudé et près d’un banc oublié, se retrouveront deux sans-abri, deux petits voleurs, un couple marié, deux médecins, une influenceuse et son admiratrice, deux grand-mères, deux journalistes, deux policiers et deux jeunes ivres, sans jamais se rencontrer, prisonniers d’une attente sans fin… »
 
-        Dés la création de l’Atelier Théâtre de la Communauté Hellénique de Paris et environs, en octobre 2019, la metteuse en scène Athina Axiotou a dû innover et élaborer de nouvelles approches du théâtre dans le contexte de restrictions que la pandémie nous a imposées.
+        Dès la création de l’Atelier théâtral de la Communauté hellénique de Paris et des environs, en octobre 2019, la metteuse en scène Athina Axiotou a voulu relever le défi d’adapter le jeu théâtral aux restrictions que nous imposait la pandémie. Si, avec Lysistrata d’Aristophane, elle avait réussi à monter un spectacle qui exprimait notre besoin de résister à cette nouvelle et difficile réalité, avec En attendant Godot de Samuel Beckett, elle a choisi de travailler sur l’expérience traumatisante du temps suspendu et sur l’absurdité de l’attente, que nous avons tous endurées à cette époque.
 
-        Si avec la mise en scéne d’un texte revisité de Lysistrata d’Aristophane, elle avait réussi à montrer la nécessité de résister aux nouvelles atterrantes reçues en début de la pandémie, cette année elle a choisi de travailler sur le ressenti du temps suspendu et sur “l’absurde” de l’attente que nous avons endurée ces derniers temps, en s'appuyant sur la piéce de S. Beckett “En attendant Godot”.
-
-        La majorité des répétitions se sont faites en ligne, trés peu de répétitions en présentiel ont pu être realisées, entre la levée des restrictions de déplacement et la représentation finale.
-
-        Les décors ont été montés à la maison de la Gréce avec le peu de moyens dont nous disposions et surtout grâce à l’aide de tous les membres de la troupe.
-
-        La metteuse en scène a su tourner à sont avantage tous les obstacles recontrés et cette expérience théâtrale fût pour nous tous salutaire, une sorte de reméde contre la rupture du lien social que nous avons vécue.
+        Le spectacle a été préparé en ligne, avec seulement quelques répétitions en présentiel, par petits groupes, lorsque les restrictions étaient levées. Le décor a été installé à la Maison de la Grèce avec les moyens dont nous disposions, mais surtout grâce à la contribution de chacun d’entre nous.
         `,
         videos: [{ videoId: "5FIIp7Lln_4" }],
         credits: [
@@ -710,16 +703,16 @@ export const fr: SiteContent = {
       {
         slug: "lysistrata",
         title: "Λυσιστράτη - Μένουμε Ακρόπολη",
-        subtitle: "Saison théâtrale 2020–2021",
+        subtitle: "Saison théâtrale 2019–2020",
         details: [
           { label: "Année", value: "2019–2020" },
-          { label: "D'après", value: "« Lysistrata » d'Aristophane" },
+          { label: "D'après la pièce", value: "« Lysistrata » d'Aristophane" },
           {
             label: "Conception, mise en scène & montage",
             value: "Athina Axiotou",
           },
           {
-            label: "Équipe technique « Ierapetra »",
+            label: "Équipe technique",
             value: "Yannis Baroumas, Nicolas Hamilakis",
           },
           { label: "Partenaire extérieur", value: "Stéphane Delaunay" },
