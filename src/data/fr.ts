@@ -72,7 +72,7 @@ export const fr: SiteContent = {
       « Γυναίκα Loser » de Vili Sotiropoulou ; les saisons suivantes ont suivi, dans
       l'ordre, les spectacles « Σιγά τα αίματα » d'Akis Dimou, « Souvenirs assassins » —
       d'après l'œuvre de Serge Valetti, traduite par les élèves de l'atelier,
-      « Speed date » de Giorgos Iliopoulos et notre dernier spectacle « Παραμύθι χωρίς όνομα » (Un conte sans nom) de Iakovos Kambanellis.`,
+      « Speed date » de Giorgos Iliopoulos.`,
   },
 
   home: {
@@ -84,11 +84,6 @@ export const fr: SiteContent = {
       title: "Articles & mentions",
       intro: "",
       items: [
-        {
-          label: "« Un conte sans nom » présenté avec succès à Paris",
-          href: "https://www.thesnewsline.com/parisi-to-theatriko-ergastiri-tis-ellinikis-koinotitas-parousiase-me-epitychia-to-paramythi-choris-onoma/",
-          source: "thesnewsline.com · 2026 (en grec)",
-        },
         {
           label: "Le théâtre amateur grec de la diaspora (photos)",
           href: "https://www.thesnewsline.com/parisi-to-elliniko-erasitechniko-theatro-sti-diaspora-fotografies/",
@@ -134,117 +129,6 @@ export const fr: SiteContent = {
     // [À REMPLACER] Une courte introduction aux spectacles de la compagnie.
     intro: "",
     items: [
-      {
-        slug: "paramythi",
-        title: "Παραμύθι χωρίς όνομα",
-        subtitle: "Saison théâtrale 2025–2026",
-        poster: { image: ParamithiPoster, alt: "Affiche du spectacle" },
-        description: `
-        « Παραμύθι χωρίς όνομα » (Un conte sans nom) est la pièce de Iakovos Kambanellis,
-          inspirée du livre homonyme de Pénélope Delta. Les paroles des chansons ont été
-          mises en musique par Manos Hadjidakis.
-
-          « Et si nous avions eu tort d'attendre tout d'ailleurs ? Et si notre pays avait
-          tout, et que nous ne l'avions pas vu parce que nous regardions de travers ? »
-
-          Le royaume est en pleine décadence… Le couple royal, depuis longtemps incapable de
-          redresser la situation, s'apprête à quitter le pays, malgré les objections de son
-          fils. Le peuple a faim, souffre, peine de plus en plus à joindre les deux bouts au
-          quotidien. Seul un miracle — l'aide financière demandée (et pas pour la première
-          fois…) à l'Oncle Roi — pourrait sauver la situation. Et oui, le prêt est arrivé une
-          fois de plus ! Ou peut-être pas, cette fois-ci ? La caisse envoyée par l'oncle
-          contient-elle vraiment de l'argent, ou autre chose ?
-        `,
-        leaflet: [
-          {
-            label: "Dépliant du spectacle — Mai 2026",
-            file: ParamithiLeaflet,
-          },
-        ],
-        gallery: galleryFor(
-          "2026_PARAMYTHI",
-          "Photo de la représentation « Un conte sans nom »",
-        ),
-        videos: [
-          {
-            label: "Teaser du spectacle — Mai 2026",
-            videoId: "cJKA2SQghx8",
-          },
-        ],
-        /*
-        // From description
-        // <br/>
-        //
-        // #### Musique & chansons
-        //
-        // <br/>
-        // Avec la participation de l'Atelier de chant grec, dans l'œuvre homonyme de Manos
-        // Hadjidakis, sous la direction de Katerina Fotinaki, qui joue de la guitare sur scène.
-
-        details: [
-          { label: "Année", value: "2025–2026" },
-          { label: "Auteur", value: "Iakovos Kambanellis" },
-          {
-            label: "Mise en scène & direction artistique",
-            value: "Athina Axiotou",
-          },
-          { label: "Assistante & secrétariat", value: "Kleio Parisi" },
-          {
-            label: "Décors",
-            value:
-              "Athina Axiotou, Stéphane Delaunay, Nikos Hamilakis, Nikos Fertakis, Elena Mylona, Evgenia Strati, Paschalis Pelitaris",
-          },
-          { label: "Affiche", value: "Elena Mylona" },
-          {
-            label: "Programme",
-            value: "Kleio Parisi, Elena Mylona, Athina Axiotou",
-          },
-          {
-            label: "Support technique",
-            value: "Stéphane Delaunay, Periklis Akogiounoglou",
-          },
-          { label: "Direction musicale", value: "Katerina Fotinaki" },
-        ],
-        credits: [
-          {
-            label: "Distribution (par ordre d'apparition)",
-            roles: [
-              { role: "Le Roi", name: "Nikos Hamilakis" },
-              { role: "La Reine", name: "Evgenia Strati" },
-              { role: "Le Prince", name: "Tasos Xenakis" },
-              { role: "Polykarpos", name: "Domingo Aguilera Sánchez" },
-              { role: "Maria", name: "Ifigenia Nikolakopoulou" },
-              { role: "Juge / Femme", name: "Anastasia Vrana" },
-              { role: "La mère pauvre", name: "Elena Mylona" },
-              { role: "Le tavernier", name: "Maria Kostopoulou" },
-              { role: "Spyros", name: "Marina Nikolidaki" },
-              { role: "Le forgeron", name: "Niki Papailiaki" },
-              { role: "Maître d'œuvre / Le muet", name: "Kleio Parisi" },
-              { role: "Giannis", name: "Christina Pappa" },
-              { role: "Michalis", name: "Irini Giannopoulou" },
-              { role: "Philippos", name: "Emilia Patera" },
-              { role: "Theodoros", name: "Sofia Slaftsaki" },
-              { role: "Le boiteux", name: "Nikos Fertakis" },
-              { role: "L'amiral", name: "Dimitris Kalogirou-Valtis" },
-              { role: "Le maître", name: "Paschalis Pelitaris" },
-              { role: "Guest", name: "Konstantinos Delaunay Axiotis" },
-            ],
-          },
-          {
-            label: "Chantent (par ordre d'apparition)",
-            roles: [
-              { role: "Prologue", name: "Maria Kostopoulou" },
-              { role: "« Du forgeron »", name: "Seta Theodoridou" },
-              { role: "« Du vieux marin »", name: "Haris Voulgaris" },
-              { role: "« Du brave »", name: "Konstantinos Hatziantoniou" },
-              { role: "Chanson d'amour", name: "Evgenia Strati" },
-              { role: "« Hector et Andromaque »", name: "Olga Kannavou" },
-              { role: "Épilogue", name: "Stefania Hounta" },
-            ],
-          },
-        ],
-        */
-      },
       {
         slug: "speed-date",
         title: "Speed date",
@@ -603,11 +487,11 @@ export const fr: SiteContent = {
         ],
         poster: { image: GODOTPoster, alt: "Affiche du spectacle" },
         description: `
-        « Sur une route solitaire, sous un arbre dénudé et près d’un banc oublié, se retrouveront deux sans-abri, deux petits voleurs, un couple marié, deux médecins, une influenceuse et son admiratrice, deux grand-mères, deux journalistes, deux policiers et deux jeunes ivres, sans jamais se rencontrer, prisonniers d’une attente sans fin… »
+        « Sur une route solitaire, sous un arbre dénudé et près d’un banc oublié, se retrouvent deux sans-abris, deux petits voleurs, un couple marié, deux médecins, une influenceuse et son admiratrice, deux grand-mères, deux journalistes, deux policiers et deux jeunes ivres, sans jamais se rencontrer, prisonniers d’une attente sans fin… »
 
-        Dès la création de l’Atelier théâtral de la Communauté hellénique de Paris et des environs, en octobre 2019, la metteuse en scène Athina Axiotou a voulu relever le défi d’adapter le jeu théâtral aux restrictions que nous imposait la pandémie. Si, avec Lysistrata d’Aristophane, elle avait réussi à monter un spectacle qui exprimait notre besoin de résister à cette nouvelle et difficile réalité, avec En attendant Godot de Samuel Beckett, elle a choisi de travailler sur l’expérience traumatisante du temps suspendu et sur l’absurdité de l’attente, que nous avons tous endurées à cette époque.
+        Dès la création de l’Atelier théâtral de la Communauté hellénique de Paris et des environs, en octobre 2019, la metteuse en scène Athina Axiotou a voulu relever le défi d’adapter le jeu théâtral aux restrictions que nous imposait la pandémie. Si, avec Lysistrata d’Aristophane, elle avait réussi à monter un spectacle qui exprimait notre besoin de résister à cette nouvelle et difficile réalité, avec En attendant Godot de Samuel Beckett, elle a choisi de travailler sur l’expérience traumatisante du temps suspendu et sur l’absurdité de l’attente, que nous avons tous enduré à cette époque.
 
-        Le spectacle a été préparé en ligne, avec seulement quelques répétitions en présentiel, par petits groupes, lorsque les restrictions étaient levées. Le décor a été installé à la Maison de la Grèce avec les moyens dont nous disposions, mais surtout grâce à la contribution de chacun d’entre nous.
+        Le spectacle a été préparé en ligne, avec seulement quelques répétitions en présentiel, par petits groupes, lorsque les restrictions se sont levées. Le décor a été installé à la Maison de la Grèce avec les moyens dont nous disposions, mais surtout grâce à la contribution de chacun d’entre nous.
         `,
         videos: [{ videoId: "5FIIp7Lln_4" }],
         credits: [
@@ -723,7 +607,7 @@ export const fr: SiteContent = {
         ],
         poster: { image: AkropoliPoster, alt: "Affiche du spectacle" },
         description: `
-        Pour la première année, et avec un grand succès, l'Atelier de théâtre pour adultes de
+        Pour sa première année, et avec un grand succès, l'Atelier de théâtre pour adultes de
           la Communauté Hellénique de Paris et des environs a vu le jour. Dix-huit élèves et la
           metteuse en scène Athina Axiotou préparaient avec énergie la « Lysistrata »
           d'Aristophane, jusqu'à ce que l'épidémie de coronavirus nous oblige à interrompre les
@@ -817,7 +701,7 @@ export const fr: SiteContent = {
   community: {
     title: "La Communauté Hellénique de Paris et des environs",
     body: `Notre atelier de théâtre est né et a grandi au sein de la Communauté
-      Hellénique de Paris et des environs. Dès la toute première année, la
+      Hellénique de Paris et des Environs. Dès la toute première année, la
       Communauté nous a accueillis, soutenus et accompagnés à chaque étape.
 
       Nos répétitions et nos cours ont toujours lieu à la Maison de la Grèce,
