@@ -3,7 +3,8 @@ import { galleryFor } from "./showPhotos";
 
 // --- Images & content
 
-import homePageBanner from "../assets/home-page-banner.jpg";
+// TODO this was the original banner (in paramithi)
+import homePageBanner from "../assets/shows/2025_SPEED DATE/photos/IMG_0689.jpg";
 import TeamBanner from "../assets/team-banner.jpg";
 import AthinaImage from "../assets/athina.jpg";
 
